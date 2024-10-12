@@ -1,0 +1,103 @@
+\lecture{1}{11/10/2024}{Introduction}
+
+Historically, the goal of quantum field theory was to combine quantum mechanics with special relativity. One of the most notable outputs of this study hailed as a success is that the number of particles is not conserved. It is a robust and systematic theory governed by few principles. It concerns itself with locality, symmetries and renormalization which are exceptionally constraining and \textit{almost} uniquely determine what we can study. 
+
+In this course we use $c = \hbar = 1$. In these natural units, $E = mc^2$ gives us masses in the units of energy.
+
+For metrics we use $\eta^{\mu \nu} = \text{diag}\{1,-1,-1,-1\} $, $x^{\mu} = \left( t,x,y,z \right) $, $F \left( t,\vec{x} \right) \equiv F\left( x^{\mu} \right) \equiv F \left( \vb{x} \right) $
+
+\subsection{Classical Field Theory}
+
+
+In classical mechanics, a natural object is the action,
+\begin{align}
+    S\left( t_1,t_2 \right) = \int_{t_1}^{t_2} \dd{t} \left( \underbrace{m \sum_{i=1}^{3} \left( \dv{x^{i}}{t} \right)^2}_{\text{kinetic term}} - \underbrace{V\left( x \right)}_{\text{potential}}    \right) 
+.\end{align}
+
+This is incredibly useful for us for three main reasons:
+\begin{itemize}
+    \item the equations of motion are given for free by extremising $S$,
+    \item Boundary conditions are supplied externally, and
+    \item $S$ is built on \textit{symmetry} (it is invariant of symmetries of your system).
+\end{itemize} 
+
+As we move towards field theory, we no longer want to speak of a single position of a particle $x\left( t \right) $.
+
+The fundamental object in field theory is a field $\phi_a \left( t, \vec{x} \right) : \R^{3,1} \to \R$ or $\C$ or $\R^{n}$. Here $a$ labels the type of field we are discussing.
+
+
+The first consequence is that we are dealing with an infinite number of degrees of freedom as every point in time and space contains some distinct information about the system.
+
+\begin{example}
+    In electromagnetism, as we will discuss in depth later, one has the gauge field $A^{\mu} \left( t, \vec{x} \right) = \left( \phi \left( x \right) , \vec{A}\left( x \right)  \right) $ which the electric and magnetic fields can be defined in terms of
+    \begin{align}
+        \vec{E} &= - \grad \phi - \pdv{\vec{A}}{t} \\
+        \vec{B} &= \grad \cdot \vec{A}
+    ,\end{align}
+    which have equations of motion
+    \begin{align}
+        \grad \cdot \vb{E} &= \rho  \\
+        \grad \times  \vec{B} = \vec{J} + \pdv{\vec{E}}{t}
+    ,\end{align}
+    and two identities
+\begin{align}
+    \grad \cdot \vec{B} &= 0 \\
+    \dv{\vec{B}}{t} = - \grad \times \vec{E}
+.\end{align}
+
+This is a (hopefully) familiar classical field that we will quantise in due time.
+\end{example}
+
+
+\subsection{Lagrangians}
+
+The Lagrangian in classical mechanics can be written $L = T - V$ and is contained within the action in the form
+\begin{align}
+    S = \int \dd{t} L
+.\end{align}
+
+We will in QFT concern ourselves with the \textit{Lagrangian density} given by
+\begin{align}
+    L = \int \dd{^3x} \mathcal{L} \left( \phi_a , \partial_\mu \phi_a \right) 
+,\end{align}
+however \textit{everybody} just refers to $\mathcal{L}$ as a Lagrangian as we will here.
+
+The equations of motion are determined by extremizing with respect to the fields. 
+
+\begin{note}
+    Note that we assume that the Lagrangian $\mathcal{L}\left[ \phi_a, \partial_\mu \phi_a \right] $ is not a function of $\partial^2 \phi_a$ or higher derivatives. This is for complicated reasons related to ghosts that are beyond the scope of this course.
+\end{note}
+
+Extremising the action with respect to the field, we want to find the conditions for which $\Delta S = 0$, i.e. the action is at a minima/saddle point. We see that
+\begin{align}
+    \delta S &= \int \dd{^{4}x} \left[ \pdv{\mathcal{L}}{\phi_a} \delta \phi_a + \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \delta \left( \partial_\mu \phi_a \right)  \right] \\
+    &= \int \dd{^{4}x} \left[ \pdv{\mathcal{L}}{\phi_a} \delta \phi_a - \partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) }\right)\delta \phi_a   + \underbrace{\partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \delta \phi_a \right)}_{\text{total derivative}}   \right]
+,\end{align}
+and by assuming that our fields decay at infinity, the total derivative term vanishes yielding
+\begin{align}
+   \delta S &= \int \dd{^{4}x} \left[ \pdv{\mathcal{L}}{\phi_a}  - \partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \right) \right]\delta \phi_a 
+,\end{align}
+for which vanishing requires
+\begin{align}
+    \partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \right) - \pdv{\mathcal{L}}{\phi_a} = 0
+.\end{align}
+
+\begin{example}
+    A free massive scalar field is described by the Lagrangian
+    \begin{align}
+        \mathcal{L} &= \frac{1}{2} \eta^{\mu \nu} \partial_\mu \phi \partial_\nu - \frac{1}{2} m^2 \phi^2 \\
+        &= \frac{1}{2} \dot{\phi}^2 - \frac{1}{2} \left( \grad \phi \right)^2 - \frac{1}{2}m^2 \phi^2
+    .\end{align}
+
+    In traditional classical mechanics, one would have identified $T = \frac{1}{2} \dot{\phi}^2$ and $V = \frac{1}{2} \left( \grad \phi \right)^2 + \frac{1}{2} m^2 \phi^2$. 
+    In QFT, the `kinetic terms' sometimes refers to any bilinear combination of fields. For example, $\eta^{\mu \nu} \partial_\mu \phi \partial_\nu \phi$ is always kinetic and $m^2 \phi^2$ is often a (bosonic) mass term.
+
+    The equation of motion for the free massive scalar field Lagrangian is
+    \begin{align}
+        \partial_\mu \partial^{\mu} \phi + m^2 \phi = 0
+    .\end{align}
+    This is the \textbf{Klein Gordon equation}. It is also sometimes written with $\partial_\mu \partial^{\mu} = \Box$.
+\end{example}
+
+
+
