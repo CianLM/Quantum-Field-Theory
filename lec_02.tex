@@ -1,0 +1,169 @@
+\lecture{2}{14/10/2024}{Symmetries}
+
+\subsection{Hamiltonian Formalism}
+
+
+In a Hamiltonian formalism, one starts by defining the canonical momenta
+\begin{align}
+    \Pi^{a} \left( x \right) \equiv \pdv{\mathcal{L}}{\left( \partial_t \phi_a \right) } = \pdv{\mathcal{L}}{\dot{\phi}_a}
+.\end{align}
+
+\begin{definition}
+    The \textbf{Hamiltonian density} is defined by Legendre transform  of the Lagrangian density
+\begin{align}
+    \mathcal{H} = \Pi^{a} \partial_t \phi_a - \mathcal{L}
+.\end{align}
+\end{definition}
+
+The Hamiltonian is given by
+\begin{align}
+    H = \int \dd{^3x} \mathcal{H}
+.\end{align}
+
+We will not abuse notation and always call $\mathcal{H}$ a \textit{Hamiltonian density}, and $H$ a \textit{Hamiltonian}.
+
+\begin{example}
+    For a scalar field with a potential $V\left( \phi \right) $, we have
+    \begin{align}
+        \mathcal{L} = \frac{1}{2} \eta^{\mu \nu} \partial_\mu \phi \partial_\nu \phi - V \left( \phi \right) 
+    .\end{align}
+
+    The canonical momentum is
+    \begin{align}
+        \Pi = \pdv{\mathcal{L}}{\dot{\phi}} = \dot{\phi}
+    ,\end{align}
+
+    and the Hamiltonian is then
+    \begin{align}
+        H &=  \int \dd{^3 x} \left( \frac{1}{2} \dot{\phi}^2 + \frac{1}{2}\left( \grad \phi \right)^2 + V\left( \phi \right)  \right) 
+    .\end{align}
+\end{example}
+
+\subsection{Symmetry}
+
+Symmetries are inseparable from the study of quantum field theory. Most notably they dictate the actions we can write, the class of fields (operators) we can use, and the observables we can compute.
+
+\begin{definition}
+    The \textbf{Lorentz group} has elements $\tensor{\Lambda}{^{\mu}_{\nu}}$ such that under Lorentz boosts
+    \begin{align}
+        x^{\mu} \to x'^{\mu} = \tensor{\Lambda}{^{\mu}_{\nu}} x^{\nu}
+    ,\end{align}
+    which preserve the spacetime interval $s^2 = x^{\mu} x^{\nu} \eta_{\mu \nu} = t^2 - x^{i} x_{i}$ such that
+    \begin{align}
+        s^2 \to s'^2 = s^2
+    .\end{align}
+\end{definition}
+
+This condition implies
+\begin{align}
+    \eta_{\mu \nu} \tensor{\Lambda}{^{\mu}_{\rho}} \tensor{\Lambda}{^{\nu}_{\sigma}} = \eta_{\rho \sigma} \label{eq:eta_relation}
+.\end{align}
+
+In matrix form, this can be written $\Lambda^{T} \eta \Lambda = \eta$.
+
+\begin{examples}~
+    Rotations such as one in the $xy$ plane, leave $t' = t$ and have $\Lambda^{1}_1 = R^{1}_1$ such that
+    \begin{align}
+        \Lambda = \mqty( 1 & 0 & 0 & 0 \\ 0 & \cos \theta & - \sin \theta & 0 \\ 0 & \sin \theta & \cos \theta & 0 \\ 0 & 0 & 0 & 1 )
+    .\end{align}
+    \item Boosts mix time and space. Boosting in the $\left( t,x \right) $ plane, we have
+        \begin{align}
+            \Lambda = \mqty( \cosh \eta & - \sinh \eta & 0 & 0 \\ - \sinh \eta & \cosh \eta & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 )
+        ,\end{align}
+        where $\eta$ is the \textbf{rapidity} and is given by
+        \begin{align}
+            \cosh \eta &= \frac{1}{\sqrt{1 - v^2} } \\
+            \sinh \eta &= \frac{v}{\sqrt{1 - v^2} }
+        .\end{align}
+\end{examples}
+
+\begin{note}
+    From 1), we see that in general $\det \left( \Lambda \right)^2 = 1 \implies \det \Lambda = \pm 1$.
+
+    If $\det \Lambda = 1$, then $\Lambda$ is called a \textit{proper} Lorentz transformation.
+
+    If $\det \Lambda = - 1$, then $\Lambda$ is called a \textit{improper} Lorentz transformation. Parity and time reversal each independently cause $\det \Lambda = - 1$. Only proper Lorentz transformations are continuously connected to the identity.
+\end{note}
+
+We will assume $\det \Lambda = 1$. We can then expand about the identity infinitesimally and write
+\begin{align}
+    \tensor{\Lambda}{^{\mu}_\nu} = \delta^{\mu}_\nu + \tensor{\epsilon}{^{\mu}_\nu}  + \mathcal{O}\left( \epsilon^2 \right) 
+.\end{align}
+
+The natural question is what are the properties of $\tensor{\epsilon}{^{\mu}_\nu}$?
+
+Inserting this expression into \cref{eq:eta_relation}, we see
+\begin{align}
+    \eta_{\rho \sigma} &= \eta_{\mu \nu} \left( \delta^{\mu}_\rho + \tensor{\epsilon}{^{\mu}_\rho} + \cdots \right)  \left( \delta^{\nu}_{\sigma} + \tensor{\epsilon}{^{\nu}_{\sigma}} + \cdots \right) \nonumber  \\
+    &= \eta_{\mu \nu} \delta^{\mu}_{\rho} \delta^{\nu}_{\sigma} + \eta_{\mu \nu} \tensor{\epsilon}{^{\mu}_\rho} \delta^{\nu}_{\sigma} + \eta_{\mu \nu} \delta^{\mu}_{\rho} \tensor{\epsilon}{^{\nu}_{\sigma}} + \mathcal{O} \left( \epsilon \right)^2  \nonumber \\
+    &= \eta_{\rho \sigma} + \epsilon_{\sigma \rho} + \epsilon_{\rho \sigma} \nonumber \\
+    \implies \epsilon_{\sigma \rho} &= - \epsilon_{\rho \sigma}
+.\end{align}
+
+Therefore $\epsilon_{\sigma \rho}$ is an antisymmetric tensor, which in $d= 4$ has $\frac{d \left( d - 1 \right) }{2} = 6$ independent components.
+
+Therefore we have $6$ generators for the Lorentz group:
+\begin{itemize}
+    \item 3 rotations, and
+    \item 3 boosts
+\end{itemize}
+
+\subsection{Fields Revisited}
+
+We can now think of a field as an object which transforms under the Lorentz group. It therefore forms a representation of the algebra.
+
+\begin{definition}
+    A field is an object that depends on coordinates and has a definite transformation under the action of the Lorentz group,
+    \begin{align}
+        x & \to x' = \Lambda x, \\
+        \phi_a \left( x \right) &\to \phi'_a \left( x \right) = D \left[ \Lambda \right]_{a}^{b} \phi_{b}\left( \Lambda^{-1} x \right) 
+    .\end{align}
+\end{definition}
+
+$D \left[ \Lambda \right] $ forms a representation of the Lorentz group as it satisfies
+\begin{align}
+    D \left[ \Lambda_1 \right] D \left[ \Lambda_2 \right]  &= D \left[ \Lambda_1 \Lambda_2 \right], \\
+    D \left[ \Lambda^{-1} \right] &= D \left[ \Lambda \right]^{-1}, \\
+    D \left[ \mathbb{I} \right]  &= 1.
+.\end{align}
+
+\begin{examples}~
+    \begin{enumerate}[label=\arabic*)]
+        \item Consider the trivial representation $D \left[ \Lambda \right] = 1$. Then the field transforms as
+\begin{align}
+    \phi \left( x \right) = \phi \left( \Lambda^{-1} x \right) 
+,\end{align}
+which is an equivalent definition of the \textit{scalar field}. Here we are using active transformations where the coordinates are fixed.
+
+    \item We are also familiar with the vector representation given by
+        \begin{align}
+            \tensor{D \left[ \Lambda \right] }{^{\mu}_{\nu}} = \tensor{\Lambda}{^{\mu}_{\nu}}
+        .\end{align}
+
+        A field transforming under this representation is $A^{\mu}$ such that
+        \begin{align}
+            A^{\mu}\left( x \right) \to A'^{\mu}\left( x \right)  = \tensor{\Lambda}{^{\mu}_{\nu}} A^{\nu} \left( \Lambda^{-1} x \right) 
+        ,\end{align}
+        and similarly,
+        \begin{align}
+            \partial_\mu \phi \to \partial_\mu \phi' \left( x \right) = \tensor{\left( \Lambda^{-1} \right)}{^{\nu}_\mu} \partial_\nu \phi \left( \Lambda^{-1} x \right) 
+        .\end{align}
+    \end{enumerate}
+\end{examples}
+
+\subsection{Actions Revisited}
+
+As we alluded to earlier, actions are also heavily constrained by symmetries. Given the Lagrangian density of the massive scalar field
+\begin{align*}
+    \mathcal{L} = \frac{1}{2} \partial_\mu \phi \partial_\nu \phi \eta^{\mu \nu} - m^2 \phi^2
+,\end{align*}
+we notice that the action is invariant under Lorentz transformations.
+
+
+
+
+
+
+
+
+
