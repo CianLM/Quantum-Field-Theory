@@ -1,0 +1,161 @@
+\lecture{3}{16/10/2024}{Noether's Theorem}
+
+We can check this transformation explicitly with
+\begin{align}
+    \mathcal{L} &\to \frac{1}{2}\eta^{\mu \nu} \tensor{\left( \Lambda^{-1} \right) }{^{\rho}_\mu} \partial_\rho \phi \left( \Lambda^{-1} x \right) \tensor{\left( \Lambda^{-1} \right) }{^{\sigma}_{\nu}} \partial_\sigma \phi \left( \Lambda^{-1} \right) -\frac{1}{2}m^2 \phi^2 \left( \Lambda x \right) \\
+    &= \frac{1}{2} \eta^{\rho \sigma} \partial_\rho \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2 = \mathcal{L}
+,\end{align}
+and therefore
+\begin{align}
+    S \to \int \dd{^{4}x} \mathcal{L}\left( y \right) = \int \dd{^{4}y} \mathcal{L}\left( y \right) 
+,\end{align}
+as $\det \left( \Lambda \right) = 1$. Thus the action is also Lorentz invariant.
+
+\begin{theorem}[ (Noether's Theorem)]~
+    \begin{enumerate}[label=\arabic*)]
+        \item Every \textbf{continuous symmetry} of the Lagrangian gives rise to a current $j^{\mu}$ which is conserved $\partial_\mu j^{\mu} = 0$ under the equations of motion.
+        \item Provided suitable boundary conditions, a conserved current will give rise to a conserved charge $Q$, where
+            \begin{align}
+                Q = \int \dd{^3x} j^{0}
+            .\end{align}
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[label=\arabic*)]
+        \item We must first define a continuous symmetry.
+            \begin{definition}
+                A transformation is continuous if there is an infinitesimal parameter in it. We will see two types:
+                \begin{itemize}
+                    \item \textit{internal} transformations, which do not act on the coordinates, but act on the fields,
+                    \item \textit{local} transformations, which act on both the coordinates and the fields.
+                \end{itemize}
+                In both cases, a continuous transformations can be written
+                \begin{align}
+                    \delta \phi_a = \phi_a^{'}\left( x \right) - \phi_a \left( x \right) 
+                .\end{align}
+                Such a transformation is a \textbf{symmetry} of the system if the \textbf{action} is invariant under the transformation.
+
+                Namely, under
+                \begin{align}
+                    S \left[ \phi \right] &\to S \left[ \phi' \right] = \int \dd{^{4}x} \mathcal{L}\left[ \phi' \right] 
+                ,\end{align}
+                we are looking for
+                \begin{align}
+                    \delta S = S \left[ \phi' \right] - S \left[ \phi \right] = 0
+                ,\end{align}
+                which implies a symmetry. This implies that for the Lagrangian
+                \begin{align}
+                    \delta \mathcal{L} = \mathcal{L}'\left( x \right) - \mathcal{L}\left( x \right) = \partial_\mu \mathcal{J}^{\mu}
+                ,\end{align}
+                namely, that the Lagrangian can change up to a total derivative without the action changing.
+            \end{definition}
+            Let's quantify the change in $\mathcal{L}$. We have that
+            \begin{align}
+                \delta \mathcal{L} &= \pdv{\mathcal{L}}{\phi_a} \delta \phi_a + \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \delta \partial_\mu \phi_a \\
+                &= \left( \pdv{\mathcal{L}}{\phi_a} - \partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \right)  \right) \delta \phi_a +\partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \delta \phi_a \right)  \overset{\text{symm}}{=} \partial_\mu \mathcal{J}^{\mu}
+            .\end{align}
+            This implies that
+            \begin{align}
+                - \underbrace{\left( \pdv{\mathcal{L}}{\phi_a} - \partial_\mu \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \right)  \right)}_{\text{equation of motion}} \delta \phi_a = \partial_\mu \underbrace{\left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right)}\delta \phi_a - \mathcal{J}^{\mu}   \right)}_{j^{\mu}} 
+            .\end{align}
+            Therefore if the equation of motion is imposed, one has
+            \begin{align}
+                \partial_\mu j^{\mu} = 0
+            ,\end{align}
+            for
+            \begin{align}
+                j^{\mu} = \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \delta \phi_a - \mathcal{J}^{\mu}
+            .\end{align}
+        \item We have
+            \begin{align}
+                Q = \int \dd{^3x} j^{0}
+            ,\end{align}
+            and
+            \begin{align}
+                \dv{Q}{t} &= \int_V \dd{^3x} \pdv{j^{0}}{t} \\
+                &= - \int_V \dd{^3x} \vec{\grad} \cdot \vec{j} \\
+                &= - \int_{\partial V} d\vec{A} \cdot \vec{j} \\
+                &= 0
+            ,\end{align}
+            where this last equality holds as the fields decay as $\left| x \right| \to \infty$, and thus $Q$ is a conserved quantity.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Energy Momentum Tensor}
+
+We consider a local transformation that is a symmetry of almost every theory worthy of study: spatial translations taking
+\begin{align}
+    x^{\mu} \to x'^{\mu} = x^{\mu} - \epsilon^{\mu}
+,\end{align}
+where $\epsilon^{\mu}$ is a constant vector. Under such translations, the fields transform as
+\begin{align}
+    \phi_a \to \phi'_a \left( x \right) &= \phi_a \left( x + \epsilon \right) 
+,\end{align}
+where making this an infinitesimal transformation and expanding in a Taylor series we see
+\begin{align}
+    \phi'_a \left( x \right) &= \phi_a \left( x \right) + \epsilon^{\mu} \partial_\mu \phi_a \left( x \right) + \mathcal{O}\left( \epsilon^2 \right)  \\
+    \implies \delta \phi_a &= \phi'_a \left( x \right) - \phi_a \left( x \right) \\
+    &= \epsilon^{\mu} \partial_\mu \phi \left( x \right) 
+.\end{align}
+
+The Lagrangian changes by a total derivative under this transformation such that
+\begin{align}
+    \delta \mathcal{L} = e^{\mu} \partial_\mu \mathcal{L} = \partial_\mu \underbrace{\epsilon^{\mu} \mathcal{L}}_{\mathcal{J}^{\mu}}
+.\end{align}
+
+Therefore, substituting in $\delta \phi_a$ and $\mathcal{J}^{\mu}$, our conserved current is
+\begin{align}
+    j^{\mu} &= \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \underbrace{\epsilon^{\nu} \partial_\nu \phi_a}_{\delta \phi_a} - \underbrace{\epsilon^{\mu} \mathcal{L}}_{\mathcal{J}^{\mu}} \\
+    &= \epsilon^{\nu} \left( \pdv{\mathcal{L}}{\left( \partial_\mu \phi_a \right) } \partial_\nu \phi_a - \tensor{\delta}{^{\mu}_\nu} \mathcal{L}\right)  \equiv \epsilon^{\nu} \tensor{T}{^{\mu}_\nu}
+,\end{align}
+where $\tensor{T}{^{\mu}_{\nu}}$ is the \textbf{energy momentum tensor}.
+
+Using the equation of motion, one can show that
+\begin{align}
+    \partial_\mu j^{\mu} = 0 \implies \partial_\mu \tensor{T}{^{\mu}_\nu} = 0
+,\end{align}
+namely that the stress energy tensor is conserved on shell. 
+
+Further, from $T^{\mu \nu}$ we can construct four conserved charges given by
+\begin{itemize}
+    \item the \textit{energy}, $E = \int \dd{^3x} T^{00}$ by choosing $e^{\mu} = \left( 1,0,0,0 \right) $,
+    \item the \textit{momenta}, $p^{i} = \int \dd{^3x} T^{0i}$ where $\epsilon = \left( 0,1,0,0 \right) $, $\left( 0,0,1,0 \right) $ or $\left( 0,0,0,1 \right) $.
+\end{itemize}
+
+\begin{example}
+    For the free massive scalar field
+    \begin{align}
+        \tensor{T}{^{\mu}_{\nu}} &= \pdv{\mathcal{L}}{\left( \partial_\mu \phi \right) } \partial_\nu \phi - \delta^{\mu}_\nu \mathcal{L} \\
+        T^{\mu \nu} &= \partial^{\mu} \phi \partial^{\nu} - \eta^{\mu \nu} \mathcal{L} \\
+        T^{00} &= \frac{1}{2} \dot{\phi}^2 + \frac{1}{2} \left( \grad \phi \right)^2 + \frac{1}{2} m^2 \phi^2
+    ,\end{align}
+    where observe that
+    \begin{align}
+        E = \int \dd{^3x} T^{00} = H
+    ,\end{align}
+    and
+    \begin{align}
+        p^{i} = \int \dd{^3x} T^{0i} = \int \dd{^3x} \dot{\phi} \partial^{i} \phi
+    .\end{align}
+\end{example}
+
+\begin{note}
+    The stress energy tensor
+    \begin{align}
+        \tensor{T}{^{\mu}_\nu} = \pdv{\mathcal{L}}{\left( \partial_\mu \phi \right) } \partial_\nu \phi_a - \delta^{\mu}_\nu \mathcal{L}
+    ,\end{align}
+    is not always symmetric. One can define the \textit{Belifante tensor} given by
+    \begin{align}
+        \Theta^{\mu \nu} = T^{\mu \nu} + \partial_\rho \mathcal{T}^{\rho \mu \nu}
+    ,\end{align}
+    where $\mathcal{T}^{\rho \mu \nu} = - \mathcal{T}^{\mu \rho \nu}$ leads to $\partial_\mu \Theta^{\mu \nu} = 0$.
+
+    One can also symmetrize $T^{\mu \nu}$ by coupling fields to $g_{\mu \nu}$ (instead of $\eta^{\mu \nu}$) with
+    \begin{align}
+        \Theta^{\mu \nu} = \left( -\frac{2}{\sqrt{-g} } \pdv{g_{\mu \nu}} \left( \sqrt{-g}  \mathcal{L} \right) \right)  \bigg|_{g = \eta}
+    .\end{align}
+\end{note}
+
+
+
