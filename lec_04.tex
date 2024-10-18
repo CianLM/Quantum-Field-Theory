@@ -1,0 +1,152 @@
+\lecture{4}{18/10/2024}{Canonical Quantization}
+
+\subsection{Internal Symmetry}
+
+
+\begin{example}[Internal Symmetry]
+    Internal symmetries do not act on coordinates, only the fields. Consider a complex scalar field
+    \begin{align}
+        \psi \left( x \right) = \frac{1}{\sqrt{2} } \left( \phi_{1} \left( x \right) + i \phi_2 \left( x \right)  \right) 
+    ,\end{align}
+    where $\phi_1 ,\phi_2$ are real scalar fields. A Lagrangian for this field is
+    \begin{align}
+        \mathcal{L} = \partial_\mu \phi \partial^{\mu} \psi^{*} - V \left( \left| \psi \right|^2 \right) 
+    .\end{align}
+    The equations of motion for this theory are
+    \begin{align}
+        \partial_\mu \partial^{\mu} \psi + \pdv{V}{\phi^{*}} = 0, && \partial_\mu \partial^{\mu} \psi^{*} + \pdv{V}{\phi} = 0
+    .\end{align}
+    The internal symmetry of this system, for constant $\alpha \in \R$,
+    \begin{align}
+        \phi \left( x \right) \to \phi' \left( x \right) &= e^{i \alpha} \psi \left( x \right) \label{eq:global_phase}  \\
+        \phi^{*} \left( x \right) \to \left( \phi^{*} \left( x \right)  \right)' &= e^{-i\alpha} \psi^{*} \left( x \right) 
+    ,\end{align}
+    under which $\mathcal{L} \to \mathcal{L}' = \mathcal{L}$ and $S \to S' = S$. Here $\alpha$ is the continuous parameter of the transformation, such that
+    \begin{align}
+        \delta \phi &= \phi' \left( x \right) - \phi \left( x \right)  \\
+        &= i \alpha \psi \\
+        \delta \psi^{*} &= -i \alpha \psi^{*}
+    .\end{align}
+
+    We can construct the current
+    \begin{align}
+        j^{\mu} = \pdv{\mathcal{L}}{\left( \partial_\mu \psi \right) } \delta \psi + \pdv{\mathcal{L}}{\left( \partial_\mu \psi^{*} \right) } \delta \psi^{*} - \mathcal{J}^{\mu}
+    ,\end{align}
+    where there is no total derivative term, $\mathcal{J}^{\mu} = 0$. We then have
+    \begin{align}
+        j^{\mu} &= i \alpha \left( \psi \partial^{\mu} \psi^{*} - \psi^{*} \partial_\mu \psi \right) 
+    ,\end{align}
+    which implies a conserved charge
+    \begin{align}
+        Q = \int \dd{^3x} j^{0}
+    ,\end{align}
+    which is in fact the electric charge as we will see.
+
+    Observe that it is also possible to view the transformation as
+    \begin{align}
+        \mqty ( \phi_1 \\ \phi_2 ) \to \mqty( \phi_1' \\ \phi_2' ) = \mqty( \cos \alpha & - \sin \alpha \\ \sin \alpha & \cos \alpha ) \mqty( \phi_1 \\ \phi_2 )
+    ,\end{align}
+    which is identical to the previous transformation in \cref{eq:global_phase}.
+
+\end{example}
+
+\subsection{Quantum Fields}
+
+We will first study the simplest possible theory: a free theory. We will take a Hamiltonian approach and build on the rules of quantum mechanics. Recall the familiar commutation relations of
+\begin{align}
+    \left[ x^{i}, p^{j} \right] = i \delta^{ij}
+.\end{align}
+
+In QFT, we no longer speak of position and momentum variables, but rather a quantum field $\phi_a \left( x \right) $ and its conjugate momenta $\Pi^{a}\left( x \right) = \pdv{\mathcal{L}}{\dot{\phi}_a}$ which satisfy
+\begin{align}
+    \left[ \phi_a \left( \vb{x},t \right) , \Pi^{b}\left( \vb{y},t \right)  \right] = i \delta^{3} \left( \vb{x} - \vb{y} \right) \delta^{b}_a
+,\end{align}
+called \textit{equal time} commutation relations. One must make a choice of some kind when transferring from a classical theory to a quantum theory, and this turns out to be one such correct choice.
+
+% hamiltonian
+% fock space
+% causality
+% propagators
+
+\subsection{Canonical Quantization}
+
+\begin{note}
+    In the notes, Tong performs canonical quantization in the Schrödinger picture at $t = 0$. Here we will use the Heisenberg picture.
+\end{note}
+
+Our theory of interest is
+\begin{align}
+    \mathcal{L} = \frac{1}{2} \partial_\mu \phi \partial^{\mu} \phi - \frac{1}{2}m^2 \phi^2
+.\end{align}
+
+Its equation of motion is the Klein-Gordon equation, $\partial_\mu \partial^{\mu} \phi + m^2 \phi = 0$.
+
+We know solutions to this equation take the form
+\begin{align}
+    \phi \sim  \exp \left( i \vb{k} \cdot \vb{x} + i \omega t \right) 
+,\end{align}
+where $- \omega^2 + \vb{k} \cdot \vb{k} + m^2 = 0$ which gives us a dispersion relation,
+\begin{align}
+    \omega \left( k \right)  = \pm \sqrt{\vb{k} \cdot \vb{k} + m^2} 
+.\end{align}
+
+We adopt the notation $\omega \equiv \sqrt{\vb{k} \cdot \vb{k} + m^2}$. Therefore, taking a linear superposition of fields, one has
+\begin{align}
+    \phi \left( \vb{x},t \right) = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \left( a \left( k \right) e^{i \vb{k} \cdot \vb{x} - i \omega t}  + b\left( k \right) e^{i \vb{k} \cdot \vb{x} + i \omega t}\right) 
+.\end{align}
+
+\begin{note}
+    $\phi$ is real, which imposes restrictions on $a\left( k \right) $ and $b\left( k \right) $. Namely, as $\phi^{*} = \phi$, we have
+    \begin{align}
+        a^{*}\left( -k \right) = b\left( k \right)  && b^{*}\left( -k \right) = a \left( k \right) 
+    ,\end{align}
+    thus we can write
+    \begin{align}
+        \phi \left( x \right) = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \left( a \left( k \right) e^{i \vb{k} \cdot \vb{x} - i \omega t} + a^{*} \left( k \right) e^{-i \vb{k} \cdot \vb{x} + i \omega t}  \right) 
+    .\end{align}
+    In a more relativistic notation, one has
+    \begin{align}
+        \phi \left( x \right) = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \left( a \left( k \right) e^{-i k^{\mu} x_{\mu}} + a^{*}\left( k \right) e^{i k^{\mu} x_\mu} \right) 
+    ,\end{align}
+    where $k_{\mu} = \left(\omega, \vb{k}\right) $ and $x_{\mu} = \left( t, \vb{x} \right)  $ give us $k^{\mu} x_\mu = \omega t - \vb{k} \cdot \vb{x}$ and $k^2 = \omega^2 - \vb{k} \cdot \vb{k} = m^2$.
+\end{note}
+
+\begin{note}
+    We will choose to normalize $a\left( k \right) $ and $a^{*}\left( k \right) $ such that
+    \begin{align}
+        \phi \left( x \right) = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \frac{1}{\sqrt{2 \omega} } \left( a \left( k \right) e^{-i k_\mu x^{\mu}} + a^{*}\left( k \right) e^{i k_\mu x^{\mu}} \right) 
+    .\end{align}
+\end{note}
+
+Lastly, notice that
+\begin{align}
+    \Pi \left( x \right) = \dot{\phi} = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} -i \sqrt{\frac{\omega}{2}} \left( a \left( k \right) e^{-i k_\mu x^{\mu}} - a^{*}\left( k \right) e^{i k_\mu x^{\mu}} \right)  
+.\end{align}
+
+Next, we \textit{\textbf{quantize}}, namely, we declare that
+\begin{align}
+    \left[ \phi \left( \vec{x},t \right) , \phi \left( \vec{x}',t \right)  \right] &= 0 \\
+    \left[ \Pi \left( \vec{x},t \right) , \Pi \left( \vec{x}',t \right)  \right] &= 0 \\
+    \left[ \phi \left( \vec{x},t \right) , \Pi \left( \vec{x}', t \right)  \right] &= i \delta^{3} \left( \vec{x} - \vec{x}' \right) 
+.\end{align}
+
+\begin{claim}
+    These commutation relations promote $a$ to an \textbf{operator} such that $a \left( k \right) $ becomes $\hat{a}_{k}$ and $a^{*} \left( k \right)$ becomes $\hat{a}_{k}^{\dag}$. The above commutation relations imply
+\begin{align}
+    \left[ \hat{a}_k, \hat{a}_{k'} \right] &= 0 \\ 
+    \left[ \hat{a}_k^{\dag}, \hat{a}^{\dag}_{k'} \right] &= 0 \\
+    \left[ \hat{a}_k, \hat{a}_{k'}^{\dag} \right] &= \left( 2\pi \right)^3 \delta^{3} \left( k - k' \right) 
+.\end{align}
+\end{claim}
+
+\begin{proof}
+    \begin{enumerate}[label=\arabic*)]
+        \item (\textit{Claim implies declaration}) Taking
+            \begin{align}
+                \left[ \phi \left( \vec{x},t \right) , \Pi \left( \vec{y},t \right)  \right] &= \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}} \left(  \left[ a_{\vb{p}} e^{i \vec{p} \cdot \vec{x} + i \omega t} + a^{\dag}_{\vb{p}} e^{-i \vec{p} \cdot \vec{x} + i \omega t}, a_{\vb{q}} e^{i \vec{q} \cdot \vec{y} - i \omega t} - a^{\dag}_{\vb{q}} e^{-i \vec{q} \cdot \vec{y} + i \omega t}  \right]  \right) \\
+&= \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}} \left( - \left[ a_{\vb{p}}, a^{\dag}_{\vb{q}} \right] e^{i \vec{p} \cdot \vec{x}} e^{-i \vec{q} \cdot \vec{y}} + \left[ a^{\dag}_{\vec{p}}, a_{\vb{q}} \right] e^{-i \vec{p} \cdot \vec{x}} e^{i \vec{q} \cdot \vec{y}}  \right) 
+            .\end{align}
+    \end{enumerate}
+\end{proof}
+
+
