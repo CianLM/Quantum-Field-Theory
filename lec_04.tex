@@ -143,9 +143,11 @@ Next, we \textit{\textbf{quantize}}, namely, we declare that
     \begin{enumerate}[label=\arabic*)]
         \item (\textit{Claim implies declaration}) Taking
             \begin{align}
-                \left[ \phi \left( \vec{x},t \right) , \Pi \left( \vec{y},t \right)  \right] &= \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}} \left(  \left[ a_{\vb{p}} e^{i \vec{p} \cdot \vec{x} + i \omega t} + a^{\dag}_{\vb{p}} e^{-i \vec{p} \cdot \vec{x} + i \omega t}, a_{\vb{q}} e^{i \vec{q} \cdot \vec{y} - i \omega t} - a^{\dag}_{\vb{q}} e^{-i \vec{q} \cdot \vec{y} + i \omega t}  \right]  \right) \\
-&= \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}} \left( - \left[ a_{\vb{p}}, a^{\dag}_{\vb{q}} \right] e^{i \vec{p} \cdot \vec{x}} e^{-i \vec{q} \cdot \vec{y}} + \left[ a^{\dag}_{\vec{p}}, a_{\vb{q}} \right] e^{-i \vec{p} \cdot \vec{x}} e^{i \vec{q} \cdot \vec{y}}  \right) 
-            .\end{align}
+                \left[ \phi \left( \vec{x},t \right) , \Pi \left( \vec{y},t \right)  \right] &= \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}} \frac{1}{2i} \sqrt{\frac{\omega_q}{\omega_p}}\left(  \left[ a_{\vb{p}} e^{i \vec{p} \cdot \vec{x} + i \omega t} + a^{\dag}_{\vb{p}} e^{-i \vec{p} \cdot \vec{x} + i \omega t}, a_{\vb{q}} e^{i \vec{q} \cdot \vec{y} - i \omega t} - a^{\dag}_{\vb{q}} e^{-i \vec{q} \cdot \vec{y} + i \omega t}  \right]  \right) \\
+&= \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}} \frac{1}{2i} \sqrt{\frac{\omega_q}{\omega_p}} \left( - \underbrace{\left[ a_{\vb{p}}, a^{\dag}_{\vb{q}} \right]}_{\left( 2\pi \right)^3 \delta^{3}\left( \vec{p} - \vec{q} \right) } e^{i \vec{p} \cdot \vec{x}} e^{-i \vec{q} \cdot \vec{y}} + \left[ a^{\dag}_{\vec{p}}, a_{\vb{q}} \right] e^{-i \vec{p} \cdot \vec{x}} e^{i \vec{q} \cdot \vec{y}}  \right) \\
+&= i\int \frac{\dd{^3p}}{\left( 2\pi \right)^{3}} e^{i \vec{p} \cdot \left( \vec{x} - \vec{y} \right) } = i \delta^{3}\left( \vec{x} - \vec{y} \right)
+            ,\end{align}
+            as desired.
     \end{enumerate}
 \end{proof}
 

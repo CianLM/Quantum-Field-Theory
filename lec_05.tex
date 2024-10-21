@@ -1,0 +1,75 @@
+\lecture{5}{21/10/2024}{}
+
+Observe that while the Hamiltonian for the free massive scalar field can be written as
+\begin{align}
+    H = \int \dd{^3x} \mathcal{H} = \frac{1}{2} \int \dd{^3x} \left( \pi^2 + \left( \grad \phi \right)^2 + m^2 \phi^2 \right) 
+,\end{align}
+we desire an expression in terms of $a$ and $a^{\dag}$. Expanding the fields in terms of these operators, we see
+\begin{align}
+    H &= \frac{1}{2} \int \dd{^3x} \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}}  \bigg(-\frac{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} }{2} \left( a_{\vb{p}} e^{i\vb{p}\cdot \vb{x}} - a^{\dag}_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} \right) \left( a_{\vb{q}} e^{i\vb{q}\cdot \vb{x}} - a^{\dag}_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} \right) \nonumber \\
+    &\quad ~ -\frac{1}{2} \frac{1}{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} } \left( a_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} - a_{\vb{p}}e^{i \vb{p} \cdot \vb{x}} \right)\left( a_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} - a_{\vb{q}}e^{i \vb{q} \cdot \vb{x}} \right) \vec{p} \vec{q} \nonumber\\
+    & \quad~+ \frac{m^2}{2} \frac{1}{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} } \left( a_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} - a_{\vb{p}}e^{i \vb{p} \cdot \vb{x}} \right)\left( a_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} - a_{\vb{q}}e^{i \vb{q} \cdot \vb{x}} \right) \bigg)\\
+    &= \frac{1}{2} \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_{\vb{p}}} \bigg[ \underbrace{\left( - \omega_{\vb{p}}^2 +  \vec{p}^2 + m^2 \right)}_{\text{e.o.m. thus vanishes}} \left( a_{\vb{p}} a_{\vb{p}} e^{-2i \omega t} + a_{\vb{p}}^{\dag} a_{\vb{p}}^{\dag} e^{2i \omega t} \right)\\
+        &\quad ~ + \left( \omega_{\vb{p}}^2 + \vec{p}^2 + m^2 \right) \left( a_{\vb{p}}^{\dag} a_{\vb{p}} + a_{\vb{p}} a_{\vb{p}}^{\dag} \right)  \bigg]  \\
+        H &= \frac{1}{2} \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( a^{\dag}_{\vb{p}} a_{\vb{p}} + a_{\vb{p}} a^{\dag}_{\vb{p}} \right)  \\
+        H &=  \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega a^{\dag}_{\vb{p}} a_{\vb{p}} + \frac{1}{2}\int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( 2\pi \right)^3 \delta^{3}\left( 0 \right)  
+.\end{align}
+
+This last term is odd, and appears unphysical as with a vacuum $\ket{0}$ satisfying $a_{\vb{p}} \ket{0} = 0$, we see
+\begin{align}
+    H \ket{0} = \frac{1}{2}\int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( 2\pi \right)^3 \delta \left( 0 \right) \ket{0} = E_0 \ket{0} \to \infty
+.\end{align}
+
+To understand the nature of this, we need to see the origin of the divergence. There are in fact two divergences here:
+\begin{itemize}
+    \item An \textit{infrared divergence}: $\left( 2\pi \right)^3 \delta \left( 0 \right) $, associated with long distances, as it came from
+        \begin{align}
+            \delta \left( 0 \right) = \lim_{L \to \infty} \int_{-L}^{L} \dd{^3x} e^{- i\vec{x}\cdot \vec{p}} \bigg|_{\vec{p}=0} = \lim_{L \to \infty} \int_{-L}^{L} \dd{^3x} = V
+        ,\end{align}
+        a diverging volume $V$. As we are discussing an system with infinite size, we can instead discuss energy \textit{densities} (i.e. per unit volume) such that
+        \begin{align}
+            \epsilon_0 = \frac{E_0}{V} = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2}\omega_{\vb{p}} \sim  \int \dd{^3p} \vec{p}^2
+        ,\end{align}
+        which is still divergent. 
+    \item Namely, it is an \textit{ultraviolet divergence}. Suppose one is performing
+        \begin{align}
+            \int_0^{\Lambda} \dd{^3p} \sqrt{\vec{p}^2 + m^2} \overset{\Lambda \to \infty}{\too} \infty
+        ,\end{align}
+        we see that this is a high frequency divergence. It is absurd to think that the theory is valid for arbitrarily high energies, and thus it is valid to consider a maximum energy scale of applicability, a cutoff, $\Lambda$.
+
+        The solution here, is to declare that
+        \begin{align}
+            H \equiv \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega_{\vb{p}} a_{\vb{p}}^{\dag} a_{\vb{p}}
+        .\end{align}
+
+        One can convince themself that we can only measure energy differences and thus can remove this vacuum energy. However, practically, it is best to just take this $H$ as definition such that it fixes an ambiguity. There is an ambiguity in the \textit{normal ordering} of operators when one converts between classical and quantum field theories. Here it is clear that this $H$ is the correct definition in quantum field theory as it provides $H \ket{0} = 0$.
+\end{itemize}
+
+\begin{definition}
+    If you have a list of fields, we define \textbf{normal ordering} as
+    \begin{align}
+        :\phi_1 \left( x_1 \right) \phi_2 \left( x_2 \right) \cdots \phi_{n}\left( x_{n} \right) :
+    ,\end{align}
+    where this is the usual product but we put creation operators $a^{\dag}_{\vb{p}}$ to the left of annihilation operators $a_{\vb{p}}$.
+%    its the same i have swapped $a^{\dag}$ for $a$.
+\end{definition}
+
+\subsection{Fock Space}
+
+We have the vacuum $\ket{0}$ and want to construct excited states atop it. It is usefully to observe that
+\begin{align}
+    \left[ H, a^{\dag}_{\vb{p}} \right] = \omega_{\vb{p}} a_{\vb{p}}^{\dag}
+,\end{align}
+and
+\begin{align}
+    \left[ H, a_{\vb{p}} \right] = - \omega_{\vb{p}} a_{\vb{p}}
+.\end{align}
+
+We then aim to construct energy eigenstates by
+\begin{align}
+    \ket{\vec{p}} = a_{\vec{p}} \ket{0}
+,\end{align}
+and see that
+\begin{align}
+    \implies H \ket{\vec{p}} = \omega_{p} \ket{\vec{p}}
+.\end{align}
