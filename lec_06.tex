@@ -1,0 +1,156 @@
+\lecture{6}{23/10/2024}{}
+
+We can consider the momentum operator represented by
+\begin{align}
+    \hat{\vec{p}} = - : \int \dd{^3x} \Pi \grad \phi : = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \vec{k} a_{\vec{k}}^{\dag} a_{\vec{k}}
+,\end{align}
+for which $\ket{\vec{p}}$ is also an eigenstate,
+\begin{align}
+    \hat{\vec{p}} \ket{\vec{p}} = \vec{p} \ket{\vec{p}}
+.\end{align}
+
+Therefore $\ket{\vec{p}}$ is a momentum and energy eigenstate with
+\begin{align}
+    E^2 = \omega_{\vec{p}}^2 = \vec{p}^2 + m^2
+.\end{align}
+
+\begin{note}
+    When $\vec{p} = 0$, this particle has no angular momentum such that
+    \begin{align}
+        J^{i} \ket{\vec{p} = 0} = 0
+    ,\end{align}
+    which implies it is a spin 0 particle as we will see later.
+\end{note}
+
+Observe that can can construct an $n$ particle state with
+\begin{align}
+    \ket{\vec{p}_1 \cdots \vec{p}_{n}} = a^{\dag}_{\vec{p}_1} \cdots a^{\dag}_{\vec{p}_n} \ket{0}
+.\end{align}
+
+As all $a^{\dag}_{\vec{p}}$'s commute, we have
+\begin{align}
+    \ket{\vec{p}_1 \vec{p}_2} = \ket{\vec{p}_2 \vec{p}_1}
+.\end{align}
+
+Therefore, the Fock space is spanned by all possible combinations of $a^{\dag}$ acting on $\ket{0}$. It is interesting then to introduce the \textbf{number operator}
+\begin{align}
+    N \equiv \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} a^{\dag}_{\vec{p}} a_{\vec{p}}
+,\end{align}
+which tells us the number of particles in a given state. Namely,
+\begin{align}
+    N \ket{\vec{p}_1 \cdots \vec{p}_{n}} = n \ket{\vec{p}_1 \cdots \vec{p}_{n}}
+.\end{align}
+
+For a free theory, we have that
+\begin{align}
+    \left[ N, H \right] = 0
+,\end{align}
+which implies that the number of particles is conserved. 
+
+Therefore if $\mathscr{H}_n$ denotes the space of $n$ particle states, the Fock space $\mathscr{F}$ can be written
+\begin{align}
+    \mathscr{F} = \bigoplus_{n} \mathscr{H}_n
+.\end{align}
+
+\subsection{Relativistic normalization}
+
+While we have constructed eigenstates $\ket{\vec{p}_i}$ we have not checked that they are normalized states. To begin, we pick
+\begin{align}
+    \bra{0} \ket{0} = 1
+.\end{align}
+
+For the $1$ particle state,
+\begin{align}
+    \ket{\vec{p}} = a^{\dag}_{\vec{p}} \ket{0} \implies \bra{\vec{p}} \ket{\vec{q}} = \left( 2\pi \right)^3 \delta^{3} \left( \vec{p} - \vec{q} \right) 
+,\end{align}
+which is not a Lorenz invariant inner product.
+
+We would hope that under a Lorentz transformation $\Lambda$ with corresponding unitary transformation $U \left( \Lambda \right) $, that $\ket{\vec{p}}$ transforms as
+\begin{align}
+    \vec{p} \to \ket{\vec{p}'} = U \left( \Lambda \right) \ket{\vec{p}}
+.\end{align}
+
+This is not yet the case. To figure out a proper definition of $\ket{\vec{p}}$, we use the identity
+\begin{align}
+    \ket{\vec{q}} = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \ket{\vec{p}} \bra{\vec{p}} \ket{\vec{q}}
+,\end{align}
+where we have used
+\begin{align}
+    1 = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \ket{\vec{p}} \bra{\vec{p}}
+,\end{align}
+where the measure and hence integral here is clearly not Lorentz invariant. The natural question is how can we alter this identity to make the measure Lorentz invariant. If we instead integrated over
+\begin{align}
+    \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \to \int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \delta \left( p^2 - m^2 \right)  \Theta \left( p^2 \right) 
+,\end{align}
+then the measure is now Lorentz invariant, (along with the other functions), where the $\delta $ and Heaviside function $\Theta$ now enforces the equation of motion.
+
+We see that using 
+\begin{align}
+    \int \dd{x} \delta \left( f \left( x \right)  \right) = \sum_{x_0 | f\left( x_0 \right) = 0}^{} \frac{1}{\left| f'\left( x_0 \right)  \right| }
+,\end{align}
+we have
+\begin{align}
+\int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \delta^{4} \left( p^2 - m^2 \right)  \Theta \left( p^2 \right) = \int \dd{^3p} \frac{1}{2 \sqrt{\vec{p}^2 + m^2}} = \int \dd{^3} \frac{1}{2 \omega_{\vec{p}}}
+.\end{align}
+
+Therefore bringing this measure back to the identity, we see
+\begin{align}
+    1 = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \ket{\widetilde{\vec{p}}} \bra{\widetilde{\vec{p}}}
+,\end{align}
+where we define
+\begin{align}
+    \ket{\widetilde{\vec{p}}} = \sqrt{2 \omega_{\vec{p}}} a^{\dag}_{\vec{p}} \ket{0} 
+,\end{align}
+which is now manifestly Lorentz invariant and thus is called \textit{relativistic normalization}.
+
+\subsection{Causality}
+
+While we now have Lorentz invariant states, their commutation relations are still at equal time. Is this compatible with special relativity (especially causality)?
+
+We will study causality by determining whether measurements \textit{influence} each other in a time-like fashion. We will do this by finding whether their commutators vanish or not.
+
+We define
+\begin{align}
+    \Delta \left( x - y \right) = \left[ \phi \left( x \right) , \phi \left( y \right)  \right] 
+,\end{align}
+with the interpretation of ``measuring'' the field at $x$ then $y$ or vice versa.
+
+For the free theory, we see
+\begin{align}
+    \Delta &= \int \frac{\dd{^3k} \dd{^3p}}{\left( 2\pi \right)^{6}} \left( \left[ a_k, a_p^{\dag} \right] e^{-ikx} e^{i py} + \left[ a_k^{\dag}, a_p  \right] e^{ikx} e^{-ipy}   \right) \\
+    &= \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_p} \left( e^{-i p \left( x - y \right) } - e^{i p \left( x -y \right) } \right)
+.\end{align}
+
+This integral is also Lorentz invariant immediately by inspection. For the free theory, it is a complex number. Suppose $x$ and $y$ are timelike separated such that without loss of generality, $\left( x -y \right)_S = \left( t,0,0,0 \right) $. This gives us
+\begin{align}
+    \Delta \left( x -y \right)_T = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_p} \left( e^{-i \omega_p t} - e^{i \omega_p t} \right) \sim  e^{-i m t} - e^{i m t} \neq 0
+.\end{align}
+
+If we instead look at spacelike separated events, $\left( x -y \right)_S = \left( 0, \vec{x} - \vec{y} \right) $,
+\begin{align}
+    \Delta \left( x -y \right)_S = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_p} \left( e^{i \vec{p} \cdot \left( \vec{x}- \vec{y} \right) } - e^{-i \vec{p} \cdot \left( \vec{x} - \vec{y} \right) }\right) = 0
+,\end{align}
+as one can separate and exchange $\vec{p} \to - \vec{p}$. We already knew that the commutator at equal times vanishes, however as we know this commutator is Lorentz invariant, any spacelike event has zero commutator.
+
+
+\subsection{Propagators}
+
+Consider
+\begin{align}
+    \bra{0} \phi \left( x \right) \phi \left( y \right) \ket{0} &= \int \frac{\dd{^3p}}{\left( 2\pi \right)^{3}} \frac{1}{2 \omega_p} e^{-i p \left( x - y \right) } \equiv D \left( x -y \right) 
+.\end{align}
+
+For spacelike events, 
+\begin{align}
+    D \left( x -y \right) \sim  e^{-m \left( \vec{x} - \vec{y} \right) } \neq 0
+,\end{align}
+but
+\begin{align}
+    \left[ \phi \left( x \right) , \phi \left( y \right)  \right] = D \left( x -y \right) - D \left( y - x \right) = 0
+.\end{align}
+
+
+
+
+
+
