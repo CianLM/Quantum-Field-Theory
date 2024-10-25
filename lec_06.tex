@@ -1,4 +1,4 @@
-\lecture{6}{23/10/2024}{}
+\lecture{6}{23/10/2024}{Relativistic Normalisation}
 
 We can consider the momentum operator represented by
 \begin{align}
@@ -80,9 +80,9 @@ where we have used
 ,\end{align}
 where the measure and hence integral here is clearly not Lorentz invariant. The natural question is how can we alter this identity to make the measure Lorentz invariant. If we instead integrated over
 \begin{align}
-    \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \to \int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \delta \left( p^2 - m^2 \right)  \Theta \left( p^2 \right) 
+    \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \to \int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \delta \left( p^2 - m^2 \right)  \Theta \left( p^0 \right) 
 ,\end{align}
-then the measure is now Lorentz invariant, (along with the other functions), where the $\delta $ and Heaviside function $\Theta$ now enforces the equation of motion.
+then the measure is now Lorentz invariant, (along with the other functions), where the $\delta $ and Heaviside function $\Theta$ now enforces the equation of motion. Equivalently, $p^{0}$ is not a free parameter, and thus enforcing $p^2 = m^2$ returns us to states in our Fock space, however we must also enforce $p^{0} > 0$ as we chose the positive root with $\omega > 0$.
 
 We see that using 
 \begin{align}

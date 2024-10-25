@@ -1,0 +1,110 @@
+\lecture{7}{25/10/2024}{Feynman Propagator}
+
+\subsection{Feynman Propagator}
+
+\begin{definition}
+    The \textbf{Feynman propagator} is given by
+    \begin{align}
+        \Delta_F \left( x -y \right) = \bra{0} T \phi \left( x \right) \phi \left( y \right) \ket{0} = \begin{cases}
+            D \left( x -y \right), & x^{0} > y^{0},\\
+            D\left( y - x \right), & y^{0} > x^{0},
+        \end{cases}
+    \end{align}
+    where $T$ denotes \textit{time ordering}.
+\end{definition}
+
+This is motivated by inner products like $\bra{f} \ket{i}$ where $\bra{f}$ is a future final state and $\ket{i}$ is a past initial state.
+
+\begin{claim}
+    We claim that
+\begin{align}
+    \Delta_F \left( x -y \right) = \int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \frac{i}{p^2 + m^2 + i \epsilon} e^{-i p \left( x - y \right) }
+.\end{align}
+\end{claim}
+
+\begin{proof}
+    Observe that the time ordering can be captured with
+    \begin{align}
+        \bra{0} T \phi \left( x \right) \phi \left( y \right) \ket{0} = \bra{0} \phi \left( x \right) \phi \left( y \right) \ket{0}  \Theta \left( x^{0} - y^{0} \right) + \bra{0} \phi \left( y \right) \phi \left( x \right) \ket{0} \Theta \left( y^{0} - x^{0} \right) 
+    .\end{align}
+    Our claim can be written as
+    \begin{align}
+        \Delta_F \left( x -y \right) &= \int \frac{\dd{^{3}k}}{\left( 2\pi \right)^{3}} \frac{1}{2 \omega_k} e^{- i \omega_k \left( x^{0} - y^{0} \right) } e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \Theta \left( x^{0} - y^{0} \right)\nonumber\\
+                                     &\quad+ \int \frac{\dd{^{3}k}}{\left( 2\pi \right)^{3}} \frac{1}{2 \omega_k} e^{- i \omega_k \left( x^{0} - y^{0} \right) } e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \Theta \left( y^{0} - x^{0} \right)   \\
+        &= \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_k} e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \left( e^{-i \omega_k \tau} \Theta \left( \tau \right) + e^{i \omega_k \tau} \Theta \left( -\tau \right) \right)
+    ,\end{align}
+    where $\tau = x^{0} - y^{0}$.  We focus on the time-dependence and show that
+    \begin{align}
+        e^{i \omega_k \tau} \Theta \left( \tau \right) + e^{i \omega_k \tau} \Theta \left( -\tau \right) = \lim_{\epsilon \to 0} \frac{\left( -2 \omega_k \right) }{2\pi i} \int_{-\infty}^{\infty} \dd{\omega} \frac{e^{-i \omega \tau}}{\omega^2 - \omega^2_k + i \epsilon} 
+    .\end{align}
+
+    We begin from the right hand side and observe that
+    \begin{align}
+        \frac{1}{\omega^2 - \omega_k^2 + i \epsilon} = \frac{1}{\left( \omega - \left( \omega_k - i \widetilde{\epsilon} \right)  \right) \left( \omega - \left( - \omega_k + \widetilde{\epsilon} \right)  \right) }
+    ,\end{align}
+    where $\epsilon = \tau \omega_k \widetilde{\epsilon} + \cdots$ and we relabel back $\widetilde{\epsilon} \to \epsilon$. Thus to leading order in $\epsilon$ we see
+    \begin{align}
+        \frac{1}{\omega^2 - \omega_k^2 + i \epsilon} = \frac{1}{2\omega_k} \left[ \frac{1}{\omega - \left( \omega_k - i \epsilon \right) } - \frac{1}{\omega - \left( - \omega_k + i \epsilon \right) } \right] +\mathcal{O}\left( \epsilon^2 \right) 
+    .\end{align}
+    Consider
+    \begin{align}
+        I_1 = \int_{-\infty}^{\infty} \dd{\omega} \frac{e^{-i \omega \tau}}{\omega - \left( \omega_k - i \epsilon \right) }
+    .\end{align}
+    This has a pole at $\omega = \omega_k - i \epsilon$, below the $x$-axis.
+    As $e^{-i \omega \tau} = e^{\Im \left( \omega \right) \tau} e^{-i \Re \left( \omega \right) \tau}$, if $\tau < 0$, we close the contour with a semicircle above the $x$-axis where $e^{\Im \left( \omega \right) \tau} \sim 0$ for large positive $\Im \omega$, and thus $I_1 = 0$. 
+
+    If $\tau < 0$, we close the contour below the $x$-axis, which contains the pole, and thus Cauchy's residue theorem gives us
+    \begin{align}
+        I_1 = -2\pi i e^{-i \omega_k \tau} \Theta \left( \tau \right) + \mathcal{O}\left( \epsilon \right) 
+    ,\end{align}
+    where the leading negative is there as the contour is clockwise.
+
+    Now consider
+    \begin{align}
+        I_2 = \int_{-\infty}^{\infty} \dd{\omega} \frac{e^{-i \omega \tau}}{\omega - \left( - \omega_k + i \epsilon \right)}
+    .\end{align}
+    If $\tau < 0$, we again close the contour above the $x$ axis, which now contains the pole giving
+    \begin{align}
+        I_2 = 2\pi i e^{i \omega_k \tau} \Theta \left( -\tau \right) + \mathcal{O}\left( \epsilon \right) 
+    .\end{align}
+    If $\tau > 0$, then the contour can be closed below without any poles implying $I_2 = 0$.
+
+    Therefore, gathering our intermediate steps, we see that collecting $I_1$ and $I_2$, 
+    \begin{align}
+        \lim_{\epsilon \to 0} \int_{-\infty}^{\infty} \dd{\omega} \frac{e^{-i \omega \tau}}{\omega^2 - \omega_k^2 + i\epsilon} &= \lim_{\epsilon \to 0} \frac{1}{2 \omega_k} \left( I_1 - I_2 \right)  \\
+        &= \frac{1}{2\omega_k} \left( -2\pi i e^{-i \omega \tau} \Theta \left( \tau \right) - 2 \pi i e^{i \omega_k \tau}\theta \left( -\tau \right)  \right)
+    .\end{align}
+
+    Returning this claim to the time ordering expression, we see
+    \begin{align}
+        \bra{0} T \phi \left( x \right) \phi \left( y \right) \ket{0} = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \frac{i}{2\pi}  e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \int_{-\infty}^{\infty} \dd{\omega} \frac{e^{-i \omega \tau}}{\omega^2 - \omega_k^2 + i \epsilon}
+    ,\end{align}
+    where the $\epsilon \to 0$ limit is now implicit. Identifying $k^{0} = \omega$ and $\tau = t$, this becomes
+    \begin{align}
+        \bra{0} T \phi \left( x \right) \phi \left( y \right) \ket{0} = \int \frac{\dd{^4k}}{\left( 2\pi \right)^4} \frac{i}{k^2 - m^2 + i \epsilon} e^{-i k \left( x - y \right) }
+    ,\end{align}
+    as desired.
+\end{proof}
+
+
+There are a few comments of note to be made here.
+\begin{enumerate}[label=\arabic*)]
+    \item Observe that time ordering is equivalently to choosing a contour that weaves between the poles such that one and only one contributes for any given $x$ and $y$.
+    \item $\Delta_F \left( x -y \right) $ is Lorentz invariant.
+    \item Observe that
+        \begin{align}
+            \Delta_F \left( x - y \right) = \int \frac{\dd{^{4}k}}{\left( 2\pi \right)^{4}} \frac{i}{k^2 - m^2 + i \epsilon} e^{-i k \left( x -y \right) }
+        ,\end{align}
+        we have that $k^2 \neq m^2$ here, namely, it is not \textit{on shell}.
+    \item The $i$ atop the propagator is important.
+    \item $\Delta_F \left( x -y \right) $ is a Green's function.
+
+        Observe that
+        \begin{align}
+            \left( \partial^{\mu} \partial_\mu + m^2 \right) \Delta_{F}\left( x - y \right) &= \int \frac{\dd{^{4}k}}{\left( 2\pi \right)^{4}} \frac{i}{k^2 + m^2} \left( - k^2 + m^2 \right) e^{-i k \left( x -y \right) } \\
+            &= - \int \frac{\dd{^4k}}{\left( 2\pi\right)^4} i e^{-i k \left( x - y \right) } \\
+            &= -i \delta^{4} \left( x - y \right) 
+        ,\end{align}
+        and thus $\Delta_F \left( x -y \right) $ is the Greens function associated to the Klein Gordon operator. Propagators are the kernel of the equations of motion.
+\end{enumerate}
+
