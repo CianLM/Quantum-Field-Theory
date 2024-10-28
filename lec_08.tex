@@ -1,0 +1,157 @@
+\lecture{8}{28/10/2024}{Interacting Theories}
+
+
+\newcommand{\nord}[1]{:\mathrel{#1}:}
+
+\begin{claim}
+    As a last comment of last lecture's digressions, we claim that
+\begin{align}
+    T \phi \left( x \right) \phi \left( y \right) = \nord{ \phi \left( x \right) \phi \left( y \right) } + \Delta_F \left( x - y \right) 
+.\end{align}
+\end{claim}
+
+% add contraction
+
+\begin{proof}
+    Take $\phi = \phi^{+} + \phi^{-}$ where
+    \begin{align}
+        \phi^{+} = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{\sqrt{2\omega_p} } a_p e^{-i p x} && \phi^{-} = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{\sqrt{2\omega_p} } a_p^{\dag} e^{i px}
+    .\end{align}
+
+    We then choose $x^{0} > y^{0}$ such that
+    \begin{align}
+        T \left( \phi \left( x \right) \phi \left( y \right)  \right) &= \phi^{+} \left( x \right) \phi^{+} \left( y \right) + \phi^{-}\left( x \right) \phi^{+}\left( y \right) + \phi^{-}\left( y \right) \phi\left( x \right) + \left[ \phi^{+}\left( x \right) , \phi^{-}\left( y \right)  \right]  \\
+        &=  \nord{ \phi \left( x \right) \phi \left( y \right)} + D \left( x - y \right)
+    ,\end{align}
+    where $D \left( x - y \right) = \left[ \phi^{+} \left( x \right) , \phi^{-}\left( y \right)  \right] $.
+    For $y^{0} > x^{0}$, one sees instead
+    \begin{align}
+        T \left( \phi \left( x \right) \phi \left( y \right)  \right) = \nord{ \phi \left( x \right) \phi \left( y \right) } + D \left( y - x \right) 
+    .\end{align}
+\end{proof}
+
+
+\begin{theorem}[ (Wick's Theorem)]
+    The time ordering of a set of fields is equal to the normal ordering plus all possible contractions such that
+    \begin{align}
+        T \left( \phi \left( x_1 \right) \cdots \phi \left( x_{n} \right)  \right) = \nord{ \phi \left( x_1 \right) \cdots \phi \left( x_{n} \right)} + \text{~all possible contractions}
+    .\end{align}
+\end{theorem}
+
+\begin{example}
+    Given four fields $\phi_i = \phi \left( x_{i} \right) $, we have
+    \begin{align}
+        T \left( \phi \left( x_1 \right) \phi \left( x_2 \right) \phi \left( x_3 \right) \phi \left( x_4 \right)  \right) &= \nord{ \phi \left( x_1 \right) \phi \left( x_2 \right) \phi \left( x_3 \right) \phi \left( x_4 \right) } \nonumber \\
+                                                                                                                          &\quad + \wick{ \c \phi_1 \c \phi_2} \nord{\phi_3 \phi_4 } + \wick{\c \phi_1 \c \phi_3} \nord{\phi_2 \phi_4} + \wick{ \c \phi_1 \c \phi_4} \nord{\phi_2 \phi_3} \nonumber \\
+                                                                                                                          &\quad \wick{ \c \phi_2 \c \phi_3} \nord{\phi_1 \phi_4} + \wick {\c \phi_2 \c \phi_4} \nord{\phi_1 \phi_4} + \wick{ \c \phi_3 \c \phi_4} \nord{\phi_1 \phi_2} \nonumber \\
+                                                                                                                          &\quad \wick{\c \phi_1 \c \phi_2} \wick{\c \phi_3 \c \phi_4} +  \wick{ \c \phi_1 \c \phi_3} \wick{\c \phi_2 \c \phi_4} + \wick{ \c \phi_1 \c \phi_4} \wick{ \c \phi_2 \c \phi_3}
+    ,\end{align}
+    where $\wick{\c \phi_i \c \phi_j} = \Delta_F \left( x_{i} - x_{j} \right) $ and this generalises as you would expect.
+\end{example}
+
+
+\subsection{Couplings}
+
+
+
+Free theories are ``simple'' because we can explicitly construct the Fock space. We want to consider more general Lagrangians but are obstructed in this endeavour as we cannot solve their equations of motion. We do not have access to the Hilbert space of almost any (non-integrable) interacting field theory.
+
+Therefore, we approach QFT perturbatively, splitting our Lagrangian into
+\begin{align}
+    \mathcal{L} = \mathcal{L}_0 + \mathcal{L}_{\text{int}}
+,\end{align}
+where $\mathcal{L}_0$ is a known free theory that is solvable and $\mathcal{L}_{\text{int}}$ is an unknown interaction term that we treat as a perturbation.
+
+For example, take
+\begin{align}
+    \mathcal{L}_0 = \frac{1}{2} \partial_\mu \phi \partial^{\mu} \phi - \frac{1}{2}m^2 \phi^2
+,\end{align}
+and
+\begin{align}
+    \mathcal{L}_{\text{int}} = - \sum_{n=0}^{\infty} \frac{\lambda_n}{n!} \phi^{n}
+,\end{align}
+where $\lambda_n \in \R$.
+
+Naively, one may think the domain of perturbation theory is when $\lambda_n \ll 1$. This is false as we will see.
+
+Namely, to quantify relative ``smallness'' recall that we are working in natural units where $c = 1 = \hbar$ and thus
+\begin{align}
+    \left[ L \right] = \left[ T \right] = \left[ M^{-1} \right] 
+,\end{align}
+and thus $\left[ M \right] = 1$. Applying this to the action, we see that
+\begin{align}
+    S = \int \dd{^{4}x} \mathcal{L}
+,\end{align}
+as $\left[ S \right] = \left[ \hbar \right] = 0$, and
+\begin{align}
+    \left[ \int \dd{^{4}x} \right] = - 4 \implies \left[ \mathcal{L} \right] = 4
+.\end{align}
+
+Applying this to $\mathcal{L}_0$, as $\left[ m \right] = \left[ \partial_\mu \right] = 1$, we have
+\begin{align}
+    \left[ \phi \right] = 1
+.\end{align}
+
+Therefore
+\begin{align}
+    \left[ \mathcal{L}_{\text{int}} \right] = \left[ \lambda_n \phi^{n} \right] \implies \left[ \lambda_n \right] = 4 - n
+.\end{align}
+
+Lets assess these cases individually.
+
+\begin{enumerate}[label=\arabic*)]
+    \item If $n = 3$, $\left[ \lambda_3 \right] = 1$. More generally, in $d$ dimensions, $\left[ \lambda_3 \right] > 0$.
+
+        As a dimensionless quantity one may compare $\lambda_3$ to some energy scale $E$ by considering $\frac{\lambda_3}{E}$.
+
+        If $\lambda_n \ll E$ (high energies), then this is a small perturbation.
+
+        If $\lambda_n \gg E$ (low energies) then this perturbation is large.
+
+        If this holds, we call $\lambda_n$ a \textbf{relevant} coupling.
+
+        In a relativistic theory, $E > m$, so we can treat it perturbatively as $\lambda \ll m$.
+
+    \item If $n = 4$, $\left[ \lambda_n \right] = 0$. As it is a dimensionless coupling, it is meaningful to write $\lambda \ll 1$ or $\lambda \gg 1$.
+
+        If this is the case, $\lambda_n$ is called a \textbf{marginal} coupling.
+
+    \item If $n > 4$, then $\left[ \lambda_n \right] < 0$, and thus our dimensionless combination is $\lambda_n \left( E \right)^{n-4}$. This coupling is then not important at low energies but is significant at high energies.
+
+        We then call $\lambda_n$ an \textbf{irrelevant} coupling.
+\end{enumerate}
+
+\subsection{LSZ reduction formula}
+
+The basis quantity to study in QFT is the scattering matrix ($S$-matrix).
+
+% fig
+
+To construct and evaluate the $S$ matrix we can break it down into steps.
+\begin{enumerate}[label=\arabic*)]
+    \item Define states (asymptotic states)
+    \item Relate in and out states using the $S$-matrix
+    \item Evaluate $S$ using Schwinger-Dyson (which leads to Feynman rules)
+\end{enumerate}
+
+
+\subsection{Asymptotic states}
+
+Given a system $\mathcal{L} = \mathcal{L}_0 + \mathcal{L}_\text{int}$ or equivalently, $\mathcal{H} = \mathcal{H}_0 + \mathcal{H}_\text{int}$, we have some state $\ket{\Omega}$ we call the vacuum state of this interacting theory.
+
+\begin{note}
+    This is distinct from the vacuum of the free theory, $\mathcal{H}_0$, $\ket{0}$.
+\end{note}
+
+
+
+
+
+
+
+
+
+
+
+
+
