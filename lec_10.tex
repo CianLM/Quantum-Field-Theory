@@ -1,0 +1,110 @@
+\lecture{10}{01/11/2024}{Interactions}
+
+\subsection{Schwinger-Dyson Formula}
+
+It remains for us to figure out a way to evaluate
+\begin{align}
+    \bra{\Omega} T \phi \left( x_1 \right) \cdots \phi \left( x_{n} \right) \ket{\Omega}
+.\end{align}
+
+Our strategy is to present a Lagrangian approach to this. We first assume that at any given time, the Hilbert space of the interacting theory is the Hilbert space of the free theory. This implies that
+\begin{align}
+    \left[ \phi \left( \vb{x},t \right) , \phi \left( \vb{x}', t \right)  \right] &= 0
+,\end{align}
+and
+\begin{align}
+    \left[ \phi \left( \vb{x},t \right) , \partial_t \phi \left( \vb{x}', t \right)  \right] &= i \delta^3 \left( \vb{x} -\vb{x}' \right) 
+.\end{align}
+
+We also need to assume that our fields still comply with the Euler-Lagrange equations.
+
+For the free theory, this was the Klein Gordon equation,
+\begin{align}
+    \left( \Box + m^2 \right) \phi = 0
+,\end{align}
+and for the interacting theory, it takes the form
+\begin{align}
+    \left( \Box + m^2 \right) \phi - \pdv{\mathcal{L}_\text{int}'}{\phi} = 0
+,\end{align}
+as we assume $\mathcal{L}_{\text{int}}$ is a function of $\phi$ but not $\partial_\mu \phi$.
+
+\begin{note}
+    In a Hamiltonian derivation you would assume
+    \begin{align}
+        \partial_t \phi = i \left[ H, \phi \right] 
+    .\end{align}
+
+    Also note that we will use the notation
+    \begin{align}
+        \bra{\Omega} T \phi \left( x_1 \right) \cdots \phi \left( x_{n} \right) \ket{\Omega} \equiv \left<\phi_1 \cdots \phi_n \right>
+    ,\end{align}
+    where we assume the expectation value is taken in a time ordered fashion with respect to the interacting vacuum. We also use $\phi_1 \equiv \phi \left( x_1 \right) $.
+\end{note}
+
+\begin{claim}
+    \begin{align}
+        \left( \Box_x + m^2 \right) \left<\phi_x \phi_y \right> = \left< \left( \Box_x + m^2 \right) \phi_x \phi_y \right> - i \delta^{4} \left(  x- y \right) 
+    .\end{align}
+\end{claim}
+
+\begin{proof}
+    As a warm up, lets study the free theory for which
+    \begin{align}
+        \left( \Box_x + m^2 \right) \underbrace{\left<\phi_x^{0} \phi_y^{0} \right>}_{\Delta_F \left( x- y \right) } = 0 - i \delta^{4}\left( x-y \right) 
+    ,\end{align}
+    which we have already established in the free theory. For the interacting theory,
+    \begin{align}
+        \partial_{x^0} \left< \phi_x \phi_y \right> &= \partial_{x^0} \left( \bra{\Omega} \phi_x \phi_y \ket{\Omega} \Theta \left( x^{0} - y^{0} \right) + \bra{\Omega} \phi_y \phi_x \ket{\Omega} \Theta \left( y^{0} - x^{0} \right)  \right)  \\
+        &= \left<\partial_{x^{0}} \phi_x \phi_y \right> + \bra{\Omega} \phi_x \phi_y \ket{\Omega} \partial_x \Theta \left( x^{0} - y^{0} \right)  + \bra{\Omega} \phi_y \phi_x \ket{\Omega} \partial_{x^{0}} \Theta \left( y^{0} - x^{0} \right)  \\
+        &= \left< \partial_{x^{0}} \phi_x \phi_y \right> + \delta \left( x^{0} - y^{0} \right) \bra{\Omega} \underbrace{\left[ \phi_x, \phi_y \right]}_{0} \ket{\Omega}
+    ,\end{align}
+    where the commutator vanishes as we have equal time.
+    Then notice,
+    \begin{align}
+        \partial_{x^{0}}^2 \bra{\phi_x \phi_y} &= \left<\partial_{x^{0}}^2 \phi_x \phi_y \right> + \delta \left( x^{0} - y^{0} \right) \bra{\Omega} \underbrace{\left[ \partial_{x^{0}} \phi_x , \phi_y \right]}_{-i \delta^{3}\left( \vb{x} - \vb{y} \right) } \ket{\Omega} \\
+        &= \left<\partial_{x^{0}}^2 \phi_x \phi_y \right> - i \delta^{4} \left( x -y \right) 
+    .\end{align}
+
+    As the spatial derivatives and mass terms do nothing, we arrive at the claim.
+\end{proof}
+
+This is a first example of an expression we will call the \textit{Schwinger-Dyson equation}. It can be generalized such that
+\begin{align} \label{eq:schwinger_dyson}
+    \left( \Box_x + m^2 \right) \left<\phi_x \phi_1 \cdots \phi_n \right> &= \left< \pdv{\mathcal{L}_{\text{int}}\left( \phi \left( x \right) \right)}{\phi}   \phi_1 \cdots \phi_n \right> - i \sum_{j=1}^{n}  \delta^{4} \left( x - x_j \right) \left<\phi_1 \cdots \phi_{j-1} \phi_{j+1} \cdots \phi_n \right>
+.\end{align}
+
+\begin{example}
+    Observe that for the four point function in the free theory, based on Wick's theorem, we expect
+    \begin{align}
+        \left<\phi_1^{0} \phi_2^{0} \phi_3^{0} \phi_4^{0} \right> &\underset{\text{Wick's}}{=} \Delta_{F} \left( x_1 - x_2 \right) \Delta_{F}\left( x_3 - x_4 \right) + \Delta_F \left( x_1 - x_3 \right) \Delta \left( x_2 - x_4 \right) + \Delta_F \left( x_1 - x_4 \right) \Delta \left( x_2 - x_3 \right) \nonumber \\
+        &~~\,\equiv \Delta_{12} \Delta_{34} + \Delta_{13} \Delta_{24} + \Delta_{14} \Delta_{23}
+    .\end{align}
+    On the contrary, if we derive via Schwinger-Dyson (and dropping the superscripts but still working with the free theory), we see
+    \begin{align}
+        \left< \phi_1 \phi_2 \phi_3 \phi_4  \right>&= \int \dd{^{3}x} \delta \left( x - y \right) \left< \phi_x \phi_2 \phi_3 \phi_4\right> 
+    .\end{align}
+    As $\delta^{4}\left( x - x_1 \right) = \left( \Box_x + m^2 \right)  \Delta_{x1}$,
+    \begin{align}
+        \left< \phi_1 \phi_2 \phi_3 \phi_4  \right> &= i\int \dd{^{3}x} \left( \left( \Box_x + m^2 \right)  \Delta_{x 1} \right)  \left< \phi_x \phi_2 \phi_3 \phi_4\right>  \\
+        &= i\int \dd{^{3}x} \Delta_{x 1}\left( \left( \Box_x + m^2 \right)     \left< \phi_x \phi_2 \phi_3 \phi_4\right> \right) \\
+        &= i\int \dd{^{3}x} \Delta_{x 1} \left( -i \delta \left( x - x_2 \right) \left<\phi_3 \phi_4 \right> - i \delta \left( x - x_3 \right) \left<\phi_2 \phi_4 \right> - i \delta \left( x - x_4 \right) \left<\phi_2 \phi_3 \right> \right)     \\
+        &= \Delta_{12} \Delta_{34} + \Delta_{13} \Delta_{24} + \Delta_{14} \Delta_{23} 
+    ,\end{align}
+    which agrees with the expression we obtained using Wick's theorem.
+\end{example}
+
+\begin{example}
+    Consider a cubic interaction, $\mathcal{L}_\text{int} = \frac{g}{3!} \phi^3$. We will compute the one point function,
+    \begin{align}
+        \left<\phi_x \right> &= \int \dd{^{4}y} \delta \left( x - y \right) \left<\phi_y \right> \\
+        &= i\int \dd{^{4}y} \left( \Box_{y} + m^2 \right)  \Delta_{xy} \left<\phi_y \right> \\
+        \intertext{Integrating by parts, we see}
+        \left<\phi_x \right>&= i\int \dd{^{4}y} \Delta_{xy}\left( \Box_{y} + m^2 \right)   \left<\phi_y \right> \\
+        \intertext{And using the Schwinger-Dyson equation,}
+        \left<\phi_x \right>&= i\int \dd{^{4}y} \Delta_{xy} \frac{g}{2} \left<\phi_y^2 \right>
+        \intertext{Expanding perturbatively in $g$, we see}
+        \left<\phi_x \right>&= \frac{ig}{2}\int \dd{^{4}y} \Delta_{xy} \left<\left( \phi_y^{0} \right)^2 \right> + \mathcal{O}\left( g^3 \right)  \\
+        \left<\phi_x \right>&= \frac{ig}{2}\int \dd{^{4}y} \Delta_{xy} \Delta_{yy} + \mathcal{O}\left( g^3 \right) \\
+        &= \frac{ig}{2} \left( \text{tadpole diagram} \right)  + \mathcal{O}\left( g^3 \right) 
+    .\end{align}
+\end{example}
