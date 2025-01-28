@@ -1,5 +1,6 @@
 \lecture{9}{30/10/2024}{Scattering}
 
+\subsection{Pictures}
 One can picture the scattering of one state into another in different pictures,
 \begin{align}
     \underbrace{\bra{\text{final;}~t_i} \ket{\text{initial;}~t_i}}_{\text{Schrödinger}}  = \underbrace{\bra{f} S \ket{i}}_{\text{Heisenberg}}
@@ -22,6 +23,8 @@ Then for a field in the interacting theory, we can write
     \phi_\text{int} \left( x \right) = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{\sqrt{2 \omega_p} } \left( a_p \left( t \right) e^{-i p x} + a_p^{\dag} \left( t \right) e^{i p x} \right) 
 .\end{align}
 
+\subsection{Asymptotic States}
+
 With this we can write down states as
 \begin{align}
     \ket{\text{initial; }t_1} &= \ket{p_1 p_2} = \sqrt{2 \omega_1 }  \sqrt{2 \omega_2}  a^{\dag}_{p_1} a^{\dag}_{p_2} \ket{\Omega} \\
@@ -32,6 +35,8 @@ With the definition of asymptotic states, we will want the interactions to be tu
 \begin{align}
     \lim_{t \to \pm\infty}  a^{\dag}_p\left( t \right) = a_p^{0\dag}
 .\end{align}
+
+Intuitively we are turning off the interactions in our asymptotic states as they are sufficiently far away they are separated from everything.
 
 Naturally we need to figure out how to relate states at $\pm \infty$. We see that
 \begin{align}
@@ -67,24 +72,31 @@ Naturally we need to figure out how to relate states at $\pm \infty$. We see tha
     \begin{align}
         \sqrt{2 \omega_p}  \int_{-\infty}^{\infty} \dd{t} \partial_t a_p^{\dag} \left( t \right) &= \sqrt{2 \omega_p} \left( a_p^{\dag} \left( \infty \right) - a_p^{\dag} \left( - \infty \right)  \right)
     ,\end{align}
-    and analogously,
+    and thus we arrive at the final result, namely the claim,
     \begin{align}
-        \sqrt{2 \omega_p}  \left( a_p \left( \infty \right) - a_p \left( -\infty \right)  \right) = i \int \dd{^{4}x} e^{ipx} \left( \Box + m^2 \right) \phi \left( x \right) 
+        \sqrt{2 \omega_p}  \left( a_p^{\dag} \left( \infty \right) - a^{\dag}_p \left( - \infty \right)  \right) = -i \int \dd{^{4}x} e^{-i p x} \left( \Box + m^2 \right) \phi \left( x \right) 
     .\end{align}
 
 \end{proof}
 
-
-With this, we can now write our desired inner product expression as
+Analogously, we have
 \begin{align}
-    \bra{f} S \ket{i} 
-    &= \left( \prod_{i = 1}^{4} \sqrt{2 \omega_i}   \right) \bra{\Omega} T \left( a_{p_3} \left( + \infty \right) - a_{p_3} \left( -\infty \right)  \right)  \left( a_{p_4} \left( + \infty \right) - a_{p_4} \left( -\infty \right)  \right)  \left( a_{p_1}^{\dag} \left( - \infty \right) - a_{p_1}^{\dag} \left( \infty \right)  \right)   \left( a_{p_2}^{\dag} \left( - \infty \right) - a_{p_2}^{\dag} \left( \infty \right)  \right)  \ket{\Omega} \\
-    &= \prod_{j=1}^{4} \left( i \int \dd{^{4}x_j} \right)  \underbrace{e^{-i p_1 x_1} \left( \Box_1 + m^2 \right) e^{-i p_2 x_2} \left( \Box_2 + m^2 \right)}_{\text{ingoing}} \underbrace{e^{i p_3 x_3} \left( \Box_3 + m^2 \right) e^{ip_4 x_4} \left( \Box_4 + m^2 \right)}_{\text{outgoing}} \nonumber \\
-    &\quad \times \underbrace{\bra{\Omega} T \phi \left( x_1 \right) \phi \left( x_2 \right) \phi \left( x_3 \right) \phi \left( x_4 \right) \ket{\Omega}}_{\text{4 point correlation function}}  
+    \sqrt{2 \omega_p}  \left( a_p \left( \infty \right) - a_p \left( -\infty \right)  \right) = i \int \dd{^{4}x} e^{ipx} \left( \Box + m^2 \right) \phi \left( x \right) 
 .\end{align}
 
-This is the \textbf{LSZ reduction formula} for 2-2 scattering.
+\begin{definition}
+    With this, we can now write our desired inner product expression as
+   \begin{align}
+        \bra{f} S \ket{i} 
+        &= \left( \prod_{i = 1}^{4} \sqrt{2 \omega_i}   \right) \bra{\Omega} T \left( a_{p_3} \left( + \infty \right) - a_{p_3} \left( -\infty \right)  \right)  \left( a_{p_4} \left( + \infty \right) - a_{p_4} \left( -\infty \right)  \right) \nonumber\\
+        & \qquad \qquad \qquad \qquad \hfill \times \left( a_{p_1}^{\dag} \left( - \infty \right) - a_{p_1}^{\dag} \left( \infty \right)  \right)   \left( a_{p_2}^{\dag} \left( - \infty \right) - a_{p_2}^{\dag} \left( \infty \right)  \right)  \ket{\Omega} \\
+        &= \prod_{j=1}^{4} \left( i \int \dd{^{4}x_j} \right)  \underbrace{e^{-i p_1 x_1} \left( \Box_1 + m^2 \right) e^{-i p_2 x_2} \left( \Box_2 + m^2 \right)}_{\text{ingoing}} \underbrace{e^{i p_3 x_3} \left( \Box_3 + m^2 \right) e^{ip_4 x_4} \left( \Box_4 + m^2 \right)}_{\text{outgoing}} \nonumber \\
+        & \qquad \qquad \qquad \qquad \times \underbrace{\bra{\Omega} T \phi \left( x_1 \right) \phi \left( x_2 \right) \phi \left( x_3 \right) \phi \left( x_4 \right) \ket{\Omega}}_{\text{4 point correlation function}}  
+    .\end{align}
+    
+    This is the \textbf{LSZ reduction formula} for 2-2 scattering.
 
+\end{definition}
 
 This has many advantages.
 \begin{itemize}

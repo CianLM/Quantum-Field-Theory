@@ -1,0 +1,151 @@
+\lecture{15}{13/11/2024}{The Dirac Equation}
+
+Recall that the definition of a field is an object which transforms in a representation of the Lorentz group,
+\begin{align}
+    \phi^{a}\left( x \right) \to \tensor{D\left[ \Lambda \right] }{^{a}_b} \phi_b \left( \Lambda^{-1} x \right) 
+.\end{align}
+
+Our goal is to identity/consider a more interesting representation than the trivial one we used for the scalar field. As we have 6 parameters, we write a generic representation with
+\begin{align}
+    D \left[ \Lambda \right] = \exp \left( \frac{1}{2}\Omega_{\rho \sigma} R^{\rho \sigma} \right) 
+,\end{align}
+where $\Omega_{\rho \sigma} = -\Omega_{\sigma \rho}$ is an antisymmetric tensor containing 6 free parameters, and $R^{\rho \sigma}$ are the generators of the group.
+
+The generators $R^{\rho \sigma}$, by the definition of the Lorentz group, satisfy
+\begin{align}
+    \left[ R^{\rho \sigma}, R^{\delta \nu} \right] = \eta^{\sigma \delta} R^{\rho \nu} - \eta^{\rho \delta} R^{\sigma \nu} + \eta^{\rho \nu} R^{\sigma \delta} - \eta^{\sigma \nu} R^{\rho \delta}
+.\end{align}
+
+\begin{examples}~
+    \begin{enumerate}[label=\arabic*)]
+        \item We have an infinite dimension representation with generators $L^{\rho \sigma} = X^{\rho} \partial^{\sigma} - X^{\sigma} \partial^{\rho}$ which satisfies the commutation relation, and is infinite as it acts on the space of functions.
+        \item We also have a $4 \times 4$ representation with generators
+            \begin{align}
+            \tensor{\left( \mathcal{M}^{\rho \sigma} \right)}{^{\mu}_\nu} = \eta^{\rho \mu} \delta^{\sigma}_\nu - \eta^{\sigma \mu} \delta^{\rho}_\nu
+            .\end{align}
+            These also satisfy the commutation relations and when exponentiated,
+            \begin{align}
+                \Lambda = D \left[ \Lambda \right] = \exp \left( \frac{1}{2}\Omega_{\rho \sigma} \mathcal{M}^{\rho \sigma} \right) 
+            ,\end{align}
+            which acts on vectors as
+            \begin{align}
+                V^{\mu} \to \tensor{D\left[ \Lambda \right] }{^{\mu}_\nu} V^{\nu} = \tensor{\Lambda}{^{\mu}_\nu} V^{\nu}
+            ,\end{align}
+            which makes clearer that we are exponentiating a matrix (which gives us a matrix).
+        \item Consider a new algebra with generators
+            \begin{align}
+                \gamma^{\mu} \gamma^{\nu} + \gamma^{\nu} \gamma^{\mu} = \left\{ \gamma^{\mu}, \gamma^{\nu} \right\} = 2 \eta^{\mu \nu} \mathbb{I}
+            ,\end{align}
+            Namely, $\gamma^{\mu} \gamma^{\nu} = -\gamma^{\nu} \gamma^{\mu}$ if $\mu \neq \nu$ and $\left( \gamma^0 \right)^2 = \mathbb{I}$ and $\left( \gamma^{i} \right)^2 = - \mathbb{I}$. A simple representation of this algebra is called the \textbf{chiral representation}, and is written
+            \begin{align}
+                \gamma^{0} = \mqty( 0 & \mathbb{I}_2 \\ \mathbb{I}_2 & 0 ), && \gamma^{i} = \mqty( 0 & \sigma^{i} \\ -\sigma^{i} & 0 )
+            ,\end{align}
+            where $\sigma^{i}$ are the Pauli matrices satisfying $\left[ \sigma^{i}, \sigma^{j} \right] = 2\delta^{ij}$.
+
+            \begin{claim}
+                We claim that
+                \begin{align}
+                    S^{\rho \sigma} = \frac{1}{4} \left[ \gamma^{\rho}, \gamma^{\sigma} \right] 
+                ,\end{align}
+                forms a representation of the Lorentz algebra (i.e. complies with the commutation relation).
+            \end{claim}
+            \begin{proof}
+                First show
+                \begin{align}
+                    \left[ S^{\mu \nu}, S^{\sigma \rho} \right] &= \frac{1}{2} \left[ S^{\mu \nu}, \gamma^{\rho} \gamma^{\sigma} \right]   \\
+                    &= \frac{1}{2} \left[ S^{\mu \nu}, \gamma^{\sigma} \right] + \frac{1}{2} \gamma^{\rho} \left[ S^{\mu \nu}, \gamma^{\sigma} \right] 
+                .\end{align}
+                Second show
+                \begin{align}
+                    \left[ S^{\mu \nu}, \gamma^{\rho} \right] = \gamma^{\mu} \eta^{\nu \rho} - \gamma^{\nu} \eta^{\rho \mu}
+                .\end{align}
+                Combine and recover the commutation relation.
+            \end{proof}
+            Therefore, we have
+            \begin{align}
+                S\left[ \Lambda \right] = \exp \left( \frac{1}{2} \Omega_{\rho \sigma} S^{\rho \sigma} \right) 
+            .\end{align}
+            Do not forget that $S \left[ \Lambda \right] $ here is a $4 \times 4$ matrices and can equivalently be written
+            \begin{align}
+               \tensor{\left( S\left[ \Lambda \right] \right) }{^{a}_b}  = \exp \left( \frac{1}{2} \Omega_{\rho \sigma} \tensor{\left( S^{\rho \sigma} \right) }{^{a}_b} \right) 
+            .\end{align}
+            The natural question is what transforms under $S \left[ \Lambda \right] $? We call them \textbf{spinors} and write them as $\psi^{a}\left( x \right) $. As $S \left[ \Lambda \right] $ is a $4 \times 4$ object, $\psi^{a}$ must have a $4$-element index as well. It transforms as
+            \begin{align}
+                \psi^{a}\left( x \right) \to \tensor{S\left[ \Lambda \right] }{^{a}_b} \psi^{b}\left( \Lambda^{-1} x \right) 
+            .\end{align}
+            How does this differ from the other $4 \times 4$ representation we identified? Lets look at the properties of this representation. We consider a rotation, where one along $k$ corresponds to $\Omega_{ij} \neq 0$. Suppose we want to rotate along $z$-axis, for which we then have $\Omega_{12} \neq 0$. Then we see in the chiral representation
+            \begin{align}
+                S^{12} &= -\frac{i}{2} \mqty( \sigma^{3} & 0 \\ 0 & \sigma^{3})
+            ,\end{align}
+            using $\sigma^{i} \sigma^{j} = \delta^{ij} + \epsilon^{ijk} \sigma^{k}$. This gives us a group element
+            \begin{align}
+                S \left[ \Lambda \right] = \exp \left( \frac{1}{2} 2 \Omega_{12} S^{12} \right)  = \exp \left( -i \frac{\Omega_{12}}{2} \mqty( \sigma^{3} & 0 \\ 0 & \sigma^{3}) \right) 
+            .\end{align}
+            We pick $\Omega_{12} = 2\pi$ and see
+            \begin{align}
+                S \left[ \Lambda \right] = \exp \left( \frac{1}{2} 2 \Omega_{12} S^{12} \right)  &= \mqty( e^{i\pi \sigma^3} & 0 \\ 0 & e^{i \pi \sigma^3} )\\
+                &= - \mathbb{I}_{4} 
+            .\end{align}
+            Which is not how a vector transforms under a rotation by $2\pi$. This is clearly a distinct representation.
+
+            Performing a boost along the $x$ axis, with $\Omega_{i 0} = \eta^{i}$ we see
+            \begin{align}
+                S^{01} = \frac{1}{2} \mqty( - \sigma_1 & 0 \\ 0 & \sigma_1)
+            ,\end{align}
+            gives us
+            \begin{align}
+                S\left[ \Lambda \right] = \mqty( e^{\eta_1 \frac{\sigma^{1}}{2}} & 0 \\ 0 & e^{-\eta_1 \frac{\sigma^{1}}{2}} )
+            ,\end{align}
+            or more generally,
+            \begin{align}
+                S\left[ \Lambda \right] = \mqty( e^{\eta_i \frac{\sigma^{i}}{2}} & 0 \\ 0 & e^{-\eta_i \frac{\sigma^{i}}{2}} )
+            .\end{align}
+            This is once again very different from a vector.
+    \end{enumerate}
+\end{examples}
+
+\subsection{Actions}
+
+We then move to construct an action which is Lorentz invariant using $\psi$ and its transformation.
+
+We need some object which transforms like
+\begin{align}
+    \bullet\left( x \right)  \to \bullet\left( \Lambda^{-1} x \right)  S \left[ \Lambda \right]^{-1}
+,\end{align}
+to cancel out the transformation of $\psi$.
+
+A natural object to study is
+\begin{align}
+    \psi^{\dag} \left( x \right) = \left( \psi^{*}\left( x \right)  \right)^{T}
+.\end{align}
+
+We know that
+\begin{align}
+    \psi^{\dag} \left( x \right) \to \psi^{\dag} \left( \Lambda^{-1} x \right) S \left[ \Lambda \right]^{\dag}
+.\end{align}
+
+It remains to figure out how $S\left[ \Lambda \right]^{\dag}$ is related to $S\left[ \Lambda \right]^{-1}$. 
+
+In the chiral representation, one can see that
+\begin{align}
+    \left( \gamma^{0} \right)^{\dag} = \gamma^{0} && \left( \gamma^{i} \right)^{\dag} = - \gamma^{i}
+.\end{align}
+
+One can write this as
+\begin{align}
+    \gamma^{0} \gamma^{\mu} \gamma^{0} = \left( \gamma^{\mu} \right)^{\dag}
+.\end{align}
+
+Then
+\begin{align}
+    \left( S^{\rho \sigma} \right)^{\dag} = \frac{1}{4} \left[ \left( \gamma^{\sigma} \right)^{\dag} , \left( \gamma^{\rho} \right)^{\dag} \right]  = - \gamma^{0} S^{\rho \sigma} \gamma^{0}
+,\end{align}
+which implies
+\begin{align}
+    S \left[ \Lambda \right]^{\dag} = \exp \left( -\frac{1}{2} \Omega_{\rho \sigma} \gamma^{0} S^{\rho \sigma} \gamma^{0} \right) = \gamma^{0} S \left[ \Lambda \right]^{-1} \gamma^{0}
+.\end{align}
+
+Thus $\psi^{\dag} \psi$ is not a Lorentz invariant combination.
+
+
+

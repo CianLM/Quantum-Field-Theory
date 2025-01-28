@@ -1,0 +1,105 @@
+\lecture{24}{04/12/2024}{Scattering}
+
+Recall that this scattering begins with $\bra{\Omega} b^{r'} b^{s'} b^{s\dagger} b^{r\dagger} \ket{\Omega}$ where LSZ gives us $\left< \psi_3 \psi_4 \overline{\psi}_1 \overline{\psi}_2 \right>$. 
+
+Applying Schwinger-Dyson to this gives us leading order contribution $e^2 \left< A_\mu A_\nu \right> \left< \psi_3 \psi_4 \overline{\psi}_1 \overline{\psi}_2 \right> + \cdots$ where one can see
+\begin{align}
+    \left<\psi_3 \psi_4 \overline{\psi}_1 \overline{\psi}_2 \right>  = S_F^{32} S_F^{41} - S_F^{31} S_F^{42}
+.\end{align}
+
+We want to see that
+\begin{align}
+    \overline{u}^{s'}_{p'} \gamma^{\mu} us^{s}_p \widetilde{\Pi}_{\mu \nu} \left( k \right) \overline{u}^{r'}_{q'} \gamma^{\nu} u^{r}_q 
+,\end{align}
+is independent of $\alpha$ where $k = p - p' = q' - q$. The terms of note are 
+\begin{align}
+    \overline{u}^{s'}_{p'} \gamma^{\mu} us^{s}_p k_\mu k_\nu \overline{u}^{r'}_{q'} \gamma^{\nu} u^{r}_q 
+,\end{align}
+which we need to show vanish. This is equivalent to $\mathcal{A}_{\mu \nu} k^{\mu} k^{\nu} = 0$.
+
+We also know that
+\begin{align}
+    \left( - \fbs{p} + m \right) u_p = 0 && \overline{u}_p \left( \fbs{p} - m \right) = 0
+.\end{align}
+
+Then look at
+\begin{align}
+    \overline{u}_{p'} k_\mu \gamma^{\mu} u_p = \overline{u}_{p'} \left( \fbs{p} -\fbs{p'} \right) u_p = \overline{u}_{p'} \left( m - m \right) u_p = 0
+.\end{align}
+
+Identically,
+\begin{align}
+    \overline{u} k_\nu \gamma^{\nu} u_q = \overline{u}_{q'} \left( \fbs{q} - \fbs{q'} \right) u_q = 0
+,\end{align}
+thus $\bra{f} S \ket{i}$ is independent of $\alpha$.
+
+\begin{note}
+    In some cases each diagram is separately independent but not always. At the very least one has independence for a given process as a whole.
+\end{note}
+
+\subsection{Spin sums}
+
+A commonly studied quantity in particle physics is the cross section. This is roughly
+\begin{align}
+    \text{Num. events per unit time} = \left( \text{incoming particles per unit time} \right) \times  \left( \text{cross section: fraction of particles that collide} \right) 
+.\end{align}
+
+The \textit{differential cross section} is
+\begin{align}
+    \dd{C} = \frac{\text{Probability per unit time}}{\text{Flux}}
+,\end{align}
+where the probability is
+\begin{align}
+    P = \frac{\left| \bra{f} S \ket{i} \right|^2}{\bra{f} \ket{f} \bra{i} \ket{i}}
+,\end{align}
+where
+\begin{align}
+    \bra{f} S \ket{i} = \left( 2\pi \right)^{4} \delta \left( \sum_{}^{} p \right) \mathcal{A}
+,\end{align}
+and thus
+\begin{align}
+    \left| \bra{f} S \ket{i} \right|^2 = \left( 2\pi \right)^{4} \underbrace{\delta \left( \sum_{}^{} 0 \right)}_{V T} \left| \mathcal{A} \right|^2
+.\end{align}
+
+When we have spin,
+\begin{itemize}
+    \item You can't control outgoing spin,
+    \item you don't control the ingoing spin,
+\end{itemize}
+
+Then one defines
+\begin{align}
+    \mathcal{P} = \left< \left| \mathcal{A} \right|^2 \right> = \frac{1}{4}\sum_{\text{spins}}^{} \left| \mathcal{A} \right|^2
+,\end{align}
+where $\frac{1}{4}$ is included for $2 \to \text{anything}$ scattering.
+
+\begin{example}
+    Consider $e^{-} \mu^{-} \to e^{-} \mu^{-}$ in a theory where they are minimally coupled such that one has vertex $-ie \gamma^{\mu} A_\mu$ for both the $\gamma \mu^{-} \mu^{-}$ and the $\gamma e^{-} e^{-}$ interactions. There is no exchange diagram and we have.
+\end{example}
+
+Then we see
+\begin{align}
+    \mathcal{A} &= \left( -ie \right)^2 \overbrace{\overline{u}^{s'}_{p'} \gamma^{\mu}u^{s}_p}^{e^{-}} \frac{1}{\left( p - p' \right)^2} \overbrace{\overline{u}^{r'}_{q'} \gamma_\mu u^{r}_q}^{\mu^{-}}
+,\end{align}
+which gives us
+\begin{align}
+    \left| \mathcal{A} \right|^2 = \frac{\left( -ie \right)^4}{\left( p - p' \right)^{4}} \left( \overline{v}^{s'}_{p'} \gamma^{\mu} u^{s}_p \right) \left( \overline{u}^{s'}_{p'} \gamma^{\nu} u^{s}_p \right)^{\dag} \left( \overline{u}^{r'}_{q'} \gamma_{\mu} u^{r}_q \right) \left( \overline{u}^{r'}_{q'} \gamma_\nu u^{r}_q \right)^{\dag}
+,\end{align}
+as $u^{s \dagger}_{p} \gamma^{\nu \dagger} \gamma^{0} u^{s'}_{p'} = \overline{u}^{s}_p \gamma^{\nu} u^{s'}_{p'}$,
+
+We define a spin-averaged amplitude given by
+\begin{align}
+    \mathcal{P} &= \frac{1}{4} \sum_{s,s',r,r'}^{} \left| \mathcal{A} \right|^2 \\
+    &= \left( \cdots \right) \sum_{s}^{} \sum_{s'}^{} \overline{u}^{s'}_{p'} \gamma^{\mu} u^{s}_p \overline{u}^{s}_p \gamma^{\nu} u^{s'}_{p'} \sum_{r}^{}  \sum_{r'}^{}  \left( \cdots \right) 
+.\end{align}
+
+Recalling that
+\begin{align}
+    \sum_{s}^{} u^{s}_a \overline{u}^{s}_b =  \left( \fbs{p} + m \right)_{ab} = \sum_{s}^{} \overline{u}^{s}_b u^{s}_a
+,\end{align}
+we see that
+\begin{align}
+    \mathcal{P} &= \frac{\left( -ie \right)^{4}}{4\left( p - p' \right)^{4}}\tr \left( \left( \fbs{p'} + m \right) \gamma^{\mu} \left( \fbs{p} + m \right) \gamma^{\nu} \right) \tr \left( \left( \fbs{q'} + m \right) \gamma_\mu \left( \fbs{q} + m \right) \gamma_\nu \right)  \\
+    &= \frac{8e^{4}}{\left( p - p' \right)^{4}} \left( p' \cdot q' p \cdot q + p \cdot q' p' \cdot q - m_e^2 q \cdot q' - m_\mu^2 p \cdot p' + 2 m_\mu^2 m_e^2 \right) 
+,\end{align}
+and we are done (with the beginning).

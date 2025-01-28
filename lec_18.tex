@@ -1,0 +1,138 @@
+\lecture{18}{20/11/2024}{Dirac Interactions}
+
+When normal ordering fermionic operators, note that there is a sign as
+\begin{align}
+    \nord{b_q c_q b_c^{\dag}} &= \left( -1 \right)^2 b_c^{\dag} b_q c_q \\
+    &= \left( -1 \right) b_c^{\dag} c_q b_q 
+.\end{align}
+
+We now define the Fock space. We define a vacuum state $\ket{0}$ such that
+\begin{align}
+    b_p^{s} \ket{0} = c_p^{s} \ket{0} = 0
+,\end{align}
+and observe $H \ket{0}= 0$ is a ground state.
+
+We have one particle states
+\begin{align}
+    \ket{b^{s}} = \sqrt{2\omega_p} \left( b_p^{s} \right)^{\dag} \ket{0}  && H \ket{b^{s}} = \omega_p \ket{b^{s}}, \\
+    \ket{c^{s}} = \sqrt{2\omega_p}  \left( c^{s}_p \right)^{\dag} \ket{0} && H \ket{c^{s}} = \omega_p \ket{c^{s}}
+.\end{align}
+
+Recall that we have $U\left( 1 \right) $ charge given by
+\begin{align}
+    Q = \sum_{s}^{} \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \left( \left( b^{s}_p \right)^{\dag} b_p^{s} - \left( c^{s}_p \right)^{\dag} c_p^{s} \right) 
+,\end{align}
+where observe
+\begin{align}
+    Q \ket{b^{s}} = \ket{b^{s}} && Q \ket{c^{s}} = - \ket{c^{s}}
+.\end{align}
+
+One can also write down an operator for the angular momentum $J_z$ at $\vec{p} = 0$ and see
+\begin{align}
+    J_{z} \ket{b^{s}} = \pm \frac{1}{2} \ket{b^{s}} && J_z \ket{c^{s}} = \pm \frac{1}{2} \ket{c^{s}}
+,\end{align}
+where $s = 1 $ gives $+$ and $s = 2$ gives $-$.
+
+\begin{proof}
+    Do this exercise. You need $ J_z = \frac{1}{2}\epsilon_{ij 3} \left( j^{0} \right)^{ij}$ where $j^{0} = i S^{ij} \overline{\psi} \gamma^{0} \psi$, $u_{-p}^{s^{\dag}} v_{p}^{s'} = v_{p}^{s^{\dag}} u_{-p}^{s'} = 0$ and $u^{r^{\dag}}_{p} u^{s}_p = v^{r^{\dag}}_p v_p^{s} =  2 \omega_p \delta^{rs}$ as well as the chiral representation of $\gamma^{\mu}$.
+\end{proof}
+
+We identically have multiparticle states by acting with multiple $b^{\dag}$'s and $c^{\dag}$'s. For example,
+\begin{align}
+    \ket{p_1, s_1 ; p_2 , s_2} = \left( b_{p_1}^{s_1} \right)^{\dag} \left( b_{p_2}^{s_2} \right)^{\dag} \ket{0} = -  \left( b_{p_2}^{s_2} \right)^{\dag} \left( b_{p_1}^{s_1} \right)^{\dag} \ket{0} = - \ket{p_2, s_2 ; p_1, s_1}
+.\end{align}
+
+We now move to derive the propagator. We inspect first $\bra{0} \psi_a \left( x \right) \overline{\psi}_b \left( y \right) \ket{0}$ with the aim of getting $\bra{0} T \psi \left( x \right) \overline{\psi}\left( y \right) \ket{0}$, the Feynman propagator for the Dirac spinor. This should be Lorentz invariant.
+
+Recall that
+\begin{align}
+    \psi \left( x \right) &= \sum_{s}^{} \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{\sqrt{2\omega_p} } \left( b_p^{s} u^{s}\left( p \right) e^{-ipx} + \left( c_p^{s} \right)^{\dag} v^{s}\left( p \right) e^{i px} \right) 
+,\end{align}
+and similarly for $\overline{\psi}$. One sees then that
+\begin{align}
+    \bra{0} \psi_a \left( x \right) \overline{\psi}_b \left( y \right) \ket{0} &= \sum_{s,s'}^{} \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \int \frac{\dd{^3p'}}{\left( 2\pi\right)^3} e^{-ipx} e^{i p'y} u_a^{s}\left( p \right) \overline{u}_b^{s'}\left( p' \right) \bra{0} b_p^{s} \left( b_{p'}^{s'} \right)^{\dag} \ket{0} \\
+    &= \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{2\omega_p} \left( \fbs{p} + m \right)_{ab} e^{-i p \left( x -y \right) } \\
+    &=  \left( i\fbs{\partial}_x + m \right) \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{2\omega_p} e^{-i p \left( x -y \right) } \\
+    &= \left( i \fbs{\partial}_x + m \right) D \left( x - y \right) 
+,\end{align}
+where $D \left( x -y \right) $ is the scalar propagator.
+
+Looking at the reverse we see
+\begin{align}
+    \bra{0} \overline{\psi}_b \left( y \right) \psi_a \left( x \right) \ket{0} &= \int \frac{\dd{^3 p}}{\left( 2\pi\right)^3} \frac{1}{2\omega_p} \left( \fbs{p} - m \right)  e^{-i p \left( y - x \right) } \\
+    &= - \left( i  \fbs{\partial}_x + m \right) D \left( y - x \right) 
+.\end{align}
+
+This minus sign is an indication that we should define time ordering such that
+\begin{align}
+    T \psi_a \left( x \right) \overline{\psi}_b \left( y \right) = \begin{cases}
+        \psi_a \left( x \right) \overline{\psi}_b \left( y \right), & x^{0} > y^{0}, \\
+        -\overline{\psi}_b \left( y \right) \psi_a \left( x \right) , & y^{0} > x^{0}.
+    \end{cases}
+\end{align}
+
+With this, we see
+\begin{align}
+    \bra{0} T \psi \left( x \right) \overline{\psi}\left( y \right) \ket{0} = \left( i\fbs{\partial}_x + m \right) \Delta_F \left( x - y \right) \equiv S_F \left( x - y \right) 
+.\end{align}
+
+It follows that
+\begin{align}
+    \left( i  \fbs{\partial}_x - m\right) S_F \left( x - y \right) = i \delta^{4}\left( x - y \right) 
+,\end{align}
+as $\left( \Box_x + m^2 \right) \Delta_F \left( x-  y \right) = -i \delta^{4} \left( x - y \right) $.
+
+Also,
+\begin{align}
+    S_F \left( x - y \right)\left( i  \overset{\leftharpoonup}{\fbs{\partial}}_x + m\right)  = -i \delta^{4}\left( x - y \right) 
+.\end{align}
+
+\begin{theorem}[ (Wick's Theorem for spinors)]
+    Observe
+    \begin{align}
+        T \left( \psi \left( x \right) \overline{\psi}\left( y \right)  \right) = \nord{\psi \left( x \right) \overline{\psi}\left( y \right) } + \wick{ \c {\overline{\psi}} \c \psi}
+    ,\end{align}
+    where $\wick{ \c {\overline{\psi}} \c \psi} = S_F \left( x - y \right) $
+\end{theorem}
+
+\begin{note}
+    If $x^{0}_3 > x^{0}_1 > x^{0}_4 > x_2^{0}$,
+    \begin{align}
+        T \left( \psi_1 \psi_2 \psi_3 \psi_4 \right) = \left( -1 \right)^{3} \psi_3 \psi_1 \psi_4\psi_2
+    .\end{align}
+\end{note}
+
+\subsection{Interactions: Yukawa theory}
+
+Given the Lagrangian
+\begin{align}
+    \mathcal{L}_0 = \frac{1}{2} \partial_\mu \phi \partial^{\mu} \phi - \frac{1}{2} \mu^2 \phi^2 + \overline{\psi} \left( i \gamma^{\mu} \partial_\mu - m \right) \psi
+,\end{align}
+and the interaction term
+\begin{align}
+    \mathcal{L}_\text{int} = -\lambda \phi \overline{\psi}\psi
+.\end{align}
+
+Consider nucleon-anti nucleon scattering with
+\begin{align}
+    \ket{i, - \infty} = \sqrt{2\omega_p}  \sqrt{2\omega_q} \left( b_p^{s} \right)^{\dag} \left( -\infty \right) \left( c_q^{r} \right)^{\dag} \left( -\infty \right) \ket{\Omega}  
+,\end{align}
+and
+\begin{align}
+    \ket{f, \infty} = \sqrt{2\omega_{p'}} \sqrt{2\omega_{q'}} \left( b_{p'}^{s'} \right)^{\dag} \left( \infty \right)  \left( b_{q'}^{r'} \right)^{\dag} \left( \infty \right) \ket{\Omega}    
+.\end{align}
+
+Then we have
+\begin{align}
+    \bra{f} S \ket{i} = \sqrt{2\omega_p}  \sqrt{2\omega_{p'}} \sqrt{2\omega_{q}}  \sqrt{2 \omega_{q'}}  \bra{\Omega} T \left(  c^{r'}_{q'} \left( \infty \right)  b_{p'}^{s'}  \left( \infty \right) \left( b^{s}_p \right)^{\dag} \left( -\infty \right) \left( c_{q}^{r} \right)^{\dag} \left( -\infty \right)    \right) 
+.\end{align}
+
+We want $\left( b_p^{s} \right)^{\dag} \left( \infty \right) - \left( b_p^{s} \right)^{\dag} \left( -\infty \right) $.
+
+Consider
+\begin{align}
+    i \int \dd{^{4}x} \overline{\psi}\left( x \right) \left( i \overset{\leftharpoonup}{\fbs{\partial}} + m \right) u_s \left( p \right) e^{ipx}
+.\end{align}
+
+Recall that $u_s \left( p \right) $ obeys $\left( \fbs{p} - m \right) u_s \left( p \right) = 0$ and $\omega_p = \sqrt{\vec{p}^2 + m^2}$.
+

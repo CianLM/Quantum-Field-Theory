@@ -1,0 +1,167 @@
+\lecture{21}{29/11/2024}{Quantization of Maxwell Theory}
+
+We now move to quantize this theory. We focus on the Coulomb gauge as here we get rid of the redundancy. Recall that $\nabla \cdot \vec{A} = 0 $ and $A_0 = 0$ such that $\Box A_i = 0$. Then we must have
+\begin{align}
+    A_\mu \sim  e_\mu \left( p \right) e^{-ipx}
+,\end{align}
+with $p^2 = 0$.
+
+The choice of gauge restricts $\epsilon_\mu \left( p \right) $. For the coulomb gauge, we see $\epsilon_0 = 0$ and $\vec{p} \cdot \vec{\epsilon} = 0$. 
+
+Choosing a frame in which $p_\mu = \left( E, 0, 0, 0 \right) $ gives us two linearly independent solutions
+\begin{align}
+    \epsilon_{\mu}^{1} &= \mqty( 0 & 1 & 0 & 0 ) \\
+    \epsilon_{\mu}^{2} &= \mqty( 0 & 0 & 1 & 0 ) 
+,\end{align}
+which are our two polarization states. We will write in general 
+\begin{align}
+    \vec{e}_r \left( \vec{p} \right) \cdot \vec{p} = 0
+,\end{align}
+with $r = 1,2$ satisfying
+\begin{align}
+    \vec{\epsilon}_{r} \cdot \vec{\epsilon}_{s} = \delta_{rs}
+.\end{align}
+
+We also have the completeness relation
+\begin{align}
+    \sum_{r=1}^{2}  \epsilon_{r}^{i} \epsilon_{r}^{j} = \delta^{ij}  - \frac{p^{i} p^{j}}{\left| \vec{p} \right|^2}
+.\end{align} 
+
+Therefore, the general solution to our gauge field is
+\begin{align}
+    \vec{A}\left( x \right) = \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{\sqrt{2 \left| \vec{p} \right| } } \sum_{r=1}^{2}  \vec{\epsilon}^{r} \left( a^{r}_p e^{-i p x} + a^{r^{\dag}}_p e^{ipx} \right) 
+.\end{align}
+
+Next, for the commutation relation, we require the conjugate momenta given by
+\begin{align}
+    \Pi^{i} = \pdv{\mathcal{L}}{\dot{A}_{i}} = -F^{0i} = E^{i}
+.\end{align}
+
+If $\grad \cdot \vec{A} = 0$, then $\grad \cdot \vec{E} = 0$.
+
+Naively, we impose the equal time commutation relation
+\begin{align}
+    \left[ A_i \left( \vec{x},t \right) ,\Pi_i \left( \vec{y},t \right)   \right]= i \delta_{ij} \delta^3 \left( \vec{x} - \vec{y} \right)
+.\end{align}
+
+This is wrong as it does not comply with the gauge condition. Namely, one can compute
+\begin{align}
+    0 = \left[ \grad \cdot \vec{A}, \grad \cdot \vec{E} \right] = i \grad^2 \delta^3 \left( \vec{x} - \vec{y} \right) \neq 0
+.\end{align}
+
+A better guess for the commutation relation is
+\begin{align}
+    \left[ A_i \left( \vec{x},t \right) , \Pi_j \left( \vec{y},t \right)  \right] &= i \left( \delta_{ij} - \frac{\partial_i \partial_j}{\grad^2} \right) \delta^3 \left( \vec{x} - \vec{y} \right)  \\
+    &= i \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \left( \delta_{ij} - \frac{p_{i} p_{j}}{\left| \vec{p} \right|^2} \right) e^{i \vec{p} \cdot \left( \vec{x} - \vec{y} \right) } 
+.\end{align}
+
+We can check if it complies with the gauge conditions with
+\begin{align}
+    \left[ \partial_i A_i, \Pi_j \right] = i \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \left( \delta_{ij} - \frac{p_{i}p_{j}}{\left| \vec{p} \right|^2} \right) i p_i e^{i \vec{p} \cdot \left( \vec{x} - \vec{y} \right) }  = 0
+,\end{align}
+as desired.
+
+Thus this is the correct commutation relation. We further have
+\begin{align}
+    \left[ A_i \left( \vec{x},t \right) , A_j \left( \vec{y},t \right)  \right] = 0
+.\end{align}
+
+From here, it is straightforward to see that these imply
+\begin{align}
+    \left[ a^{r}_p, \left( a^{s}_q \right)^{\dag}  \right]  = \left( 2\pi \right)^3 \delta^{rs} \delta^3 \left( \vec{p} - \vec{q} \right) 
+,\end{align}
+and all others zero.
+
+Anti-commutation relations would not have given us a valid Fock space here.
+
+The Hamiltonian is given by
+\begin{align}
+    H = \int \dd{^3x} \left( \Pi^{i} \dot{A}_i - \mathcal{L} \right)  = \frac{1}{2} \int \dd{^3x} \left( \vec{E} \cdot \vec{E} + \vec{B} \cdot \vec{B} \right) 
+,\end{align}
+where $E^{i} = -F^{0i}$ and $\epsilon^{ijk} B_k = F^{ij}$. After normal ordering, we have
+\begin{align}
+    H = \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \left| \vec{p} \right| \sum_{r=1}^{3}  \left( a^{r}_p \right)^{\dag} a^{r}_p
+.\end{align}
+
+The Coulomb gauge propagator is given by
+\begin{align}
+    \bra{0} T A_i \left( x \right) A_j \left( y \right) \ket{0} = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 + i \epsilon} \left( \delta_{ij} - \frac{p_{i} p_{j}}{\left| \vec{p} \right|^2} \right) e^{-i p \left( x - y  \right) }
+,\end{align}
+however we want $\bra{0} T A_{\mu}\left( x \right) A_{\nu}\left( y \right) \ket{0}$. The answer should be Lorentz invariant. Our strategy to obtain this will be to use the fact that it is a Greens function.
+
+Recall that for the scalar field we had
+\begin{align}
+    \left( \Box + m^2  \right) G \left( x \right) = J \left( x \right) 
+,\end{align}
+where $J\left( x \right) $ is a source.
+
+A fast way to solve this is to go to Fourier space and observe
+\begin{align}
+    \left( \Box + m^2 \right) \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} G\left( p \right) e^{ipx} = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} J\left( p \right) e^{ipx}
+,\end{align}
+implying
+\begin{align}
+    \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \left( \left( -p^2 + m^2 \right) G\left( p \right) - J\left( p \right)  \right) e^{ipx}
+,\end{align}
+and thus
+\begin{align}
+    G\left( p \right) = \frac{J\left( p \right) }{-p^2 + m^2}
+.\end{align}
+
+This implies
+\begin{align}
+    G\left( x \right) = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{J\left( p \right) }{-p^2 + m^2} e^{ipx}
+,\end{align}
+when $J\left( x \right) = -i \delta^{4}\left( x \right) $, $J\left( p \right)  = -i$ and thus
+\begin{align}
+    G \left( x \right) = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - m^2} e^{ipx}
+.\end{align}
+
+Applying this to Maxwell's equation,
+\begin{align}
+    \partial^{\mu} F_{\mu \nu} &= J_\nu\left( x \right)  \\
+    \implies \Box A_\nu - \partial_\nu \partial^{\mu} A_\mu = J_\nu \left( x \right) 
+,\end{align}
+which in momentum space is given by
+\begin{align}
+    \left( -p^2 \eta_{\mu \nu} + p_\mu p_\nu \right) A^{\mu}\left( p \right) = J_\nu \left( p \right) 
+.\end{align}
+
+One is tempted to apply the scalar field line of logic, but we cannot invert this linear operator as we previously identified that this operator is not invertible as
+\begin{align}
+    \left( -p^2 \eta^{\mu \nu} + p^{\mu} p^{\nu} \right) p_\nu = 0
+.\end{align}
+
+This is a Fourier space statement that any gauge transformation solves this equation, as we saw before,
+\begin{align}
+    \left( \eta_{\mu \nu} \Box - \partial_\nu \partial_\mu \right) \partial^{\mu} \lambda = 0
+.\end{align}
+
+To get rid of this, we introduce a Lagrange multiplier such that our Lagrangian becomes
+\begin{align}
+    \mathcal{L} = -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} - \frac{1}{2\alpha} \left( \partial_\mu A^{\mu} \right)^2
+.\end{align}
+
+Where $\alpha$ is a constant auxiliary variable which acts a Lagrange multiplier (i.e. when the equation of motion with respect to $\alpha$ is imposed) to enforce the gauge condition $\partial_\mu A^{\mu} = 0$.
+
+If we write down the equation of motion for $A_{\mu}$ we see
+\begin{align}
+    \left( \eta^{\nu \lambda} \Box + \left( \frac{1}{\alpha} - 1 \right) \partial^{\nu} \partial^{\lambda} \right) A_\lambda = 0
+,\end{align}
+which is now invertible. Now, going back to the Greens function derivation, we see in Fourier space
+\begin{align}
+    \underbrace{\left( -\eta_{\lambda \nu} p^2 - \left( \frac{1}{\alpha} - 1 \right) p_\nu p_\lambda \right)}_{\hat{\Pi}_{\lambda \nu}} A^{\lambda} \left( p \right) = J_\nu \left( p \right) 
+,\end{align}
+that $\hat{\Pi}_{\lambda \nu}$ has an inverse given by
+\begin{align}
+    \Pi_{\mu \nu} = - \frac{\eta_{\mu \nu} + \left( \alpha - 1 \right) \frac{p_\mu p_\nu}{p^2}}{p^2}
+,\end{align}
+where $\hat{\Pi}^{\lambda \nu} \Pi_{\nu \mu} = \delta^{\lambda}_{\mu}$ as desired.
+
+\begin{proof}
+    
+\end{proof}
+
+
+
+

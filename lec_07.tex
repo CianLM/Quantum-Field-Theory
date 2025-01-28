@@ -30,7 +30,7 @@ This is motivated by inner products like $\bra{f} \ket{i}$ where $\bra{f}$ is a 
     Our claim can be written as
     \begin{align}
         \Delta_F \left( x -y \right) &= \int \frac{\dd{^{3}k}}{\left( 2\pi \right)^{3}} \frac{1}{2 \omega_k} e^{- i \omega_k \left( x^{0} - y^{0} \right) } e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \Theta \left( x^{0} - y^{0} \right)\nonumber\\
-                                     &\quad+ \int \frac{\dd{^{3}k}}{\left( 2\pi \right)^{3}} \frac{1}{2 \omega_k} e^{- i \omega_k \left( x^{0} - y^{0} \right) } e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \Theta \left( y^{0} - x^{0} \right)   \\
+                                     &\quad+ \int \frac{\dd{^{3}k}}{\left( 2\pi \right)^{3}} \frac{1}{2 \omega_k} e^{- i \omega_k \left( y^{0} - x_0 \right) } e^{i \vec{k} \cdot \left( \vec{y} - \vec{x} \right) } \Theta \left( y^{0} - x^{0} \right)   \\
         &= \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_k} e^{i \vec{k} \cdot \left( \vec{x} - \vec{y} \right) } \left( e^{-i \omega_k \tau} \Theta \left( \tau \right) + e^{i \omega_k \tau} \Theta \left( -\tau \right) \right)
     ,\end{align}
     where $\tau = x^{0} - y^{0}$.  We focus on the time-dependence and show that
@@ -40,7 +40,7 @@ This is motivated by inner products like $\bra{f} \ket{i}$ where $\bra{f}$ is a 
 
     We begin from the right hand side and observe that
     \begin{align}
-        \frac{1}{\omega^2 - \omega_k^2 + i \epsilon} = \frac{1}{\left( \omega - \left( \omega_k - i \widetilde{\epsilon} \right)  \right) \left( \omega - \left( - \omega_k + \widetilde{\epsilon} \right)  \right) }
+        \frac{1}{\omega^2 - \omega_k^2 + i \epsilon} = \frac{1}{\left( \omega - \left( \omega_k - i \widetilde{\epsilon} \right)  \right) \left( \omega - \left( - \omega_k + i\widetilde{\epsilon} \right)  \right) }
     ,\end{align}
     where $\epsilon = \tau \omega_k \widetilde{\epsilon} + \cdots$ and we relabel back $\widetilde{\epsilon} \to \epsilon$. Thus to leading order in $\epsilon$ we see
     \begin{align}
@@ -83,7 +83,7 @@ This is motivated by inner products like $\bra{f} \ket{i}$ where $\bra{f}$ is a 
     \begin{align}
         \bra{0} T \phi \left( x \right) \phi \left( y \right) \ket{0} = \int \frac{\dd{^4k}}{\left( 2\pi \right)^4} \frac{i}{k^2 - m^2 + i \epsilon} e^{-i k \left( x - y \right) }
     ,\end{align}
-    as desired.
+    where we have used $\omega^2 - \omega_k^2 = \omega^2 - \left( \left| \vec{k} \right|^2 + m^2  \right) = k^2 - m^2 $ to give us this result, as desired.
 \end{proof}
 
 
@@ -101,7 +101,7 @@ There are a few comments of note to be made here.
 
         Observe that
         \begin{align}
-            \left( \partial^{\mu} \partial_\mu + m^2 \right) \Delta_{F}\left( x - y \right) &= \int \frac{\dd{^{4}k}}{\left( 2\pi \right)^{4}} \frac{i}{k^2 + m^2} \left( - k^2 + m^2 \right) e^{-i k \left( x -y \right) } \\
+            \left( \partial^{\mu} \partial_\mu + m^2 \right) \Delta_{F}\left( x - y \right) &= \int \frac{\dd{^{4}k}}{\left( 2\pi \right)^{4}} \frac{i}{k^2 - m^2} \left( - k^2 + m^2 \right) e^{-i k \left( x -y \right) } \\
             &= - \int \frac{\dd{^4k}}{\left( 2\pi\right)^4} i e^{-i k \left( x - y \right) } \\
             &= -i \delta^{4} \left( x - y \right) 
         ,\end{align}

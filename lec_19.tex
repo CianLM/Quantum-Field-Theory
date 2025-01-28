@@ -1,0 +1,123 @@
+\lecture{19}{22/11/2024}{Feynman Rules}
+
+We see that
+\begin{align}
+    i \int \dd{^{4}x} \overline{\psi}\left( x \right) \left( i \overset{\leftharpoonup}{\fbs{\partial}} + m \right) u_s \left( p \right) e^{ipx} &=  i \int \dd{^{4}x} \overline{\psi}\left( x \right) \left(  \gamma^{0}\overset{\leftharpoonup}{\partial_0} + i \gamma^{i} \overset{\leftharpoonup}{\gamma_i} + m  \right) u_s \left( p \right) e^{ipx}    \\
+&=  i \int \dd{^{4}x} \overline{\psi}\left( x \right) \left(  \gamma^{0}\overset{\leftharpoonup}{\partial_0} - \underbrace{i \gamma^{i} \left( ip^{i} \right)  + m}_{p^{0}\gamma^{0}}  \right) u_s \left( p \right) e^{ipx}    \\
+\intertext{using $\left( p^{0}\gamma^{0} - p^{i}\gamma^{i} - m \right) u_s \left( p \right) = 0 $,}
+&= i \int \dd{^{4}x} \overline{\psi} \left( i \gamma^{0} \overset{\leftharpoonup}{\partial_0} + p_0 \gamma^{0} \right) u_s \left( p \right) e^{-ipx} \\
+&= i \int \dd{^{4}x} \overline{\psi} \left( i \gamma^{0} \overset{\leftharpoonup}{\partial_0} + i \gamma^{0} \partial_0 \right) u_s \left( p \right) e^{-ipx} \\
+&= - \int \dd{^{4}x} \partial_0 \left( \overline{\psi} \gamma^{0} u_s \left( p \right) e^{-i p x} \right)  \\
+&= - \sqrt{2 \omega_p}  \left( \left( b_p^{s} \right)^{\dag} \left( \infty \right)   - \left( b_{p}^{s} \right) \left( -\infty \right)   \right)
+.\end{align}
+
+Repeating this for all of the operators in consideration gives us the following
+\begin{align}
+    \sqrt{2\omega_p}  \left( \left( b^{s}_p \right)^{\dag}  \left( -\infty \right) - \left( b_p^{s} \right)^{\dag} \left( \infty \right) \right) &= i \int \dd{^{4}x} \overline{\psi} \left( i \overset{\leftharpoonup}{\fbs{\partial}} + m \right) u_s \left( p \right) e^{-ipx} \\
+    \sqrt{2\omega_p}  \left( b_p^{s}\left( \infty \right) - b_p^{s}\left( -\infty \right)  \right) &= i \int \dd{^{4}x} e^{ipx} \overline{u}_s \left( p \right) \left( -i \fbs{p} + m \right) \psi \left( x \right) \\
+    \sqrt{2\omega_p}  \left( \left( c^{s}_p \right)^{\dag}  \left( -\infty \right) - \left( c_p^{s} \right)^{\dag} \left( \infty \right) \right) &= -i \int \dd{^{4}x} e^{-ipx} \overline{v}_s\left( p \right) \left( -i \fbs{p} + m \right) \psi \left( x \right) \\
+    \sqrt{2\omega_p}  \left( c^{s}_p \left( \infty \right) - c_p^{s}\left( -\infty \right)  \right) &= -i \int \dd{^{4}x} \overline{\psi}\left( x \right) \left( i \overset{\leftharpoonup}{\fbs{\partial}} + m \right) v_s \left( p \right) e^{ipx}
+.\end{align}
+
+Therefore, we finally arrive at
+\begin{align}
+    \bra{f} S \ket{i}& = \prod_{j=1}^{4} i \int \dd{^{4}x} \underbrace{\left( e^{i p' x_3}  \overline{u}_{s'}\left( p' \right) \left( -i \fbs{\partial}_3 + m \right)  \right)}_{\text{outgoing $b^{\dag}$}} \underbrace{\left( e^{-i q x_2} \overline{v}_r \left( q \right) \left( -i \fbs{\partial}_2 + m \right)  \right)}_{\text{ingoing $c^{\dag}$}} \nonumber \\
+                     &\bra{\Omega} T \overline{\psi} \left( x_4 \right) \psi \left( x_3 \right)  \overline{\psi}\left( x_1  \right) \psi \left( x_2 \right) \ket{\Omega}  \underbrace{\left( i \overset{\leftharpoonup}{\fbs{\partial}}_1 + m \right) u_s \left( p \right) e^{-i p x_1} }_{\text{ingoing $b^{\dag}$}} \underbrace{\left( i \overset{\leftharpoonup}{\fbs{\partial}}_4 + m\right) v_{r'}\left( q' \right) e^{i q' x_4}}_{\text{outgoing $c^{\dag}$}} 
+.\end{align}
+
+\subsection{Feynman Rules}
+
+
+For an incoming fermion,
+
+\begin{align}
+b^{\dag} : \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+    a -- [fermion,momentum'={$\vec{p}, s$},edge label={$u_s\left( p \right) $}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+};\\
+c^{\dag} : \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+a -- [anti fermion,momentum'={$\vec{p},s$},edge label={$\overline{v}_s\left( p \right) $}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+};
+.\end{align}
+
+For outgoing fermions,
+\begin{align}
+b : \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+    a -- [fermion,momentum'={$\vec{p}, s$},edge label={$\overline{u}_s\left( p \right) $}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+};\\
+c : \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+a -- [anti fermion,momentum'={$\vec{p},s$},edge label={$v_s\left( p \right) $}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+};
+.\end{align}
+
+For the vertex, we see
+\begin{align}
+                    \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a -- [scalar,momentum'={$\vec{p}_1$}] b -- [fermion,momentum'={$\vec{p}_2$}] c; 
+     d --[fermion,rmomentum'={$\vec{p}_3$}] b;
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; = \left( -i\lambda \right) \left( 2\pi \right)^{4} \delta \left( p_1 - p_2 - p_3 \right) 
+.\end{align}
+
+And lastly each internal line is given by
+\begin{align}
+    \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+a -- [scalar,momentum'={$\vec{p}$}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+}; = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - \mu^2 + i \epsilon} \\
+    \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+a -- [fermion,momentum'={$\vec{p}$}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+}; = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i \left( \fbs{p} + m \right) }{p^2 - m^2 + i \epsilon} 
+.\end{align}
+
+Lastly, indices must be contracted at the vertex with other propagators or spinors. One must also add an extra minus sign appropriate to the statistics of fermions.
+
+\begin{example}
+    For the free theory, take $\left<\psi_1 \psi_2 \overline{\psi}_3 \overline{\psi}_4 \right>$ and proceed with Schwinger-Dyson. Namely, one has that
+    \begin{align}
+        \left( i \fbs{\partial}_x - m \right) \left<T \psi \left( x \right) \overline{\psi}\left( x_1 \right) \cdots \psi \left( x_{n} \right)  \right> = -i \sum_{j}^{} \delta \left( x - x_{j} \right)  \left( \text{signed contractions with $\psi \left( x \right) \overline{\psi} \left( x_{j} \right) $ removed}\right) 
+    .\end{align}
+    Then observe
+    \begin{align}
+        \left<\psi_1 \psi_2 \overline{\psi}_3 \overline{\psi}_4 \right>+0 &= \int \dd{^{4}y} \underbrace{i S_F \left( x - y \right) \left( i \overset{\leftharpoonup}{\fbs{\partial}}_y + m \right) }_{\delta \left( x_1 - y \right) } \left<\psi_y \psi_2 \overline{\psi}_3 \overline{\psi}_4\right> \\
+        &= \int \dd{^{4}y} \left( -i \right) S_F \left( x_1 - y \right) \left( i  \fbs{\partial}_y - m\right) \left<\psi_y \psi_2 \overline{\psi}_3 \overline{\psi}_4\right>  \\
+        &= \left( -1 \right)^2 \int \dd{^{4}y} S_F \left( x_1 - y \right) \left( - \delta \left( x_3 - y \right) S_F \left( x_2 - x_4 \right) + \delta \left( x_4 - y \right) S_F \left( x_2 - x_3 \right)  \right)   \\
+        &= S_F \left( x_1 - x_4 \right) S_F \left( x_2 - x_3 \right) - S_F \left( x_1 - x_3 \right) S_F \left( x_2 - x_4 \right)  
+    .\end{align}
+\end{example}
+
+\begin{example}
+    \textbf{Nucleon to meson scattering.} Suppose one has $\left( b^{s}_p \right)^{\dag} \left( c^{s}_q \right)^{\dag}$ incoming and $a^{\dag}_{p'} a^{\dag}_{q'}$ going out.
+\end{example}
+
+To leading order we have two connected diagrams
+\begin{align}
+    \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+    f --[fermion,momentum'={$p$}] a -- [fermion,momentum'={$k$}] b -- [fermion,rmomentum'={$q$}] c; 
+     d --[scalar,rmomentum'={$p'$}] b;
+     g --[scalar,rmomentum={$q'$}] a;
+%b -- [boson,edge label=\(A^\mu\)] d 
+};}} + \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+    f --[fermion,momentum'={$p$}] a -- [fermion,momentum'={$k$}] b -- [fermion,rmomentum'={$q$}] c; 
+     d --[scalar,rmomentum'={$q'$}] b;
+     g --[scalar,rmomentum={$p'$}] a;
+%b -- [boson,edge label=\(A^\mu\)] d 
+};}}
+\end{align}
+
+% sideways diagram
+%\vcenter{\hbox{\feynmandiagram [horizontal=a to b] {
+%    f --[fermion,momentum'={$\vec{p}_1$}] a -- [scalar,momentum'={$\vec{k}$}] b -- [fermion,momentum'={$\vec{p}_2$}] c; 
+%     d --[fermion,rmomentum'={$\vec{p}_3$}] b;
+%     g --[fermion,momentum={$\vec{p}_1$}] a;
+%};}}
+
+Then we have
+\begin{align}
+    \bra{f} S \ket{i} &= \int \frac{\dd{^4k}}{\left( 2\pi\right)^4} \overline{v}_r \left( q \right) \frac{i \left( \fbs{k} + m \right) }{k^2 - m^2 - i \epsilon} u_s \left( p \right) \left( -i \lambda \right) \left( 2\pi \right)^{4} \delta \left( q + k - q' \right) \left( -i \lambda \right) \left( 2\pi \right)^{4} \delta \left( p - p' - k \right)   + \{p' \leftrightarrow q'\}  \\
+    &= i \left( 2\pi \right)^{4} \delta \left( p + q - p' - q' \right) \left( \overline{v}_r \left( q \right) \frac{\left( \fbs{p} - \fbs{p}' + m \right) }{\left( p - p' \right)^2 - m^2} u_s \left( p \right)  + \overline{v}_r \left( q \right) \frac{\fbs{p} - \fbs{q}' + m}{\left( p - q' \right)^2 - m^2} u_s \left( p \right)   \right) 
+.\end{align}

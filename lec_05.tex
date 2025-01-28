@@ -7,17 +7,19 @@ Observe that while the Hamiltonian for the free massive scalar field can be writ
 we desire an expression in terms of $a$ and $a^{\dag}$. Expanding the fields in terms of these operators, we see
 \begin{align}
     H &= \frac{1}{2} \int \dd{^3x} \int \frac{\dd{^3p} \dd{^3q}}{\left( 2\pi \right)^{6}}  \bigg(-\frac{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} }{2} \left( a_{\vb{p}} e^{i\vb{p}\cdot \vb{x}} - a^{\dag}_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} \right) \left( a_{\vb{q}} e^{i\vb{q}\cdot \vb{x}} - a^{\dag}_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} \right) \nonumber \\
-    &\quad ~ -\frac{1}{2} \frac{1}{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} } \left( a_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} - a_{\vb{p}}e^{i \vb{p} \cdot \vb{x}} \right)\left( a_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} - a_{\vb{q}}e^{i \vb{q} \cdot \vb{x}} \right) \vec{p} \vec{q} \nonumber\\
-    & \quad~+ \frac{m^2}{2} \frac{1}{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} } \left( a_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} - a_{\vb{p}}e^{i \vb{p} \cdot \vb{x}} \right)\left( a_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} - a_{\vb{q}}e^{i \vb{q} \cdot \vb{x}} \right) \bigg)\\
-    &= \frac{1}{2} \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_{\vb{p}}} \bigg[ \underbrace{\left( - \omega_{\vb{p}}^2 +  \vec{p}^2 + m^2 \right)}_{\text{e.o.m. thus vanishes}} \left( a_{\vb{p}} a_{\vb{p}} e^{-2i \omega t} + a_{\vb{p}}^{\dag} a_{\vb{p}}^{\dag} e^{2i \omega t} \right)\\
+    &\quad ~ -\frac{1}{2} \frac{1}{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} } \left( a_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} - a_{\vb{p}}^{\dag}e^{i \vb{p} \cdot \vb{x}} \right)\left( a_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} - a^{\dag}_{\vb{q}}e^{i \vb{q} \cdot \vb{x}} \right) \vec{p} \vec{q} \nonumber\\
+    & \quad~+ \frac{m^2}{2} \frac{1}{\sqrt{\omega_{\vb{p}} \omega_{\vb{q}}} } \left( a_{\vb{p}} e^{-i \vb{p} \cdot \vb{x}} - a^{\dag}_{\vb{p}}e^{i \vb{p} \cdot \vb{x}} \right)\left( a_{\vb{q}} e^{-i \vb{q} \cdot \vb{x}} - a^{\dag}_{\vb{q}}e^{i \vb{q} \cdot \vb{x}} \right) \bigg)\\
+    &= \frac{1}{2} \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_{\vb{p}}} \bigg[ \underbrace{\left( - \omega_{\vb{p}}^2 +  \vec{p}^2 + m^2 \right)}_{\text{e.o.m. thus vanishes}} \left( a_{\vb{p}} a_{-\vb{p}} e^{-2i \omega t} + a_{\vb{p}}^{\dag} a_{-\vb{p}}^{\dag} e^{2i \omega t} \right)\\
         &\quad ~ + \left( \omega_{\vb{p}}^2 + \vec{p}^2 + m^2 \right) \left( a_{\vb{p}}^{\dag} a_{\vb{p}} + a_{\vb{p}} a_{\vb{p}}^{\dag} \right)  \bigg]  \\
-        H &= \frac{1}{2} \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( a^{\dag}_{\vb{p}} a_{\vb{p}} + a_{\vb{p}} a^{\dag}_{\vb{p}} \right)  \\
-        H &=  \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega a^{\dag}_{\vb{p}} a_{\vb{p}} + \frac{1}{2}\int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( 2\pi \right)^3 \delta^{3}\left( 0 \right)  
+        H &= \frac{1}{2} \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega_{\vb{p}} \left( a^{\dag}_{\vb{p}} a_{\vb{p}} + a_{\vb{p}} a^{\dag}_{\vb{p}} \right)  \\
+        H &=  \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega_{\vb{p}} a^{\dag}_{\vb{p}} a_{\vb{p}} + \frac{1}{2}\int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( 2\pi \right)^3 \delta^{3}\left( 0 \right)  
 .\end{align}
 
-This last term is odd, and appears unphysical as with a vacuum $\ket{0}$ satisfying $a_{\vb{p}} \ket{0} = 0$, we see
+I have skipped some calculation steps, I \textit{highly recommend} one attempts to repeat this calculation and fill them in to make sure you understand what is being done. 
+
+This last term is unusual, and appears unphysical as with a vacuum $\ket{0}$ satisfying $a_{\vb{p}} \ket{0} = 0$, we see
 \begin{align}
-    H \ket{0} = \frac{1}{2}\int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega \left( 2\pi \right)^3 \delta \left( 0 \right) \ket{0} = E_0 \ket{0} \to \infty
+    H \ket{0} = \frac{1}{2}\int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \omega_{\vb{p}} \left( 2\pi \right)^3 \delta \left( 0 \right) \ket{0} = E_0 \ket{0} \to \infty
 .\end{align}
 
 To understand the nature of this, we need to see the origin of the divergence. There are in fact two divergences here:
@@ -66,9 +68,13 @@ and
 
 We then aim to construct energy eigenstates by
 \begin{align}
-    \ket{\vec{p}} = a_{\vec{p}} \ket{0}
+    \ket{\vec{p}} = a_{\vb{p}} \ket{0}
 .\end{align}
 This is a single particle state. Observe that then
 \begin{align}
-    H \ket{\vec{p}} = \omega_{p} \ket{\vec{p}}
+    H \ket{\vec{p}} = \omega_{\vb{p}} \ket{\vec{p}}
 .\end{align}
+
+\begin{note}
+    Until now I have noted operators $a^{\dag}_{\vb{p}}$ and $\omega_{\vb{p}}$ with $\vb{p}$, however they both only depend on the spatial component $\vec{p}$. I will now switch to this before dropping any decoration on $p$ at all when it is clear from context.
+\end{note}

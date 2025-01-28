@@ -1,0 +1,179 @@
+\lecture{16}{15/11/2024}{The Adjoint Spinor}
+
+\begin{definition}
+    We define $\overline{\psi} \left( x \right) = \psi^{\dag} \left( x \right) \gamma^{0}$ to be the \textbf{adjoint spinor}.
+\end{definition}
+
+\begin{claim}
+    $\overline{\psi} \psi$ is Lorentz invariant.
+\end{claim}
+
+\begin{proof}
+    \begin{align}
+        \overline{\psi} \psi &= \psi^{\dag} \left( x \right) \gamma^{0} \psi \left( x \right) \to \psi^{\dag} \left( \Lambda^{-1} x  \right) \gamma^{0} S\left[ \Lambda \right]^{-1} \underbrace{\gamma^{0} \gamma^{0}}_{\mathbb{I}} S \left[ \Lambda \right] \psi \left( \Lambda^{-1} x \right)  = \overline{\psi} \psi \left( \Lambda^{-1} x \right) 
+    .\end{align}
+\end{proof}
+
+\begin{claim}
+    $\overline{\psi} \gamma^{\mu} \psi$ transforms as a vector.
+\end{claim}
+
+\begin{proof}
+    \begin{align}
+        \overline{\psi} \gamma^{\mu} \psi \to \overline{\psi} S \left[ \Lambda \right]^{-1} \gamma^{\mu} S\left[ \Lambda \right]  \psi 
+    .\end{align}
+    We want the right hand side to be $\tensor{\Lambda}{^{\mu}_{\nu}} \overline{\psi}\gamma^{\mu} \psi$ as this is how vectors transform. Thus it remains to prove that
+    \begin{align}
+        S \left[ \Lambda \right]^{-1} \gamma^{\mu} S \left[ \Lambda \right] = \tensor{\Lambda}{^{\mu}_\nu} \gamma^{\nu}
+    .\end{align}
+
+    An elegant approach to this proof is to do it infinitesimally with $\Omega \ll 1$. Then
+    \begin{align}
+        S \left[ \Lambda \right] &= \mathbb{I} + \frac{1}{2} \Omega_{\rho \sigma} S^{\rho \sigma} + \cdots \\
+        S \left[ \Lambda \right]^{-1} &= \mathbb{I} - \frac{1}{2} \Omega_{\rho \sigma} S^{\rho \sigma} + \cdots \\
+        \Lambda = \exp \left( \frac{1}{2} \Omega_{\rho \sigma} \mathcal{M}^{\rho \sigma} \right)  &= \mathbb{I} + \frac{1}{2} \Omega_{\rho \sigma} \mathcal{M}^{\rho \sigma}
+    .\end{align}
+
+    To first order in $\Omega$, this implies that
+    \begin{align}
+        -\left[ S^{\rho \sigma}, \gamma^{\mu} \right] &= \tensor{\left( \mathcal{M}^{\rho \sigma} \right)}{^{\mu}_\nu} \gamma^{\nu} \\
+        &= \gamma^{\sigma} \eta^{\rho \mu} - \gamma^{\rho} \eta^{\sigma \mu}
+    .\end{align}
+\end{proof}
+
+One can continue and see that $\overline{\psi} \gamma^{\mu} \gamma^{\nu} \psi$ transforms as a 2-tensor and $\overline{\psi} \partial_\mu \psi$ transforms as a covector.
+
+Then, we want to construct the simplest possible action with the following three ingredients:
+\begin{itemize}
+    \item Lorentz invariance,
+    \item As few derivatives as possible,
+    \item reality (i.e. $S$ is a real number).
+\end{itemize}
+
+We see that these give us
+\begin{align}
+    S = \int \dd{^{4}x} \left( i\overline{\psi} \gamma^{\mu} \partial_\mu \psi - m \overline{\psi} \psi \right)  
+.\end{align}
+
+This is the \textbf{Dirac} action.
+
+\begin{note}
+    There is an $i$ in the first term to ensure reality as
+    \begin{align}
+        \left( i\overline{\psi} \gamma^{\mu} \partial_\mu \psi \right)^{*} &= -i \partial_\mu \psi^{\dag} \left( \gamma^{\mu} \right)^{\dag} \left( \gamma^{0} \right)^{\dag} \psi \\
+        &= -i \partial_\mu \psi^{\dag} \gamma^{0} \gamma^{\mu} \gamma^{0} \gamma^{0} \psi \\
+        &= -i \partial_\mu \overline{\psi} \gamma^{\mu} \psi \\
+        &= -i \underbrace{\partial_\mu \left( \overline{\psi} \gamma^{\mu} \psi \right)}_{\text{total deriv.}} + i \overline{\psi}\gamma^{\mu} \partial_\mu \psi \\
+        &= i \overline{\psi}\gamma^{\mu} \partial_\mu \psi 
+    ,\end{align}
+    and thus it is real.
+\end{note}
+
+This has equations of motion for $\overline{\psi}$,
+\begin{align}
+    i \gamma^{\mu} \partial_\mu \psi - m \psi = 0
+,\end{align}
+and for $\psi$,
+\begin{align}
+    -i \gamma^{\mu} \partial_\mu \overline{\psi} - m \overline{\psi} = 0
+.\end{align}
+
+These are complex conjugates of each other. This is the \textbf{Dirac equation}.
+
+It is useful to note that we can obtain a second order equation of motion by applying a second operator to the Dirac equation such that
+\begin{align}
+    \left( i \gamma^{\nu} \partial_\nu  + m \right) \left( i \gamma^{\mu} \partial_\mu - m \right)  \psi &= 0 \\
+    \left( - \gamma^{\mu} \gamma^{\nu} \partial_\mu \partial_\nu - m^2 \right) \psi &= 0 \\
+    \left(-\frac{1}{2} \left\{ \gamma^{\mu}, \gamma^{\nu} \right\} \partial_\mu \partial_\nu - m^2  \right)  &= 0 \\
+    \left( \eta^{\mu \nu} \partial_\mu \partial_\nu + m^2  \right)  &= 0 
+,\end{align}
+which is the Klein-Gordon equation.
+
+\begin{note}
+    Sometimes one writes $\gamma^{\mu} \partial_\mu =  \fbs{\partial}$.
+\end{note}
+
+This action has three notable symmetries, Lorentz, a $U \left( 1 \right) $ internal one and translations. Noether's theorem gives us conservation of angular momentum, a charge $Q$ and the stress tensors (i.e. energy and momentum) respectively.
+
+Namely, for such translations $x^{\mu} \to x^{\mu} + \epsilon^{\mu}$, we have
+\begin{align}
+    \delta\psi = \epsilon^{\mu} \partial_\mu \psi
+,\end{align}
+as before.
+
+The stress energy tensor for the Dirac action is then given by
+\begin{align}
+    T^{\mu \nu} &= i\overline{\psi} \gamma^{\mu} \partial^{\nu} \psi 
+,\end{align}
+\emph{on shell} (where the equations of motion have made other terms vanish).
+
+For a Lorentz transformation $x^{\mu} \to \tensor{\Lambda}{^{\mu}_{\nu}} x^{\nu}$, the spinor transforms as
+\begin{align}
+    \delta \psi_a = -\omega^{\mu \nu} \left( x_\nu \partial_\mu \psi_a - \frac{1}{2} \tensor{\left( S_{\mu \nu} \right)}{^{b}_a} \psi_b \right) 
+,\end{align}
+where the first part is the same as the scalar, and the second comes from the representation.
+
+The current in this case is
+\begin{align}
+    \tensor{\left( J^{\mu} \right) }{^{\lambda \nu}} = - x^{\nu} T^{\mu \lambda} + x^{\lambda} T^{\mu \nu} + i \overline{\psi}\gamma^{\mu} S^{\lambda \nu} \psi
+,\end{align}
+where the last term is once again from the representation. It will lead to the spin of the particle.
+
+Lastly, we have an internal \emph{vector} symmetry such that under
+\begin{align}
+    \psi \to e^{i\alpha}\psi \\
+    \overline{\psi} \to e^{-i\alpha} \overline{\psi}
+,\end{align}
+the action is invariant for $\alpha \in \R$. This has an associated current
+\begin{align}
+    j^{\nu}_V = \overline{\psi} \gamma^{\mu} \psi
+,\end{align}
+where the subscript tells us this is a vector symmetry. This current has charge
+\begin{align}
+    Q = \int \dd{^3} \overline{\psi}\gamma^{0}\psi
+,\end{align}
+which we will see is the \textit{electric charge}.
+
+We move to find simultaneous solutions to the Dirac equation and the Klein-Gordon equation.
+
+From the Klein-Gordon equation, for some vector components $u \left( \vec{p} \right) $ and $v\left( \vec{p} \right) $, we know solutions will be of the form
+\begin{align}
+    \psi \left( x \right) \sim  u\left( \vec{p} \right) e^{i p x} + v \left( \vec{p} \right) e^{ipx}
+,\end{align}
+with $p^2 = m^2$. Generically this will not solve the Dirac equation. Then, imposing it, we find that
+\begin{align}
+    \left( -\fbs{p}+m \right) u \left( \vec{p} \right) =0 && \left( \fbs{p} + m \right) v \left( \vec{p} \right) =0
+.\end{align}
+
+In the chiral representation, the first of these becomes
+\begin{align}
+    \mqty( m I_2 & - p \cdot \sigma \\ p \cdot \sigma & m I_2 ) \mqty(u_1 \\ u_2)
+.\end{align}
+This implies
+\begin{align}
+    m u_1 &= p \cdot \sigma u_2
+.\end{align}
+
+\begin{note}
+    One should make use of $m^2 = \left( p \cdot \sigma \right) \left(  p \cdot \overline{\sigma} \right) $ to recognise the other equation as identical to this one.
+\end{note}
+
+These together give us
+\begin{align}
+    \sqrt{p \cdot \sigma}  u_2 = \sqrt{p \cdot \overline{\sigma}}  u_1
+.\end{align}
+
+Then, we see that with $\xi^{s}$ for $s = 1,2$ given by $\xi^{1} = \mqty( 1 \\ 0 )$ and $\xi^{2} = \mqty( 0 \\ 1)$ allow us to write
+\begin{align}
+    u^{s}\left( \vec{p} \right) = \mqty( \sqrt{p \cdot \sigma} \xi^{s} \\ \sqrt{p \cdot \overline{\sigma}}  \xi^{s} )
+.\end{align}
+
+Identically for the second of our equations, one finds
+\begin{align}
+    v^{s}\left( \vec{p} \right) = \mqty( \sqrt{p \cdot \sigma}  \eta^{s} \\ - \sqrt{p \cdot \overline{\sigma}} \eta^{s} ) 
+,\end{align}
+with $\eta^{s}$ defined identically to $\xi$.
+
+
+
+

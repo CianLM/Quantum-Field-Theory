@@ -1,0 +1,82 @@
+\lecture{20}{25/11/2024}{Maxwell's Theory}
+
+With scalar and spinor fields established we focus on the classical aspects of Maxwell's field theory. This is described by the Maxwell Lagrangian
+\begin{align}
+    \mathcal{L} = -\frac{1}{4} F_{\mu \nu} F^{\mu \nu}
+,\end{align}
+where $F_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$ is the field strength tensor and $A_\mu$ is the gauge field. The equation of motion for this theory is
+\begin{align}
+    \partial_\mu \pdv{\mathcal{L}}{\left( \partial_\mu A_\nu \right) } = 0 \implies \partial_\mu F^{\mu \nu} = 0
+.\end{align}
+
+The Bianchi identity also gives us
+\begin{align}
+    \partial_\mu \widetilde{F}^{\mu \nu} = 0 \iff \epsilon_{\mu \nu \rho \tau} \partial_\mu F^{\rho \tau} = 0 \iff\partial_\rho F_{\mu \nu} + \partial_\mu F_{\nu \rho} + \partial_\nu F_{\rho \mu} = 0
+.\end{align}
+
+We can write the equation of motion as
+\begin{align}
+    \partial_\mu \partial^{\mu} A_\nu - \partial_\mu \partial^{\nu} A_\mu = 0
+.\end{align}
+
+Which we can split into when $\nu = i$ and when $\nu = 0$ giving
+\begin{align}
+    \Box A_j - \partial^{i} \left( \partial_0 A^{0} + \partial_j A^{j} \right) = 0, && \Box A_0 - \partial_0 \left( \partial_0 A^{0} +\partial_j A^{j}  \right) = 0
+,\end{align}
+respectively. The latter can also be written as
+\begin{align}
+    (\grad^2 A_0 + \partial) \left( \grad \cdot \vec{A} \right) = 0
+,\end{align}
+which has a unique explicit solution for $A_0$
+\begin{align}
+    A_0 = \int \dd{^3x'} \frac{1}{4\pi \left| \vec{x} - \vec{x}' \right| } \left( \grad \cdot \pdv{\vec{A}}{t} \right) \left( \vec{x}' \right) 
+.\end{align}
+
+\begin{note}
+    We also have a redundancy in this theory as under
+    \begin{align}
+        A_{\mu} \to A_{\mu} + \partial_\mu \lambda
+    ,\end{align}
+    \begin{align}
+        F_{\mu \nu} \to F_{\mu \nu}' &= \partial_\mu A'_{\nu} - \partial_\nu A_{\mu}' \\
+        &= \partial_\mu \left( A_{\nu} + \partial_\nu \lambda \right) - \partial_\nu \left( A_\mu + \partial_\mu \lambda \right)  \\
+        &= F_{\mu \nu}
+    .\end{align}
+    This tells us $F_{\mu \nu}$ is gauge invariant.
+\end{note}
+
+This is called a \textbf{gauge symmetry}. The existence of this gauge symmetry is our redundancy in our description of light. One way to see this is that
+\begin{align}
+    \left( \eta_{\mu \nu} \partial_\rho \partial^{\rho} - \partial_\mu \partial_\nu \right)  A^{\nu} = 0
+,\end{align}
+is a non-invertible operator since $A^{\nu} = \partial^{\nu} \lambda$ solves this $\forall \lambda$.
+
+Another reason is that Noether's theorem applied to the gauge symmetry gives us
+\begin{align}
+    j^{\mu} = \pdv{\mathcal{L}}{\left( \partial_\mu A_\nu \right) } \delta A_\nu = -F^{\mu \nu} \partial_\nu \lambda
+,\end{align}
+which subject to the equations of motion becomes
+\begin{align}
+    j^{\mu} = -\partial_{\nu} \left( \lambda F^{\mu \nu}\right) 
+,\end{align}
+which gives us charge
+\begin{align}
+    Q = \int \dd{^3x} j^{0} = \int \dd{^3x} \partial_i \left( \lambda F^{-i} \right) 
+.\end{align}
+For any $\lambda$ with compact support his vanishes.
+
+All $A^{\nu}$ related by gauge transformations, i.e. $A^{\nu} + \partial^{\nu} \lambda$, $\forall \lambda$, are referred to as \textbf{gauge orbits}. They partition and span the space of $A^{\nu}$. Distinct physical states live on different gauge orbits, and states on the same orbit are physically equivalent.
+
+There are many ways to fix this redundancy and gain a unique physical $A^{\nu}$ for each distinct gauge orbit. This is referred to as \textit{fixing the gauge}. Here we list two:
+\begin{enumerate}[label=\arabic*)]
+    \item The \textit{Lorentz gauge} is the imposition of $\partial_\mu A^{\mu} = 0$. Say $\partial_\mu A^{\mu} = f \left( x \right)$. One can always find $\lambda$ such that $\Box \lambda = -f \implies \partial_\mu A'^{\mu} = \partial_\mu A^{\mu} + \Box \lambda = f + \left( -f \right) = 0$. The down side that there is still residual freedom as one can further shift by $\chi$ if $\Box \chi = 0$. The upside is that this is a Lorentz invariant gauge.
+    \item The \textit{Coulomb gauge} is when one imposes $\grad \cdot \vec{A} = 0$. As before, if $\partial_i A^{i} = f\left( x \right)$, we can shift $A_{i} \to A_{i} + \partial_i \alpha$ to comply with the condition. There is still the residual $\grad^2 \chi = 0$ freedom. However, the equation of motion when $\nu = 0$ implies
+        \begin{align}
+            \grad^2 A_0 + \partial_0 \left( \grad \cdot \vec{A} \right) = 0
+        ,\end{align}
+        which reduces in the Coulomb gauge to
+        \begin{align}
+            \grad^2 A_0 = 0
+        .\end{align}
+        Using $\lambda$ one can set $A_0 = 0$, with $A_0 = A_0 + \partial_0 \lambda$. The upside is that all freedom is gone, but Lorentz invariance is broken.
+\end{enumerate}

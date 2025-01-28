@@ -2,14 +2,15 @@
 
 We can check this transformation explicitly with
 \begin{align}
-    \mathcal{L} &\to \frac{1}{2}\eta^{\mu \nu} \tensor{\left( \Lambda^{-1} \right) }{^{\rho}_\mu} \partial_\rho \phi \left( \Lambda^{-1} x \right) \tensor{\left( \Lambda^{-1} \right) }{^{\sigma}_{\nu}} \partial_\sigma \phi \left( \Lambda^{-1} \right) -\frac{1}{2}m^2 \phi^2 \left( \Lambda x \right) \\
-    &= \frac{1}{2} \eta^{\rho \sigma} \partial_\rho \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2 = \mathcal{L}
+    \mathcal{L} &\to \frac{1}{2}\eta^{\mu \nu} \tensor{\left( \Lambda^{-1} \right) }{^{\rho}_\mu} \partial_\rho \phi \left( \Lambda^{-1} x \right) \tensor{\left( \Lambda^{-1} \right) }{^{\sigma}_{\nu}} \partial_\sigma \phi \left( \Lambda^{-1}x \right) -\frac{1}{2}m^2 \phi^2 \left( \Lambda x \right) \\
+    &= \frac{1}{2} \eta^{\rho \sigma} \partial_\rho \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2 \\
+    &= \mathcal{L} 
 ,\end{align}
-and therefore
+and therefore $\mathcal{L}\left( x \right) \to \mathcal{L}'\left( x \right) = \mathcal{L}\left( y \right) $ gives us
 \begin{align}
     S \to \int \dd{^{4}x} \mathcal{L}\left( y \right) = \int \dd{^{4}y} \mathcal{L}\left( y \right) 
 ,\end{align}
-as $\det \left( \Lambda \right) = 1$. Thus the action is also Lorentz invariant.
+as $\det \left( \Lambda \right) = 1$ means the Jacobian is $1$. Thus the action is also Lorentz invariant.
 
 \begin{theorem}[ (Noether's Theorem)]~
     \begin{enumerate}[label=\arabic*)]
@@ -101,7 +102,7 @@ where making this an infinitesimal transformation and expanding in a Taylor seri
 
 The Lagrangian changes by a total derivative under this transformation such that
 \begin{align}
-    \delta \mathcal{L} = e^{\mu} \partial_\mu \mathcal{L} = \partial_\mu \underbrace{\epsilon^{\mu} \mathcal{L}}_{\mathcal{J}^{\mu}}
+    \delta \mathcal{L} = \epsilon^{\mu} \partial_\mu \mathcal{L} = \partial_\mu \underbrace{\epsilon^{\mu} \mathcal{L}}_{\mathcal{J}^{\mu}}
 .\end{align}
 
 Therefore, substituting in $\delta \phi_a$ and $\mathcal{J}^{\mu}$, our conserved current is
@@ -119,15 +120,15 @@ namely that the stress energy tensor is conserved on shell.
 
 Further, from $T^{\mu \nu}$ we can construct four conserved charges given by
 \begin{itemize}
-    \item the \textit{energy}, $E = \int \dd{^3x} T^{00}$ by choosing $e^{\mu} = \left( 1,0,0,0 \right) $,
-    \item the \textit{momenta}, $p^{i} = \int \dd{^3x} T^{0i}$ where $\epsilon = \left( 0,1,0,0 \right) $, $\left( 0,0,1,0 \right) $ or $\left( 0,0,0,1 \right) $.
+    \item the \textit{energy}, $E = \int \dd{^3x} T^{00}$ by choosing $\epsilon^{\mu} = \left( 1,0,0,0 \right) $,
+    \item the \textit{momenta}, $p^{i} = \int \dd{^3x} T^{0i}$ where $\epsilon^{\mu} = \left( 0,1,0,0 \right) $, $\left( 0,0,1,0 \right) $ or $\left( 0,0,0,1 \right) $.
 \end{itemize}
 
 \begin{example}[Local Symmetry]
     For the free massive scalar field
     \begin{align}
         \tensor{T}{^{\mu}_{\nu}} &= \pdv{\mathcal{L}}{\left( \partial_\mu \phi \right) } \partial_\nu \phi - \delta^{\mu}_\nu \mathcal{L} \\
-        T^{\mu \nu} &= \partial^{\mu} \phi \partial^{\nu} - \eta^{\mu \nu} \mathcal{L} \\
+        T^{\mu \nu} &= \partial^{\mu} \phi \partial^{\nu} \phi - \eta^{\mu \nu} \mathcal{L} \\
         T^{00} &= \frac{1}{2} \dot{\phi}^2 + \frac{1}{2} \left( \grad \phi \right)^2 + \frac{1}{2} m^2 \phi^2
     ,\end{align}
     where observe that

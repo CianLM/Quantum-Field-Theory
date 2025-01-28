@@ -1,0 +1,137 @@
+\lecture{23}{02/12/2024}{QED}
+
+We now have an interacting Lagrangian term
+\begin{align}
+    \mathcal{L}_\text{int} = -e \overline{\psi} A_\mu \gamma^{\mu} \psi
+,\end{align}
+where $e$ is our (dimensionless) coupling constant, $\left[ e \right] = 0$ and thus this is a marginal coupling. This also multiplies the $U\left( 1 \right) $ which motivates the name charge. It is traditional to define the \textit{fine structure constant}
+\begin{align}
+    \alpha = \frac{e^2}{4\pi \hbar c} \sim \frac{1}{137}
+.\end{align}
+
+Before we dive into full QED, we briefly discuss scalar QED, coupling gauge fields to scalars. We have $\partial_\mu F^{\mu \nu}$ and want to put a conserved current $\partial_\nu j^{\nu} = 0$ depending on a scalar field $\phi$ on the right. There are no internal symmetries for real scalars so it is impossible to couple to real scalars. However for complex scalars, we do have such a conserved current. Namely, one can take
+\begin{align}
+    \mathcal{L} = -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} + D_\mu \phi^{*} D^{\mu} \phi - m\left| \phi \right|^2
+,\end{align}
+where
+\begin{align}
+    D_\mu \phi = \partial_\mu \phi + i e A_\mu \phi
+.\end{align}
+
+The invariance of this action is under
+\begin{align}
+    A_\mu \to A_\mu + \partial_\mu \lambda \\
+    \phi \to e^{-ie \lambda\left( x \right) } \phi \\
+    \phi^{*} \to e^{i e \lambda \left( x \right) } \phi^{*}
+,\end{align}
+with interaction term
+\begin{align}
+    \mathcal{L}_\text{int} = i e \underbrace{\left( \partial_\mu \phi^{*} \phi - \phi^{*} \partial_\mu \phi \right)}_{j_\mu} A^{\mu} + e^2 A_\mu A^{\mu} \phi^{*} \phi 
+,\end{align}
+where one sees that the $U\left( 1 \right)$ internal symmetry for the complex scalar field gives us the $j_\nu$ term, but also gave us the quadratic term. The current then depends on $A_{\mu}$ as well.
+
+Revisiting Noether's theorem with this $\mathcal{L}_\text{int}$,
+\begin{align}
+    j^{\mu} &= \pdv{\mathcal{L}}{\partial_\mu \phi} \delta \phi + \pdv{\mathcal{L}}{\left( \partial_\mu \phi^{*} \right) } \delta \phi^{*} \\
+    &= \left( -ie \right) \left( \partial_\mu \phi^{*} \phi - \phi^{*} \partial_\mu \phi - 2i e \phi^{*} \phi\right) 
+,\end{align}
+for constant $\lambda = 1$.
+
+Thus our takeaway is that minimal coupling is done by promoting $\partial_\mu \to D_\mu$.
+
+\subsection{QED Feynman rules}
+
+\begin{itemize}
+    \item For external lines, we first consider photons with have a polarization vector $\epsilon_\mu^{s}\left( p \right) $ so we write
+    
+            \item For external lines do nothing.
+            \item For each vertex, write the factor
+                \begin{align}
+                    \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a -- [boson,momentum'={$\vec{p}_1$}] b -- [fermion,rmomentum'={$\vec{p}_2$}] c; 
+     d --[fermion,rmomentum'={$\vec{p}_3$}] b;
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; = -ie \gamma^{\mu} \left( 2\pi \right)^{4} \delta \left( p_1 - p_2 - p_3 \right) 
+                .\end{align}
+            \item For the photon propagator, we have
+                \begin{align}
+ \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a[particle=$\mu$] -- [photon,momentum'={$\vec{p}$}] b  [particle=$\nu$]
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; &= i\int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 + i \epsilon} \underbrace{\left( -\eta_{\mu \nu} - \left( \alpha - 1 \right) \frac{p_\mu p_\nu}{p^2} \right)}_{\widetilde{\Pi}_{\mu\nu}}, 
+                \end{align}
+            \item and for the fermionic propagator
+                \begin{align}
+ \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a  -- [fermion,momentum'={$\vec{k}$}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; &= \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{\fbs{p} + m}{p^2 - m^2 + i \epsilon}, 
+                .\end{align}
+            \item and we have minus signs if fermions are swapped.
+\end{itemize}
+
+With these we will evaluate the $S$-matrix
+\begin{align}
+    \bra{f} S - \mathbb{I} \ket{i} = i \mathcal{A}\left( 2\pi \right)^{4} \delta^{4} \left( \sum_{f}^{} p_f - \sum_{i}^{} p_{i} \right) 
+,\end{align}
+where $\mathcal{A}$ is an amplitude.
+
+We have two requirements on the $S$-matrix:
+\begin{enumerate}
+    \item If we have an internal photon, the amplitude should take the structure $\mathcal{A} = \mathcal{A}_{\mu \nu} \widetilde{\Pi}^{\mu \nu}$ where gauge invariance of $\mathcal{A}$ implies $A_{\mu \nu} p^{\mu} p^{\nu} = 0$. This is equivalent to saying the answer should be independent of $\alpha$.
+    \item If we have an external photon, then the amplitude should take the form $\epsilon^{\mu}_s \mathcal{A}_\mu$. Once again the Lorentz invariance of $\mathcal{A}$ gives $A'_\mu = \tensor{\Lambda}{_\mu}^{\nu} \mathcal{A}_\nu$ and $p'_\mu = \tensor{\Lambda}{_\mu^{\nu}} p_\nu$.
+
+        Now the polarization vector transforms as
+        \begin{align}
+            \epsilon'^{\mu}_s = \tensor{\Lambda}{^{\mu}_\nu} \epsilon^{\nu}_s + c p^{\mu}
+        .\end{align}
+        We have the condition that $\epsilon \cdot \vb{p} = 0$ has a trivial solution of $\epsilon \propto p$ as $p^2 = 0$.
+        \begin{example}
+            Take
+            \begin{align}
+                \tensor{\Lambda}{^{\mu}_\nu} = \mqty( \frac{3}{2} & 1 & 0 & -\frac{1}{2} \\ 1 & 1 & 0 & -1 \\ 0 & 0 & 1 & 0 \\ \frac{1}{2}  & 1 & 0 & \frac{1}{2} )
+            ,\end{align}
+            with $p^{\mu} = \left( E,0,0,E \right) $ and $\epsilon^{\mu}_1 = \mqty( 0 & 1 & 0 & 0)$, $\epsilon^{\mu}_2 = \mqty( 0 & 0 & 1 & 0)$ gives
+            \begin{align}
+                \tensor{\Lambda}{^{\mu}_\nu} p^{\nu} = p^{\nu}
+            ,\end{align}
+            but
+            \begin{align}
+                \tensor{\Lambda}{^{\mu}_\nu} \epsilon^{\nu}_1 = \epsilon^{\mu}_1 + \frac{1}{E} p^{\mu}
+            .\end{align}
+        \end{example}
+        Then, a requirement of Lorentz invariance of $\mathcal{A}$ is
+        \begin{align}
+            p^{\mu} \mathcal{A}_\mu = 0
+        .\end{align}
+        This is a \textbf{Ward identity}.
+\end{enumerate}
+
+These two conditions are sanity ones as reasonable theories should obey them. They hold non-perturbatively.
+
+\subsection{Scattering in QED}
+
+Consider $e^{-} e^{-} \to e^{-} e^{-}$.
+
+One can also consider $e^{+} e^{-} \to e^{+} e^{-}$ or $e^{-} \gamma \to e^{-} \gamma$. The last of these requires the Ward identity and the former uses  $\mathcal{A}_{\mu \nu} p^{\mu} p^{\nu} = 0$. 
+
+
+We thus consider $b_{p,s}^{\dag} b_{q,r} \to b^{\dag}_{p',s'} b^{\dag}_{q',r'}$. Reordering the initial or final state gives an overall minus sign as these operators anti-commute.
+
+\begin{align}
+    \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+                f  -- [fermion, momentum'={\(p, s\)}] a -- [boson,momentum={\(k = p - p' \)}] b -- [anti fermion,rmomentum'={\(q,r\)}] c; 
+     d --[anti fermion,rmomentum'={\(q', r'\)}] b;
+     g --[anti fermion,rmomentum={\(p', s'\)}] a;
+};}} - \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+                f  -- [fermion, momentum'={\(p, s\)}] a -- [boson,momentum={\(k\)}] b -- [anti fermion,rmomentum'={\(q,r\)}] c; 
+     d --[anti fermion,rmomentum'={\(p', s'\)}] b;
+     g --[anti fermion,rmomentum={\(q', r'\)}] a;
+};}}
+.\end{align}
+
+We can then use our Feynman rules and conclude that the connected diagrams above generate
+\begin{align}
+    \bra{f} S \ket{i}_C = \left( -ie \right)^2 \left( \overline{u}^{s'}_{p'} \gamma^{\mu} u^{s}_p \frac{\widetilde{\Pi}_{\mu \nu}}{\left( p - p' \right)^2}\left( p - p' \right) \overline{u}^{r'}_{q'} \gamma^{\nu} u^{s}_q - \overline{u}^{s'}_{p'} \gamma^{\mu} u^{r}_q i \frac{\widetilde{\Pi}_{\mu \nu }\left( p - q' \right) }{\left( p - q' \right)^2} \overline{u}^{r'}_{q'} \gamma^{\nu} u^{s}_p  \right) \left( 2\pi \right)^{4} \delta \left( p  + q - p' - q' \right)
+.\end{align}
+

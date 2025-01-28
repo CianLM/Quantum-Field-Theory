@@ -1,0 +1,105 @@
+\lecture{14}{11/11/2024}{Feynman Rules}
+
+\begin{note}
+    $\Delta_{xy} = \bra{0} T \phi^{0}\left( x \right) \phi^{0}\left( y \right) \ket{0}$ and $\hat{\Delta}_{xy} = \bra{0} T \psi^{0} \left( x \right) \psi^{0\dag} \left( y \right) \ket{0}$
+\end{note}
+
+We now state the Feynman rules for scalar Yukawa theory (for the connected $S$-matrix).
+
+\begin{enumerate}
+    \item Draw all possible connected diagrams for the relevant process (i.e. fixed initial and final states).
+    \item For each diagram the contribution to the $S$ matrix is:
+        \begin{enumerate}[label=\roman*)]
+            \item Assignment momenta to each line.
+            \item Internal lines should be given by
+                \begin{align}
+ \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a -- [scalar,momentum'={$\vec{p}$}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; &= \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - m^2 - i \epsilon}, \\
+ \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a -- [fermion,momentum'={$\vec{k}$}] b 
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; &= \int \frac{\dd{^4k}}{\left( 2\pi\right)^4} \frac{i}{k^2 - m^2 - i \epsilon}, 
+                .\end{align}
+            \item For external lines do nothing.
+            \item For each vertex, write the factor
+                \begin{align}
+                    \feynmandiagram [baseline=(a.base), horizontal=a to b] {
+     a -- [scalar,momentum'={$\vec{p}_1$}] b -- [fermion,rmomentum'={$\vec{p}_2$}] c; 
+     d --[fermion,rmomentum'={$\vec{p}_3$}] b;
+%b -- [boson,edge label=\(A^\mu\)] d 
+ }; = \left( -ig \right) \left( 2\pi \right)^{4} \delta \left( p_1 - p_2 + p_3 \right) 
+                .\end{align}
+            \item Sum over all diagrams and integrate over undetermined (loop) momenta.
+        \end{enumerate}
+\end{enumerate}
+
+\begin{note}
+    External particles are on shell as $p_i^2 = M^2$. However internal particles are not as $k^2 \neq m^2$. This gives them the name \textit{virtual particles}.
+
+    What we computed is a tree-level diagram. This means we do not have any loops in our diagrams. Tree-level diagrams are the leading connected contributions and the emphasis of this course.
+\end{note}
+
+\begin{example}
+    We move to study nucleon--anti nucleon scattering: $\psi^{\dag} \psi \to \psi^{\dag} \psi$ at leading order (+ connected).
+
+    We have that
+    \begin{align}
+        \bra{f} S \ket{i}_c &=  \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+    f --[fermion,momentum'={$\vec{p}_1$}] a -- [scalar,momentum'={$\vec{k}$}] b -- [fermion,rmomentum'={$\vec{p}_2$}] c; 
+     d --[fermion,rmomentum'={$\vec{p}_3$}] b;
+     g --[fermion,rmomentum={$\vec{p}_4$}] a;
+%b -- [boson,edge label=\(A^\mu\)] d 
+};}} + \vcenter{\hbox{\feynmandiagram [horizontal=a to b] {
+    f --[fermion,momentum'={$\vec{p}_1$}] a -- [scalar,momentum'={$\vec{k}$}] b -- [fermion,momentum'={$\vec{p}_2$}] c; 
+     d --[fermion,rmomentum'={$\vec{p}_3$}] b;
+     g --[fermion,momentum={$\vec{p}_1$}] a;
+};}} + \mathcal{O}\left( g^3 \right)  \\
+&= \int \frac{\dd{^4k}}{\left( 2\pi\right)^4} \frac{i}{k^2 - m^2 - i\epsilon} \left( -ig \right) \left( 2\pi \right)^{4} \delta \left( p_1 - k - p_3 \right) \left( -ig \right) \left( 2\pi \right)^{4} \delta \left( k + p_2 - p_4 \right) \nonumber \\
+&\quad + \int \frac{\dd{^4k}}{\left( 2\pi\right)^4} \frac{i}{k^2 - m^2 - i \epsilon} \left( -ig \right) \left( 2\pi \right)^{4} \delta \left( p_1 + p_2 + k \right) \left( -ig \right) \left( 2\pi \right)^{4} \delta \left( -k -p_3 - p_4 \right)  \\
+&= \left( -ig \right)^2 \left( 2\pi \right)^{4} \delta \left(  p_1 + p_2 - p_3 - p_4\right) \left( \frac{i}{\left( p_1 - p_3 \right)^2 - m^2 - i \epsilon} + \frac{i}{\left( p_1 - p_2 \right)^2 - m^2 - i \epsilon} \right) + \mathcal{O}\left( g^3 \right)
+    .\end{align}
+    This second diagram has an interesting momentum dependence.
+
+    In the center of mass frame,
+    \begin{align}
+        \left( p_1 + p_2 \right)^2 = 4 \left( M^2 + \vec{p}_1^2 \right) 
+    .\end{align}
+    Then
+    \begin{align}
+        \left( p_1 + p_2 \right)^2 - m^2 = 4 \left( M^2 + \vec{p}_1^2  \right) - m^2
+    .\end{align}
+    If $m < 2M$, we will never have $\left( p_1 + p_2 \right)^2 = m^2$ and thus can remove $i \epsilon$.
+    If $m < 2M$, then for some $\vec{p}_1$ it is possible. This leads to a bump.
+\end{example}
+
+\subsection{Mandelstam Variables}
+
+For $2 \to 2$ scattering the same combinations of momenta appear often. We define
+\begin{align}
+    s &= \left( p_1 + p_2 \right)^2 = \left( p_3 + p_4 \right)^2 \\
+    t &= \left( p_1 - p_3 \right)^2 = \left( p_2 - p_4 \right)^2 \\
+    u &= \left( p_1 - p_4 \right)^2 = \left( p_2 - p_3 \right)^2
+.\end{align}
+
+Where we assume $p_1 + p_2 = p_3 + p_4$.
+
+With these variables we see our two diagrams were representing the $t$ and $s$ channel respectively.
+
+For $\psi \psi \to \psi \psi$ scattering we have $t$ and $u$ channels respectively.
+
+Assuming all particles have the same mass we have that given $p_1 = \left( E, p\hat{z} \right) $ and $p_2 = \left( E, - p \hat{z} \right) $, we have $p_3 = \left( E, \vec{p} \right) $ and $p_4 = \left( E, - \vec{p} \right) $ with $\vec{p} = \left( p \sin \theta, p \cos \theta, 0 \right) $ in the center of mass frame.
+
+Notice that
+\begin{align}
+    s = 4E^2  &&
+    t = -2p^2 \left( 1 - \cos \theta \right)  &&
+    u = -2p^2 \left( 1 + \cos \theta \right) 
+,\end{align}
+which give us $s + t + u = 4m^2$. One can think of $s$ as the total energy of the system in the center of mass frame. $t$ and $u$ are measures of momentum exchange.
+
+
+
+
+

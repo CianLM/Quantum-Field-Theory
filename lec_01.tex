@@ -37,12 +37,12 @@ The first consequence is that we are dealing with an infinite number of degrees 
     which have equations of motion
     \begin{align}
         \grad \cdot \vb{E} &= \rho  \\
-        \grad \times  \vec{B} = \vec{J} + \pdv{\vec{E}}{t}
+        \grad \times  \vec{B} &= \vec{J} + \pdv{\vec{E}}{t}
     ,\end{align}
     and two identities
 \begin{align}
     \grad \cdot \vec{B} &= 0 \\
-    \dv{\vec{B}}{t} = - \grad \times \vec{E}
+    \dv{\vec{B}}{t} &= - \grad \times \vec{E}
 .\end{align}
 
 This is a (hopefully) familiar classical field that we will quantise in due time.
@@ -65,7 +65,7 @@ however \textit{everybody} just refers to $\mathcal{L}$ as a Lagrangian as we wi
 The equations of motion are determined by extremizing with respect to the fields. 
 
 \begin{note}
-    Note that we assume that the Lagrangian $\mathcal{L}\left[ \phi_a, \partial_\mu \phi_a \right] $ is not a function of $\partial^2 \phi_a$ or higher derivatives. This is for complicated reasons related to ghosts that are beyond the scope of this course.
+    We assume that the Lagrangian $\mathcal{L}\left[ \phi_a, \partial_\mu \phi_a \right] $ is not a function of $\partial^2 \phi_a$ or higher derivatives. This is for complicated reasons related to ghosts that are beyond the scope of this course.
 \end{note}
 
 Extremising the action with respect to the field, we want to find the conditions for which $\Delta S = 0$, i.e. the action is at a minima/saddle point. We see that
@@ -85,7 +85,7 @@ for which vanishing requires
 \begin{example}
     A free massive scalar field is described by the Lagrangian
     \begin{align}
-        \mathcal{L} &= \frac{1}{2} \eta^{\mu \nu} \partial_\mu \phi \partial_\nu - \frac{1}{2} m^2 \phi^2 \\
+        \mathcal{L} &= \frac{1}{2} \eta^{\mu \nu} \partial_\mu \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2 \\
         &= \frac{1}{2} \dot{\phi}^2 - \frac{1}{2} \left( \grad \phi \right)^2 - \frac{1}{2}m^2 \phi^2
     .\end{align}
 

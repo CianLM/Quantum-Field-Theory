@@ -1,0 +1,99 @@
+\lecture{22}{29/11/2024}{Covariant Derivatives}
+
+We expect that the propagator is the Green's function for the equation of motion and thus acting the equation of motion on the propagator $\left<T A_\mu \left( x \right) A_\nu \left( y \right)  \right>$ should give a delta function. Therefore
+\begin{align}
+    \bra{0} T A_{\mu}\left( x \right) A_\nu \left( y \right) \ket{0} &= i \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} e^{-ip \left( x - y \right) } \Pi_{\mu \nu} \\
+     &= -i \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{e^{-ip \left( x - y \right) }}{p^2 + i \epsilon} \left( \eta_{\mu \nu} + \left( \alpha - 1 \right) \frac{p_\mu p_\nu}{p^2} \right)  
+.\end{align}
+
+\begin{notes}~
+    \begin{itemize}
+        \item The minus sign is correct. If $\mu = i$ and $\nu = j$, we will see a positive sign for the physical components which is identical to what we saw for a scalar field.
+        \item The presence of $\alpha$ should in principle bother us as it is completely unphysical. The $S$ matrix should not depend on $\alpha$ (and it doesn't as we will see). One can then fix any value of $\alpha$.
+        \item Common choices for $\alpha$ include
+            \begin{itemize}
+                \item $\alpha = 1$, called \textit{Feynman-t'Hooft} gauge,
+                \item $\alpha = 0$, called Lorentz (or Landau) gauge, which is a strong enforcement of the Lorentz gauge,
+                \item $\alpha \to \infty$, called the unitary gauge, is useful in non-abelian gauge theories.
+            \end{itemize}
+    \end{itemize}
+\end{notes}
+
+\subsection{Interactions: couple light to matter}
+
+The Maxwell equations, $\partial_\mu F^{\mu \nu} = j^{\nu}$ have the consequence that
+\begin{align}
+    \partial_\nu \partial_\mu F^{\mu \nu} = \partial_\nu j^{\nu} \implies 0 = \partial_\nu j^{\nu}
+,\end{align}
+namely, that $j^{\nu}$ is a conserved current.
+
+If $j^{\nu}$ is independent of $A_\nu$ itself, then we can write
+\begin{align}
+    \mathcal{L} = -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} - j^{\mu} A_\mu
+.\end{align}
+
+Looking at the action and gauge transforming, we see
+\begin{align}
+    S = \int \dd{^4x} \mathcal{L} \to \int \dd{^{4}x} \left( -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} - j^{\mu} \left( A_\mu + \partial_\mu \lambda \right)   \right)  = \int \dd{^4x } \mathcal{L} - \int \dd{^4x} \left( \partial_\mu \left( j^{\mu} \lambda \right) - \partial_\mu j^{\mu} \right) \lambda
+.\end{align}
+
+Namely, the action is gauge invariant if the current is conserved.
+
+With this, lets couple light to spinors.
+
+Recall the Dirac Lagrangian $\mathcal{L} = \overline{\psi} \left( i \fbs{\partial} - m \right) \psi$ has current
+\begin{align}
+    j^{\mu} = \overline{\psi}\gamma^{\mu} \psi
+,\end{align}
+due to the internal symmetry $\psi \to e^{i \alpha} \psi$ (and $\overline{\psi} \to e^{-i\alpha} \psi$).
+
+As this current is conserved, we can couple it to the Maxwell action without breaking gauge invariance. We thus consider Maxwell's theory with spinorial matter and this current coupling them giving
+\begin{align}
+    \mathcal{L} = -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} + \overline{\psi} \left( i \fbs{\partial} - m  \right) \psi - e j^{\mu} A_\mu
+,\end{align}
+where we have introduced a coupling constant $e$. Notice that we can equivalently write this as
+\begin{align}
+    \mathcal{L} &=  -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} + \overline{\psi} \left( i \fbs{\partial} - e A_\mu \gamma^{\mu} - m  \right) \psi \\
+    \mathcal{L} &= -\frac{1}{4} F_{\mu \nu} F^{\mu \nu} + \overline{\psi} \left( i \fbs{D} - m \right) \psi 
+,\end{align}
+where $D_{\mu} = \partial_\mu + i \epsilon A_\mu$ is the \textbf{covariant derivative}.
+
+As one has that the gauge field transforms under a local gauge transformation
+\begin{align}
+    A_\mu \to A_\mu + \partial_\mu \lambda \left( x \right) 
+,\end{align}
+it is natural to promote the spinorial $U\left( 1 \right) $ symmetry such that under gauge transformation it undergoes
+\begin{align}
+    \psi \to e^{-i e \lambda \left( x \right) }\psi \\
+    \overline{\psi} \to e^{ie \lambda \left( x \right) }\overline{\psi}
+.\end{align}
+
+Then we have
+\begin{align}
+    D_\mu \psi &\to \partial_\mu \left( e^{-i e \lambda} \psi \right) + i e \left( A_\mu + \partial_\mu \lambda \right) e^{-ie\lambda} \psi \\
+    &= e^{-ie \lambda} \left( \partial_\mu -ie \partial_\mu \lambda + ie A_\mu + ie \partial_\mu \lambda \psi \right)  \\
+    &= e^{-i e \lambda} D_{\mu}\psi 
+,\end{align}
+which implies
+\begin{align}
+    \overline{\psi} \fbs{D} \psi \to \overline{\psi}\fbs{D}\psi
+.\end{align}
+which makes the action gauge invariant.
+
+Looking at Noether's theorem, we see
+\begin{align}
+    Q &= e\int \dd{^3x} F^{0i} \partial_i \lambda \\
+    &= -e\int \dd{^3x} \partial_i F^{0i} \lambda \\
+    \intertext{for $\lambda = 1$,}
+    Q &= -e\int \dd{^3x} j^{0} \\
+    &= -e \int \dd{^3x} \overline{\psi} \gamma^{0} \psi 
+.\end{align}
+
+Gauge symmetries, if they contain a \textit{global symmetry} (i.e. internal symmetry) where the parameter is constant, then we have an associated charge.
+
+\begin{note}
+    Constant $\lambda$ is called a \textit{large gauge transformation} as it does not vanish at infinity.
+\end{note}
+
+
+

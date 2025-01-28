@@ -1,0 +1,69 @@
+\lecture{13}{08/11/2024}{Yukawa Scattering}
+
+We consider the scattering of nucleons, $\ket{\psi \psi} \to \ket{\psi \psi}$ with initial state
+\begin{align}
+    \lim_{t \to -\infty} \sqrt{2 \widetilde{\omega}_{p_1}} \sqrt{2\widetilde{\omega}_{p_2}}  c_{p_1}^{\dag}\left( t \right) c^{\dag}_{p_2} \left( t \right) \ket{\Omega}
+,\end{align}
+and final state
+\begin{align}
+    \lim_{t \to \infty}\sqrt{2 \widetilde{\omega}_{p_3}} \sqrt{2\widetilde{\omega}_{p_4}} c_{p_3}^{\dag} \left( t \right) c_{p_4}^{\dag} \left( t \right) \ket{\Omega}
+.\end{align}
+
+We have that $\bra{\text{final},~ +\infty} \ket{\text{initial},~ - \infty} = \bra{f} S \ket{i}$ gives us
+\begin{align}
+    \bra{f} S \ket{i} &= i^{4} \prod_{j=1}^{4} \int \dd{^{4}x_{j}} \underbrace{e^{-i p_1 x_1} \left( \Box_1 + M^2 \right) e^{-i p_2 x_2} \left( \Box + M^2 \right)}_{\text{ingoing}} \underbrace{e^{i p_3 x_3} \left( \Box_3 + M^2 \right) e^{i p_4 x_4} \left( \Box_4 + M^2 \right)}_{\text{outgoing}} \nonumber \\
+                      &\quad \bra{\Omega} T \psi \left( x_1 \right) \psi \left( x_2 \right) \psi^{\dag} \left( x_3 \right) \psi^{\dag} \left( x_4 \right) \ket{\Omega}
+.\end{align}
+
+\begin{proof}
+    
+\end{proof}
+
+We thus need to find $\left<\psi_1 \psi_2 \psi_3^{\dag} \psi_4^{\dag} \right>$. We will use Feynman diagrams to leading order $g$.
+
+To order $g^{0}$, we have
+\begin{align}
+                    \vcenter{\hbox{\feynmandiagram [small, horizontal=a to b] {
+                                a [particle=$1$] -- [fermion] b [particle=2] -- [opacity=0] c [particle=3] -- [fermion]d [particle=4] -- [opacity=0] a;
+            };}} + \vcenter{\hbox{\feynmandiagram [small, horizontal=a to b] {
+                        a [particle=$1$] -- [fermion]b [particle=2] -- [opacity=0] c [particle=4] -- [fermion]d [particle=3] -- [opacity=0] a;
+            };}}
+.\end{align}
+
+To order $g$ we have nothing constructible out of this vertex that will leave us with these four external fermions.
+
+To order $g^2$ we have two disconnected diagrams and two connected ones given by
+
+\begin{align}
+    \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+                f [particle=1] --[fermion,] a -- [scalar,] b -- [anti fermion,] c[particle=2]; 
+     d [particle=4]--[anti fermion,] b;
+     g [particle=3]--[anti fermion,] a;
+};}} + \vcenter{\hbox{\feynmandiagram [vertical=a to b] {
+                f [particle=1] --[fermion,] a -- [scalar,] b -- [anti fermion,] c[particle=2]; 
+     d [particle=3]--[anti fermion,] b;
+     g [particle=4]--[anti fermion,] a;
+};}}
+.\end{align}
+
+The connected components tell us
+\begin{align}
+    \left<\phi_1 \phi_2 \phi_3^{\dag} \phi_4^{\dag} \right>_C = \left( -ig \right)^2 \int \dd{^{4}x} \int \dd{^{4}y} \left( \hat{\Delta}_{1 x} \hat{\Delta}_{x_3} \Delta_{x y} \hat{\Delta}_{2 y} \hat{\Delta}_{y 4} + \hat{\Delta}_{1x}  \hat{\Delta}_{x 4} \Delta_{x y} \hat{\Delta}_{2 y} \hat{\Delta}_{y 3}\right)  + \mathcal{O}\left( g^3 \right) 
+.\end{align}
+
+We then replace $\bra{\Omega} T \psi \left( x_1 \right) \psi \left( x_2 \right)  \psi^{\dag} \left( x_3 \right) \psi^{\dag}\left( x_4 \right)  \ket{\Omega}$ with this expression and see that
+\begin{align}
+    \left( \Box_4 + M^2 \right) \left<\psi_1 \psi_2 \psi_3^{\dag} \psi_4^{\dag} \right> \sim  \int \left( \Box_4 + M^2\right) \left( \hat{\Delta}_{y 4} \cdots \hat{\Delta}_{x 4} \cdots  \right) 
+.\end{align}
+
+We then have
+\begin{align}
+    \bra{f} S \ket{i} &= i^{4} \left( -ig \right)^{2} \int \dd{^{4}x} \int \dd{^{4}y} \left( -i e^{-ip_1 x} \right) \left( -i e^{-i p_2 y} \right)   \Delta_{x y} \left( -i e^{i p_3 x} \right) \left( -i e^{i p_4 y} \right) \nonumber\\&\quad  + \left(  -ie^{-i p_1 x }\right) \left( -i e^{-i p_2 y} \right) \Delta_{x y} \left( -i e^{i p_3 y} \right) \left( -i e^{i p_4 x} \right) + O \left( g^3 \right)\\
+    &= i^{4} \left( -ig \right)^2 \int \dd{^{4}x} \int \dd{^{4}y} \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - m^2 - i \epsilon} e^{i x \left( p_1 + p - p_3 \right) } e^{i y \left( p_2 - p - p_4 \right) } + \{3 \leftrightarrow 4\} \\
+    &= \left( -ig \right)^2 \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - m^2 - i \epsilon} \left( 2\pi \right)^{4} \delta \left( p_1 + p - p_3 \right) \left( 2\pi \right)^{4} \delta \left( p_2 - p - p_4 \right) + \{3 \leftrightarrow 4\}  \\   
+    &= \left( -ig \right)^2 \left( 2\pi \right)^{4} \delta \left( p_1 + p_2 - p_3 - p_4 \right) \left( \frac{i}{\left( p_3 - p_1 \right)^2 - m^2} - \frac{i}{\left( p_4 - p_1 \right)^2 + m^2} \right) + \mathcal{O}\left( g^3 \right)
+,\end{align}
+where the leading delta function gives us conservation of four momenta.
+
+
+

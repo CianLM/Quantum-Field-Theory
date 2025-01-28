@@ -10,20 +10,20 @@
     ,\end{align}
     where $\phi_1 ,\phi_2$ are real scalar fields. A Lagrangian for this field is
     \begin{align}
-        \mathcal{L} = \partial_\mu \phi \partial^{\mu} \psi^{*} - V \left( \left| \psi \right|^2 \right) 
+        \mathcal{L} = \partial_\mu \psi \partial^{\mu} \psi^{*} - V \left( \left| \psi \right|^2 \right) 
     .\end{align}
     The equations of motion for this theory are
     \begin{align}
-        \partial_\mu \partial^{\mu} \psi + \pdv{V}{\phi^{*}} = 0, && \partial_\mu \partial^{\mu} \psi^{*} + \pdv{V}{\phi} = 0
+        \partial_\mu \partial^{\mu} \psi + \pdv{V}{\psi^{*}} = 0, && \partial_\mu \partial^{\mu} \psi^{*} + \pdv{V}{\psi} = 0
     .\end{align}
     The internal symmetry of this system, for constant $\alpha \in \R$,
     \begin{align}
-        \phi \left( x \right) \to \phi' \left( x \right) &= e^{i \alpha} \psi \left( x \right) \label{eq:global_phase}  \\
-        \phi^{*} \left( x \right) \to \left( \phi^{*} \left( x \right)  \right)' &= e^{-i\alpha} \psi^{*} \left( x \right) 
+        \psi \left( x \right) \to \psi' \left( x \right) &= e^{i \alpha} \psi \left( x \right) \label{eq:global_phase}  \\
+        \psi^{*} \left( x \right) \to \left( \psi^{*} \left( x \right)  \right)' &= e^{-i\alpha} \psi^{*} \left( x \right) 
     ,\end{align}
     under which $\mathcal{L} \to \mathcal{L}' = \mathcal{L}$ and $S \to S' = S$. Here $\alpha$ is the continuous parameter of the transformation, such that
     \begin{align}
-        \delta \phi &= \phi' \left( x \right) - \phi \left( x \right)  \\
+        \delta \psi &= \psi' \left( x \right) - \psi \left( x \right)  \\
         &= i \alpha \psi \\
         \delta \psi^{*} &= -i \alpha \psi^{*}
     .\end{align}
@@ -120,7 +120,7 @@ We adopt the notation $\omega \equiv \sqrt{\vb{k} \cdot \vb{k} + m^2}$. Therefor
 
 Lastly, notice that
 \begin{align}
-    \Pi \left( x \right) = \dot{\phi} = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} -i \sqrt{\frac{\omega}{2}} \left( a \left( k \right) e^{-i k_\mu x^{\mu}} - a^{*}\left( k \right) e^{i k_\mu x^{\mu}} \right)  
+    \Pi \left( x \right) = \dot{\phi} = \int \frac{\dd{^3k}}{\left( 2\pi \right)^3} \left( -i \sqrt{\frac{\omega}{2}} \left( a \left( k \right) e^{-i k_\mu x^{\mu}} - a^{*}\left( k \right) e^{i k_\mu x^{\mu}} \right) \right)   
 .\end{align}
 
 Next, we \textit{\textbf{quantize}}, namely, we declare that
@@ -148,6 +148,7 @@ Next, we \textit{\textbf{quantize}}, namely, we declare that
 &= i\int \frac{\dd{^3p}}{\left( 2\pi \right)^{3}} e^{i \vec{p} \cdot \left( \vec{x} - \vec{y} \right) } = i \delta^{3}\left( \vec{x} - \vec{y} \right)
             ,\end{align}
             as desired.
+        \item The reverse follows similarly.
     \end{enumerate}
 \end{proof}
 

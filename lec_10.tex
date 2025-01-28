@@ -61,7 +61,7 @@ as we assume $\mathcal{L}_{\text{int}}$ is a function of $\phi$ but not $\partia
     where the commutator vanishes as we have equal time.
     Then notice,
     \begin{align}
-        \partial_{x^{0}}^2 \bra{\phi_x \phi_y} &= \left<\partial_{x^{0}}^2 \phi_x \phi_y \right> + \delta \left( x^{0} - y^{0} \right) \bra{\Omega} \underbrace{\left[ \partial_{x^{0}} \phi_x , \phi_y \right]}_{-i \delta^{3}\left( \vb{x} - \vb{y} \right) } \ket{\Omega} \\
+        \partial_{x^{0}}^2 \left<\phi_x \phi_y \right> &= \left<\partial_{x^{0}}^2 \phi_x \phi_y \right> + \delta \left( x^{0} - y^{0} \right) \bra{\Omega} \underbrace{\left[ \partial_{x^{0}} \phi_x , \phi_y \right]}_{-i \delta^{3}\left( \vb{x} - \vb{y} \right) } \ket{\Omega} \\
         &= \left<\partial_{x^{0}}^2 \phi_x \phi_y \right> - i \delta^{4} \left( x -y \right) 
     .\end{align}
 
@@ -81,9 +81,9 @@ This is a first example of an expression we will call the \textit{Schwinger-Dyso
     .\end{align}
     On the contrary, if we derive via Schwinger-Dyson (and dropping the superscripts but still working with the free theory), we see
     \begin{align}
-        \left< \phi_1 \phi_2 \phi_3 \phi_4  \right>&= \int \dd{^{3}x} \delta \left( x - y \right) \left< \phi_x \phi_2 \phi_3 \phi_4\right> 
+        \left< \phi_1 \phi_2 \phi_3 \phi_4  \right>&= \int \dd{^{3}x} \delta \left( x - x_1 \right) \left< \phi_x \phi_2 \phi_3 \phi_4\right> 
     .\end{align}
-    As $\delta^{4}\left( x - x_1 \right) = \left( \Box_x + m^2 \right)  \Delta_{x1}$,
+    As $\delta^{4}\left( x - x_1 \right) = i\left( \Box_x + m^2 \right)  \Delta_{x1}$,
     \begin{align}
         \left< \phi_1 \phi_2 \phi_3 \phi_4  \right> &= i\int \dd{^{3}x} \left( \left( \Box_x + m^2 \right)  \Delta_{x 1} \right)  \left< \phi_x \phi_2 \phi_3 \phi_4\right>  \\
         &= i\int \dd{^{3}x} \Delta_{x 1}\left( \left( \Box_x + m^2 \right)     \left< \phi_x \phi_2 \phi_3 \phi_4\right> \right) \\

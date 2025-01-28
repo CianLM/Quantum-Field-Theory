@@ -1,0 +1,145 @@
+\lecture{12}{05/11/2024}{Scalar Yukawa Theory}
+
+\subsection{Quantization}
+
+We study scalar Yukawa theory with
+\begin{align}
+    \mathcal{L}_0 = \underbrace{\frac{1}{2} \partial_\mu \phi \partial^{\mu} \phi - \frac{1}{2}m^2 \phi^2}_{\text{real scalar}} + \underbrace{\partial_\mu \psi^{*} \partial^{\mu} \psi - M^2 \psi^{*} \psi}_{\text{complex scalar}}
+,\end{align}
+and interaction term
+\begin{align}
+    \mathcal{L}_\text{int} = -g \psi^{*} \psi \phi
+,\end{align}
+with $g \ll M,m$.
+
+Our goal is to infer the Feynman rules by evaluating the $S$ matrix. We begin by studying the free theory.
+
+For the free theory, recall that
+\begin{align}
+    \phi \left( x \right) = \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{\sqrt{2\omega_p} } \left( a_p e^{-ipx} + a^{\dag}_p e^{ipx} \right) 
+,\end{align}
+with $\omega_p = \sqrt{\vec{p}^2 + m^2} $ and
+\begin{align}
+    \psi \left( x \right) = \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{\sqrt{2 \widetilde{\omega}}_{p} } \left( b_{p} e^{-ipx} + c^{\dag}_p e^{ipx} \right) 
+,\end{align}
+with $\widetilde{w}_p= \sqrt{\vec{p}^2 + M^2}$. Recall that we impose the canonical quantisation (commutation relations) between each field and its canonical momenta
+\begin{align}
+    \left[ \phi \left( t,\vec{x} \right) , \underbrace{\partial_t \phi \left( t, \vec{y} \right)}_{\Pi_{\phi}}  \right]  &= i \delta \left( \vec{x} - \vec{y} \right)  \\
+    \left[ \psi \left( t,\vec{x} \right) , \Pi_{\psi}\left( t,\vec{y} \right)  \right]  &= i \delta \left( \vec{x} - \vec{y} \right) \\
+    \left[ \psi^{*} \left( t,\vec{x} \right) , \Pi_{\psi^{*}}\left( t,\vec{y} \right)  \right]  &= i \delta \left( \vec{x} - \vec{y} \right) 
+,\end{align}
+where $\Pi_{\psi} = \partial_t \psi^{*}$ and $\Pi_{\psi^{*}} = \partial_t \psi$ which imply
+\begin{align}
+    \left[ a_{p}, a^{\dag}_{p'} \right] &= \left( 2\pi \right)^{3} \delta \left( \vec{p} - \vec{p}' \right)  \\
+    \left[ b_{p}, b^{\dag}_{p'} \right] &= \left( 2\pi \right)^{3} \delta \left( \vec{p} - \vec{p}' \right)  \\
+    \left[ c_{p}, c^{\dag}_{p'} \right] &= \left( 2\pi \right)^{3} \delta \left( \vec{p} - \vec{p}' \right)
+.\end{align}
+
+With these, we can obtain the normal ordered Hamiltonian given by
+\begin{align}
+    H_0 = \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \left( \omega_p a^{\dag}_p a_p + \widetilde{\omega}_p b^{\dag}_p b_p + \widetilde{\omega}_{p} c^{\dag}_p c_p \right) 
+.\end{align}
+
+We also have the charge associated to the symmetry $\psi \to e^{i\alpha} \psi$ where
+\begin{align}
+    Q &= i \int \dd{^3x} \nord{\left( \dot{\psi}^{*} \psi - \psi^{*} \dot{\psi} \right)}\\
+    &=  \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \left( c^{\dag}_p c_p - b^{\dag}_p b_p \right)
+.\end{align}
+
+As this is a conserved charge we have $\left[ H_0, Q \right] = 0$.
+
+Moving to the Fock space, we once again have a vacuum state defined such that
+\begin{align}
+    a_p \ket{0} = b_p \ket{0} = c_p \ket{0} = 0
+.\end{align}
+
+All of which imply $H_0 \ket{0} = 0$. We can then create one particle states, called \textit{meson} states $\ket{\phi}$, with
+\begin{align}
+    \ket{\phi} \equiv a^{\dag}_p \ket{0} \implies H \ket{\phi} = \omega_{p} \ket{\phi} \text{~and~} Q \ket{\phi} = 0
+.\end{align}
+
+We also define one particle \textit{nucleon} states $\ket{\psi}$, defined by
+\begin{align}
+    \ket{\psi} = c^{\dag}_p \ket{0} \implies H \ket{\psi} = \widetilde{\omega}_p \ket{\psi} \text{~and~} Q \ket{\psi} = \ket{\psi}
+.\end{align}
+
+Lastly we define \textit{antinucleon} states $\ket{\psi^{\dag}}$ defined by
+\begin{align}
+    \ket{\psi^{\dag}} = b^{\dag}_p \ket{0} \implies H \ket{\psi^{\dag} = \widetilde{\omega}_p \ket{\psi^{\dag}}} \text{~and~}Q \ket{\psi^{\dag}} = - \ket{\psi^{\dag}}
+.\end{align}
+
+One can of course construct multiparticle states.
+
+\subsection{Propagators and Correlation Functions}
+
+The Feynman propagator is still
+\begin{align}
+    \Delta_{F} \left( x_1 - x_2 \right) = \left<\phi_1 \phi_2 \right> = \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - m^2 + i \epsilon} e^{-i p \left( x_1 -x_2 \right) }
+,\end{align}
+and
+\begin{align}
+    \Delta^{\psi}_F \left( x_1 - x_2 \right) &= \bra{\Omega} T \psi \left( x_1 \right) \psi^{\dag} \left( x_2 \right) \ket{\Omega} \\
+    &= \int \frac{\dd{^4p}}{\left( 2\pi\right)^4} \frac{i}{p^2 - M^2 + i \epsilon} e^{-i p \left( x_1 - x_2 \right) } \\
+    &\equiv \hat{\Delta}_{12} 
+,\end{align}
+where only the mass has changed.
+
+\begin{note}~
+    \begin{enumerate}
+        \item In the free theory, $\left<\psi_1 \psi_2 \right> = \left<\psi_1^{\dag} \psi_2^{\dag} \right> = 0$.
+            \begin{proof}
+                Exercise.
+            \end{proof}
+        \item Why is $\left<\psi_1 \psi_2^{\dag} \right> \neq 0$? Notice that
+            \begin{align}
+                \sqrt{2 \widetilde{\omega}_p} b^{\dag}_p &= -i \int \dd{^3x} e^{-i p x} \overset{\leftrightarrow}{\partial_t} \psi^{\dag} \\
+                \sqrt{2 \widetilde{\omega}_p} b_p &= i \int \dd{^3x} e^{i p x} \overset{\leftrightarrow}{\partial_t} \psi \\
+                \sqrt{2 \widetilde{\omega}_p} c_p^{\dag} &= -i \int \dd{^3x} e^{i p x} \overset{\leftrightarrow}{\partial_t} \psi \\
+                \sqrt{2 \widetilde{\omega}_p} c_p &= -i \int \dd{^3x} e^{-i p x} \overset{\leftrightarrow}{\partial_t} \psi^{\dag} 
+            .\end{align}
+    \end{enumerate}
+\end{note}
+
+Moving to the interacting theory, we apply Schwinger Dyson. Namely, as
+\begin{align}
+    \left( \Box + m^2 \right) \phi - \left( -g \psi^{\dag} \psi \right)  &= 0\\
+    \left( \Box + M^2 \right) \psi - \left( -g \phi \psi \right)  &= 0\\
+    \left( \Box + M^2 \right) \psi^{\dag} - \underbrace{\left( -g \phi \psi^{\dag} \right)}_{\mathcal{L}_\text{int}' \equiv \pdv{\mathcal{L}_\text{int}}{\psi}}  &= 0
+.\end{align}
+
+Notice that
+\begin{align}
+    \left( \Box_x + m^2 \right) \left<\phi_x \phi_1 \cdots \phi_n \psi_1 \cdots \psi_m \psi_1^{\dag} \cdots \psi_p^{\dag} \right> &= -g \left< \psi_x \psi_x^{\dag} \phi_1 \cdots \phi_n \psi_1 \cdots \psi_m \psi_1^{\dag} \cdots \psi_p^{\dag} \right> \nonumber \\
+                                                                                                                                &\quad - i \sum_{j=1}^{n}  \delta \left( x- x_{j} \right) \left<\phi_1 \cdots \phi_{j-1} \phi_{j+1} \cdots \phi_n \psi_1 \cdots \psi_m \psi_1^{\dag} \cdots \psi_p^{\dag} \right> 
+.\end{align}
+Similarly,
+\begin{align}
+    \left( \Box_x + M^2 \right) \left< \phi_1 \cdots \phi_n \psi_x \psi_1 \cdots \psi_m \psi_1^{\dag} \cdots \psi_p^{\dag} \right> &= -g \left< \phi_1 \cdots \phi_n \phi_x \psi_x^{\dag} \psi_1 \cdots \phi_m \phi_1^{\dag} \cdots \phi_p^{\dag} \right> \nonumber \\
+    &\quad - i \sum_{j=1}^{p}  \delta \left( x- x_{j} \right) \left<\phi_1 \cdots \phi_n \psi_1 \cdots \psi_m \psi_1^{\dag} \cdots \psi^{\dag}_{j-1} \psi^{\dag}_{j+1} \cdots\psi_p^{\dag} \right> 
+.\end{align}
+
+To infer the Feynman rules, we look at the three point function
+\begin{align}
+    \left<\phi_1 \psi_2^{\dag} \psi_3 \right> = -ig \int \dd{^{4}x} \Delta_{1x} \left<\psi_x \psi^{\dag}_x \psi_2^{\dag} \psi_3 \right> 
+.\end{align}
+
+We replace this correlator with its free theory variant, giving
+\begin{align}
+    \left<\phi_1 \psi_2^{\dag} \psi_3 \right> = -ig \int \dd{^{4}x} \Delta_{1 x} \left( \hat{\Delta}_{x x} \hat{\Delta}_{23} + \hat{\Delta}_{x 2} \hat{\Delta}_{3 x} \right) + \mathcal{O}\left( g^2 \right)  
+.\end{align}
+
+%\subsection{Scattering}
+
+We are now equipped to consider scattering in this theory.
+
+We want to evaluate
+\begin{align}
+    \bra{\text{final}, \infty} \ket{\text{initial}, -\infty} = \bra{f} S \ket{i}
+.\end{align}
+
+We assume as before, that the asymptotic states at $\pm \infty$ exists within the free theory. Then to calculate $S$ we need, for example,
+\begin{align}
+    \sqrt{2 \widetilde{\omega}_p}  \left( b^{\dag}_p \left( \infty \right)  - b^{\dag}_p \left( - \infty \right)  \right) = - i \int \dd{^{4}x} e^{-ipx} \left( \Box_x + M^2 \right) \psi^{\dag} \left( x \right) 
+,\end{align}
+and similar formulas for $c_p$ and $c^{\dag}_p$.
+

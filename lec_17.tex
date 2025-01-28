@@ -1,0 +1,157 @@
+\lecture{17}{18/11/2024}{Weyl Spinors}
+
+Recall that our spinor representation $S \left[ \Lambda \right] $ admitted a diagonal form in the chiral representation.
+
+This tells us that the Dirac (4-component spinor) representation is reducible into
+\begin{align}
+    \psi \left( x \right) = \mqty( u_+ \\ 0 ) + \mqty( 0 \\ u_- )
+,\end{align}
+where $u_+$ and $u_-$ are 2 component spinors called \textbf{Weyl spinors} or \textit{chiral spinors}.
+
+Under rotations, they transform identically,
+\begin{align}
+    u_+ \to e^{i \vec{\phi} \cdot \vec{\sigma} / 2} u_+ \\
+    u_- \to e^{i \vec{\phi} \cdot \vec{\sigma}/2} u_-
+.\end{align}
+Under boosts however, we have
+\begin{align}
+    u_+ \to e^{\vec{\chi} \cdot \vec{\sigma} / 2} u_+ \\
+    u_- \to e^{-\vec{\chi} \cdot \vec{\sigma} / 2} u_-
+,\end{align}
+where they transform with opposite sign.
+
+In the chiral representation,
+\begin{align}
+    \gamma^{\mu} = \mqty( 0 & \sigma^{\mu} \\ \overline{\sigma}^{\mu} & 0 )
+,\end{align}
+it is obvious this splits.
+
+A more general way to identify the two Weyl spinors is by introducing
+\begin{align}
+    \gamma^{5} = -i\gamma^{0} \gamma^{1} \gamma^{2} \gamma^{3} = \frac{1}{4!}\epsilon_{\mu \nu \sigma \rho} \gamma^{\mu} \gamma^{\nu} \gamma^{\sigma} \gamma^{\rho}
+,\end{align}
+satisfies $\left\{ \gamma^{5}, \gamma^{\mu} \right\} =0 $, $\left( \gamma^{5} \right)^2 = \mathbb{I}$, and
+\begin{align}
+    \left[ S^{\mu \nu}, \gamma^{5} \right] = 0
+.\end{align}
+
+In the chiral representation this is
+\begin{align}
+    \gamma^{5} = \mqty( I_2 & 0 \\ 0 & -I_2 )
+.\end{align}
+
+We can define the projection operators
+\begin{align}
+    P_{\pm} = \frac{1}{2} \left( \mathbb{I} \pm \gamma^{5} \right) 
+,\end{align}
+which in the chiral representation are
+\begin{align}
+    P_+ = \mqty( I_2 & 0 \\ 0 & 0 ) && P_- = \mqty( 0 & 0 \\ 0 & I_2)
+.\end{align}
+
+These are projection operators satisfying $P_+ P_- = 0$ and $P_+ P_- = 0$. $\psi_+ = P_+ \psi = \mqty( u_+ \\ 0 )$ and $\psi_- = P_- \psi = \mqty( 0 \\ u_-)$ where these matrices are in the chiral representation.
+
+Looking at the Dirac Lagrangian,  in the chiral representation we can write
+\begin{align}
+    \mathcal{L} &= \overline{\psi} \left( i \fbs{\partial} - m \right) \psi \\
+    &= i u_-^{\dag} \sigma^{\mu} \partial_\mu u_- + i u_+^{\dag} \overline{\sigma}^\mu \partial_\mu u_+ - m \left( u_+^{\dag} u_- + u_-^{\dag} u_{+} \right)  
+.\end{align}
+
+\subsection{Quantizing the Dirac Field}
+
+We proceed with the canonical quantization of the Dirac Lagrangian
+\begin{align}
+    \mathcal{L} = i \overline{\psi}\gamma^{\mu} \partial_\mu \psi - m \overline{\psi}\psi
+.\end{align}
+
+We follow the principles from the scalar theory and aim to construct a Fock space with positive norm and $H$ bounded from below.
+
+We need to figure out the commutation relations and see that
+\begin{align}
+    \Pi = \pdv{\mathcal{L}}{\left( \partial_t \psi \right) } = i \overline{\psi} \gamma^{0} = i \psi^{\dag}
+.\end{align}
+
+One can imagine imposing
+\begin{align}
+    \left[ \psi_a \left( \vec{x},t \right) , \psi_b \left( \vec{y},t \right)  \right] = 0 \\
+    \left[ \psi_a \left( \vec{x},t \right) , \Pi_b \left( \vec{y},t \right)  \right] = i \delta_{ab} \delta \left( \vec{x} - \vec{y} \right)  \\
+    \implies i\left[ \psi_a \left( \vec{x},t \right) , \psi_b^{\dag} \left( \vec{y},t \right)  \right] &= i \delta_{ab} \delta \left( \vec{x} - \vec{y} \right) 
+.\end{align}
+
+One could also impose
+\begin{align}
+    \left\{ \psi_a \left( \vec{x},t \right) , \psi^{\dag}_b \left( \vec{y},t \right)  \right\}  = \delta_{ab} \delta \left( \vec{x} - \vec{y} \right)  \\
+    \left\{ \psi_a \left( \vec{x} , t \right) , \psi_b \left( \vec{y},t \right)  \right\}  = 0 
+.\end{align}
+
+There are some properties that are shared by both routes. Namely, one has
+\begin{align}
+    \psi \left( x \right) = \sum_{s}^{} \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \frac{1}{\sqrt{2\omega}}\left( b_{p}^{s} u^{s}\left( \vec{p} \right) e^{-i px} + \left( c^{s}_p \right)^{\dag}  v^{s}\left( \vec{p} \right) e^{ipx}  \right)  
+,\end{align}
+where one can equivalently obtain the operators
+\begin{align}
+    b^{s}_p = \frac{1}{\sqrt{2\omega_p} } \int \frac{\dd{^3x}}{\left( 2\pi\right)^3} e^{ipx} \overline{u}^{s}\left( \vec{p} \right) \gamma^{0} \psi \left( x \right) && (b^{s}_p)^{\dag} = \frac{1}{\sqrt{2\omega_p}} \int \dd{^3x} e^{-ipx} \overline{\psi}\left( x \right) \gamma^{0} v^{s}\left( \vec{p} \right) \\
+    c^{s}_p = \frac{1}{\sqrt{2\omega_p} } \int \dd{^3} e^{ipx} \overline{\psi} \gamma^{0} v^{s}\left( \vec{p} \right)  && \left( c^{s}_p \right)^{\dag} = \frac{1}{\sqrt{2\omega_p} } \int \dd{^3x} e^{-ipx} \overline{v}^{s}\left( \vec{p} \right) \gamma^{0} \psi
+,\end{align}
+where $\overline{u} = u^{\dag} \gamma^{0}$ and $\overline{v} = v^{\dag} \gamma^{0}$.
+
+Further, for both routes, the Hamiltonian
+\begin{align}
+    H &= \int \dd{^3x} \Pi \dot{\psi} = i \int \dd{^3x} \psi^{\dag} \dot{\psi}
+      &= \sum_{s}^{} \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \omega_p \left( \left( b^{s}_p \right)^{\dag} b_p^{s} - c^{s}_p \left( c^{s}_p \right)^{\dag}  \right)  
+.\end{align}
+
+If one assumes commutation relations, then these imply
+\begin{align}
+    \left[ b_p^{s}, \left( b^{s'}_{p'} \right)^{\dag} \right] &= \left( 2\pi \right)^3 \delta^{3} \left( \vec{p} - \vec{p}' \right) \delta_{s s'} \\
+    \left[ c_p^{s}, \left( c^{s'}_{p'} \right)^{\dag} \right] &= -\left( 2\pi \right)^3 \delta^{3} \left( \vec{p} - \vec{p}' \right) \delta_{s s'} 
+.\end{align}
+
+Identically, if one assumes the anti-commutation relations
+\begin{align}
+    \left\{ b_p^{s}, \left( b^{s'}_{p'} \right)^{\dag} \right\} &= \left( 2\pi \right)^3 \delta^{3} \left( \vec{p} - \vec{p}' \right) \delta_{s s'} \\
+    \left\{ c_p^{s}, \left( c^{s'}_{p'} \right)^{\dag} \right\} &= \left( 2\pi \right)^3 \delta^{3} \left( \vec{p} - \vec{p}' \right) \delta_{s s'} 
+.\end{align}
+
+For the commutation relations route, one sees
+\begin{align}
+    \left[ H, \left( b_p^{s} \right)^{\dag} \right]  = \omega_p \left( b_p^{s} \right)^{\dag} && \left[ H, \left( c_p^{s} \right)^{\dag} \right] = \omega_p \left( c_p^{s} \right) ^{\dag}
+.\end{align}
+
+If $b^{\dag}$ and $c^{\dag}$ create, then the energies are positive, but the norms of states are negative due to the commutation relations. If $b^{\dag}$ and $c$ create instead, then the norm of such states are positive but the energy is negative as $\left[ H, c_p^{s} \right] = - \omega_p c_p^{s}$. Thus the commutation relations do not give us a well defined Fock space.
+
+We then proceed with the anti-commutation relations and check
+\begin{align}
+    \left[ H, \left( b^{s}_p \right)^{\dag}  \right] = \omega_p \left( b^{s}_p \right)^{\dag} && \left[ H, \left( c^{s}_p \right)^{\dag} \right] = \omega_p \left( c^{s}_p \right)^{\dag}
+.\end{align}
+
+With this we can construct a healthy Fock space.
+
+Two comments are in order.
+
+\begin{itemize}
+    \item The choice of commutator or anticommutator is not a choice at all. Depending on the representation of the Lorentz group, one will obtain either \textit{bosonic} or \textit{fermionic} particles with commutation or anti commutation relations respectively.
+
+        We studied the scalar field with spin $0$ which followed Bose statistics and have now defined the spinor which has spin $\frac{1}{2}$ which has Fermi statistics.
+        
+        There were three ingredients in this process.
+        \begin{enumerate}[label=\alph*)]
+            \item Stability: The Hamiltonian being bounded,
+            \item Causality: $\left[ \Theta \left( x \right) , \Theta \left( y \right)   \right] = 0$ if $\left( x- y \right)^2 < 0$,
+            \item Lorentz invariance of the $S$-matrix: Such that 
+                \begin{align}
+                    \left<T \Theta_1 \cdots \Theta_n \right>
+                ,\end{align}
+                needs to be Lorentz covariant.
+        \end{enumerate}
+    \item Observe that with the anti-commutation relations the Hamiltonian becomes
+        \begin{align}
+            H = \sum_{s}^{} \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \omega_p \left( \left( b_p^{s} \right)^{\dag} b_p^{s} + \left( c_p^{s} \right)^{\dag} c^{s}_p \right)  - \int \frac{\dd{^3p}}{\left( 2\pi\right)^3} \omega_p 2 \left( 2\pi \right)^3 \delta^{3}\left( \vec{0} \right) 
+        .\end{align}
+
+        For the scalar field we had exactly $\frac{1}{4}$ of this last term with a positive sign. One can balance scalars (bosons) and spinors (fermions) to get exactly zero vacuum energy. The spinor has four degrees of freedom (two in $b^{s}_p$ and two in $c^{s}_p$) while the real scalar field only has one, thus justifying the coefficient required for cancellation.
+\end{itemize}
+
+
+
+

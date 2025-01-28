@@ -90,12 +90,12 @@ We see that using
 ,\end{align}
 we have
 \begin{align}
-\int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \delta^{4} \left( p^2 - m^2 \right)  \Theta \left( p^2 \right) = \int \dd{^3p} \frac{1}{2 \sqrt{\vec{p}^2 + m^2}} = \int \dd{^3} \frac{1}{2 \omega_{\vec{p}}}
+\int \frac{\dd{^{4}p}}{\left( 2\pi \right)^{4}} \delta^{4} \left( p^2 - m^2 \right)  \Theta \left( p^0 \right) = \int \dd{^3p} \frac{1}{2 \sqrt{\vec{p}^2 + m^2}} = \int \dd{^3p} \frac{1}{2 \omega_{\vec{p}}}
 .\end{align}
 
 Therefore bringing this measure back to the identity, we see
 \begin{align}
-    1 = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \ket{\widetilde{\vec{p}}} \bra{\widetilde{\vec{p}}}
+    1 = \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_{\vec{p}}} \ket{\widetilde{\vec{p}}} \bra{\widetilde{\vec{p}}}
 ,\end{align}
 where we define
 \begin{align}
@@ -117,7 +117,7 @@ with the interpretation of ``measuring'' the field at $x$ then $y$ or vice versa
 
 For the free theory, we see
 \begin{align}
-    \Delta &= \int \frac{\dd{^3k} \dd{^3p}}{\left( 2\pi \right)^{6}} \left( \left[ a_k, a_p^{\dag} \right] e^{-ikx} e^{i py} + \left[ a_k^{\dag}, a_p  \right] e^{ikx} e^{-ipy}   \right) \\
+    \Delta &= \int \frac{\dd{^3k} \dd{^3p}}{\left( 2\pi \right)^{6}} \frac{1}{2 \sqrt{\omega_k \omega_p} } \left( \left[ a_k, a_p^{\dag} \right] e^{-ikx} e^{i py} + \left[ a_k^{\dag}, a_p  \right] e^{ikx} e^{-ipy}   \right) \\
     &= \int \frac{\dd{^3p}}{\left( 2\pi \right)^3} \frac{1}{2 \omega_p} \left( e^{-i p \left( x - y \right) } - e^{i p \left( x -y \right) } \right)
 .\end{align}
 
